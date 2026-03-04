@@ -65,6 +65,7 @@ html { scroll-behavior: smooth; }
 }
 
 body {
+  padding-bottom: 76px;
   font-family: 'Noto Sans KR', sans-serif;
   background: var(--white);
   color: var(--text);
@@ -498,18 +499,56 @@ body {
   padding: 40px 36px;
 }
 .cta-contact {
-  display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 28px;
 }
+@media(max-width:600px){ .cta-contact { grid-template-columns: 1fr; } }
 .cta-contact-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 16px 20px; background: var(--sand);
-  text-decoration: none; color: var(--text); transition: all .2s;
-  border: 1px solid transparent;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; padding: 18px 12px; text-decoration: none; color: var(--text);
+  transition: all .2s; border: 2px solid transparent; text-align: center;
 }
-.cta-contact-item:hover { border-color: var(--mint); background: var(--mintL); }
-.cta-contact-icon { font-size: 20px; }
-.cta-contact-label { font-size: 11px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 2px; font-family:'Montserrat'; }
-.cta-contact-val { font-size: 16px; font-weight: 700; color: var(--green); }
+.cta-contact-item.tel  { background: #E8F5F0; border-color: #B2DDD0; }
+.cta-contact-item.sms  { background: #EEF2FF; border-color: #C5CEFC; }
+.cta-contact-item.kako { background: #FEF9C3; border-color: #FDE68A; }
+.cta-contact-item.tel:hover  { background: var(--mint); border-color: var(--mint); color: #fff; }
+.cta-contact-item.sms:hover  { background: #4F6EF7; border-color: #4F6EF7; color: #fff; }
+.cta-contact-item.kako:hover { background: #FAE100; border-color: #FAE100; color: #3C1E1E; }
+.cta-contact-icon { font-size: 26px; }
+.cta-contact-label { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; font-family:'Montserrat'; }
+.cta-contact-val { font-size: 14px; font-weight: 700; color: var(--green); }
+.cta-contact-item.tel:hover .cta-contact-val,
+.cta-contact-item.sms:hover .cta-contact-val { color: #fff; }
+.cta-contact-item.kako:hover .cta-contact-val { color: #3C1E1E; }
+
+/* QR 고정 바 */
+.qr-fixed {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 800;
+  background: var(--green); display: flex; align-items: center;
+  justify-content: center; gap: 20px; padding: 10px 20px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,.2);
+}
+.qr-fixed-img { width: 52px; height: 52px; background: #fff; padding: 4px; flex-shrink: 0; }
+.qr-fixed-img img { width: 100%; height: 100%; display: block; }
+.qr-fixed-text { color: #fff; font-size: 13px; line-height: 1.6; }
+.qr-fixed-text strong { display: block; font-size: 15px; color: #7ECFB0; }
+.qr-fixed-btns { display: flex; gap: 8px; }
+.qr-fixed-btn {
+  padding: 8px 16px; font-size: 12px; font-weight: 700;
+  text-decoration: none; border: none; cursor: pointer; transition: all .2s; white-space: nowrap;
+}
+.qr-fixed-btn.tel  { background: #7ECFB0; color: #0D1F1A; }
+.qr-fixed-btn.kako { background: #FAE100; color: #3C1E1E; }
+.qr-fixed-btn:hover { opacity: .85; transform: translateY(-1px); }
+.qr-fixed-close {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,.15); border: none; color: #fff;
+  width: 26px; height: 26px; border-radius: 50%; cursor: pointer;
+  font-size: 14px; display: flex; align-items: center; justify-content: center;
+}
+@media(max-width:500px){
+  .qr-fixed-text { display: none; }
+  .qr-fixed { gap: 12px; }
+}
 
 .cta-divider {
   display: flex; align-items: center; gap: 16px; margin-bottom: 28px;
@@ -976,19 +1015,20 @@ footer {
 
     <div class="cta-box reveal">
       <div class="cta-contact">
-        <a href="tel:01080698848" class="cta-contact-item">
+        <a href="tel:01080698849" class="cta-contact-item tel">
           <div class="cta-contact-icon">📞</div>
-          <div>
-            <div class="cta-contact-label">전화 · 문자</div>
-            <div class="cta-contact-val">010-8069-8848</div>
-          </div>
+          <div class="cta-contact-label">전화 통화</div>
+          <div class="cta-contact-val">010-8069-8849</div>
         </a>
-        <a href="https://pf.kakao.com" class="cta-contact-item">
+        <a href="sms:01080698849" class="cta-contact-item sms">
           <div class="cta-contact-icon">💬</div>
-          <div>
-            <div class="cta-contact-label">카카오톡</div>
-            <div class="cta-contact-val">010-8069-8848 으로 카톡</div>
-          </div>
+          <div class="cta-contact-label">문자 메시지</div>
+          <div class="cta-contact-val">010-8069-8849</div>
+        </a>
+        <a href="https://open.kakao.com/o/gBKNMkji" target="_blank" class="cta-contact-item kako">
+          <div class="cta-contact-icon">🟡</div>
+          <div class="cta-contact-label">카카오 오픈채팅</div>
+          <div class="cta-contact-val">바로 채팅하기</div>
         </a>
       </div>
 
@@ -1034,12 +1074,43 @@ footer {
   <div class="footer-info">
     제주 소상공인 디지털 전단지 · SNS 홍보 대행<br>
     대표 김현우 · 도약하는 개구리<br>
-    010-8069-8848 · 제주특별자치도
+    010-8069-8849 · 제주특별자치도
   </div>
   <div class="footer-copy">© 2026 LocalBoost · All rights reserved</div>
 </footer>
 
+<!-- ── 하단 고정 QR 바 ── -->
+<div class="qr-fixed" id="qrFixed">
+  <div class="qr-fixed-img">
+    <canvas id="qrFixedCanvas"></canvas>
+  </div>
+  <div class="qr-fixed-text">
+    <strong>LocalBoost 무료 상담</strong>
+    QR 스캔 또는 아래 버튼으로 바로 연락하세요
+  </div>
+  <div class="qr-fixed-btns">
+    <a href="tel:01080698849" class="qr-fixed-btn tel">📞 전화</a>
+    <a href="https://open.kakao.com/o/gBKNMkji" target="_blank" class="qr-fixed-btn kako">💛 카카오 채팅</a>
+  </div>
+  <button class="qr-fixed-close" onclick="document.getElementById('qrFixed').style.display='none'" title="닫기">✕</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
+// 하단 고정 QR 생성
+window.addEventListener('load', function() {
+  try {
+    new QRCode(document.getElementById('qrFixedCanvas'), {
+      text: 'https://ian0417kim-afk.github.io/localboost/',
+      width: 44,
+      height: 44,
+      colorDark: '#1A5C45',
+      colorLight: '#FFFFFF',
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  } catch(e) {}
+});
+
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
