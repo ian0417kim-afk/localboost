@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한라 피트니스 — 제주 헬스장</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Bebas+Neue&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{
+  --bg:#0F0F0F;
+  --bg2:#161616;
+  --red:#E53935;
+  --orange:#FF6D00;
+  --gray:#1E1E1E;
+  --muted:#888;
+  --light:#C8C8C8;
+  --white:#F5F5F5;
+  --border:rgba(255,255,255,.08);
+}
+body{background:var(--bg);color:var(--white);font-family:'Noto Sans KR',sans-serif;overflow-x:hidden;}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:99;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(15,15,15,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:4px;color:var(--white);}
+.nav-logo span{color:var(--red);}
+.nav-links{display:flex;gap:24px;}
+.nav-links a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:2px;text-transform:uppercase;}
+.nav-links a:hover{color:var(--white);}
+
+/* 히어로 */
+.hero{min-height:100svh;padding-top:56px;position:relative;display:flex;align-items:center;overflow:hidden;background:linear-gradient(135deg,#0F0F0F 0%,#1A0A0A 100%);}
+.hero-accent{position:absolute;top:0;right:0;width:50%;height:100%;background:linear-gradient(135deg,transparent 30%,rgba(229,57,53,.04) 100%);}
+.hero-line{position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(229,57,53,.3),transparent);}
+.hero-inner{max-width:960px;margin:0 auto;padding:60px 24px;position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+@media(max-width:700px){.hero-inner{grid-template-columns:1fr;gap:40px;}}
+.hero-eyebrow{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:6px;color:var(--red);text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp .7s ease .1s forwards;}
+.hero-title{font-family:'Bebas Neue',cursive;font-size:clamp(52px,8vw,96px);line-height:.95;letter-spacing:2px;color:var(--white);margin-bottom:16px;opacity:0;animation:fadeUp .7s ease .3s forwards;}
+.hero-title span{color:var(--red);display:block;}
+.hero-desc{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:32px;opacity:0;animation:fadeUp .7s ease .5s forwards;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:fadeUp .7s ease .7s forwards;}
+.btn-red{background:var(--red);color:#fff;font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;letter-spacing:3px;text-transform:uppercase;padding:14px 32px;border:none;cursor:pointer;text-decoration:none;transition:all .25s;}
+.btn-red:hover{background:#EF5350;}
+.btn-outline{background:transparent;color:var(--white);font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:3px;text-transform:uppercase;padding:13px 32px;border:1px solid rgba(255,255,255,.2);cursor:pointer;text-decoration:none;transition:all .25s;}
+.btn-outline:hover{border-color:var(--white);}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;opacity:0;animation:fadeUp .7s ease .5s forwards;}
+.stat-card{background:var(--gray);padding:24px 20px;text-align:center;border:1px solid var(--border);}
+.stat-val{font-family:'Bebas Neue',cursive;font-size:40px;color:var(--red);letter-spacing:2px;line-height:1;}
+.stat-label{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px;}
+
+/* 섹션 공통 */
+.section{padding:80px 24px;}
+.sec-inner{max-width:960px;margin:0 auto;}
+.sec-eyebrow{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:5px;color:var(--red);text-transform:uppercase;margin-bottom:10px;}
+.sec-title{font-family:'Bebas Neue',cursive;font-size:clamp(36px,5vw,56px);letter-spacing:2px;line-height:1.05;margin-bottom:12px;}
+.sec-sub{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:48px;}
+
+/* 프로그램 */
+.program-section{background:var(--bg2);}
+.program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+@media(max-width:700px){.program-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:420px){.program-grid{grid-template-columns:1fr;}}
+.prog-card{background:var(--gray);padding:28px 24px;border-top:3px solid var(--border);transition:all .25s;position:relative;overflow:hidden;}
+.prog-card:hover{border-top-color:var(--red);}
+.prog-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(229,57,53,.04) 0%,transparent 60%);opacity:0;transition:opacity .3s;}
+.prog-card:hover::before{opacity:1;}
+.prog-icon{font-size:32px;margin-bottom:12px;}
+.prog-name{font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;letter-spacing:1px;color:var(--white);margin-bottom:6px;}
+.prog-desc{font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:12px;}
+.prog-time{font-size:11px;color:var(--red);letter-spacing:1px;}
+
+/* 가격 */
+.pricing-section{background:var(--bg);}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+@media(max-width:700px){.pricing-grid{grid-template-columns:1fr;}}
+.price-card{background:var(--gray);padding:32px 28px;border:1px solid var(--border);position:relative;transition:all .25s;}
+.price-card.featured{background:var(--red);border-color:var(--red);}
+.price-card:hover:not(.featured){border-color:rgba(229,57,53,.4);}
+.price-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:#FF6D00;color:#fff;font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:3px;padding:5px 16px;text-transform:uppercase;}
+.price-name{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;color:var(--muted);}
+.price-card.featured .price-name{color:rgba(255,255,255,.7);}
+.price-amount{font-family:'Bebas Neue',cursive;font-size:48px;letter-spacing:2px;line-height:1;margin-bottom:4px;color:var(--white);}
+.price-period{font-size:12px;color:var(--muted);margin-bottom:24px;}
+.price-card.featured .price-period{color:rgba(255,255,255,.6);}
+.price-divider{height:1px;background:var(--border);margin-bottom:20px;}
+.price-card.featured .price-divider{background:rgba(255,255,255,.2);}
+.price-features{display:flex;flex-direction:column;gap:10px;}
+.price-feat{font-size:13px;color:var(--muted);display:flex;gap:8px;}
+.price-card.featured .price-feat{color:rgba(255,255,255,.85);}
+.price-feat .ck{color:var(--red);flex-shrink:0;}
+.price-card.featured .price-feat .ck{color:#FFCDD2;}
+.price-feat .xx{color:var(--border);flex-shrink:0;}
+
+/* 이벤트 */
+.event-section{background:var(--bg2);}
+.event-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:600px){.event-grid{grid-template-columns:1fr;}}
+.event-card{background:var(--gray);border:1px solid var(--border);padding:28px 24px;position:relative;overflow:hidden;transition:border-color .25s;}
+.event-card:hover{border-color:rgba(229,57,53,.4);}
+.event-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--orange));}
+.event-badge{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:12px;}
+.event-title{font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.event-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:12px;}
+.event-period{font-size:11px;color:var(--red);}
+
+/* 등록 */
+.join-section{background:var(--bg);}
+.join-box{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+@media(max-width:700px){.join-box{grid-template-columns:1fr;}}
+.form-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+.form-label{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:3px;color:var(--red);text-transform:uppercase;}
+.form-input,.form-select,.form-textarea{background:var(--gray);border:1px solid var(--border);color:var(--white);font-family:'Noto Sans KR',sans-serif;font-size:14px;padding:12px 16px;outline:none;transition:border-color .2s;}
+.form-input::placeholder{color:var(--muted);}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--red);}
+.form-select option{background:var(--bg);}
+.form-textarea{resize:none;min-height:80px;}
+.form-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:480px){.form-row2{grid-template-columns:1fr;}}
+.submit-btn{width:100%;background:var(--red);color:#fff;font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;letter-spacing:4px;text-transform:uppercase;padding:16px;border:none;cursor:pointer;transition:all .25s;margin-top:4px;}
+.submit-btn:hover{background:#EF5350;}
+.contact-list{display:flex;flex-direction:column;gap:14px;}
+.contact-item{display:flex;align-items:center;gap:14px;padding:16px;background:var(--gray);border:1px solid var(--border);}
+.c-icon{font-size:22px;}
+.c-label{font-size:9px;color:var(--red);letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;font-family:'Oswald',sans-serif;}
+.c-val{font-size:14px;color:var(--white);font-weight:500;}
+.qr-wrap{margin-top:16px;padding:20px;background:var(--gray);border:1px solid var(--border);display:flex;align-items:center;gap:16px;}
+.qr-box{background:#fff;padding:6px;width:72px;height:72px;flex-shrink:0;}
+.qr-label{font-size:9px;color:var(--red);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;font-family:'Oswald',sans-serif;}
+.qr-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+
+footer{background:#0A0A0A;padding:36px 24px;text-align:center;border-top:1px solid var(--border);}
+.footer-name{font-family:'Bebas Neue',cursive;font-size:24px;letter-spacing:4px;color:var(--white);margin-bottom:8px;}
+.footer-name span{color:var(--red);}
+.footer-info{font-size:12px;color:var(--muted);line-height:2;}
+.footer-copy{font-size:11px;color:rgba(136,136,136,.3);margin-top:12px;}
+
+.toast{position:fixed;bottom:60px;left:50%;transform:translateX(-50%) translateY(40px);background:var(--red);color:#fff;font-size:13px;font-weight:700;padding:12px 24px;z-index:9999;opacity:0;transition:all .4s;white-space:nowrap;pointer-events:none;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div class="toast" id="toast"></div>
+
+<nav class="nav">
+  <div class="nav-logo">한라<span>FIT</span></div>
+  <div class="nav-links">
+    <a href="#program">프로그램</a>
+    <a href="#pricing">요금</a>
+    <a href="#join">등록</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-accent"></div>
+  <div class="hero-line"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">제주 No.1 피트니스</div>
+      <h1 class="hero-title">MOVE<span>HARDER.</span></h1>
+      <p class="hero-desc">한라산처럼 강하게 — 제주에서 가장 전문적인<br>피트니스 센터가 여러분의 목표를 함께 달성합니다.</p>
+      <div class="hero-btns">
+        <a href="#join" class="btn-red">무료 체험 신청</a>
+        <a href="#pricing" class="btn-outline">요금 보기</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card"><div class="stat-val">500+</div><div class="stat-label">등록 회원</div></div>
+      <div class="stat-card"><div class="stat-val">24H</div><div class="stat-label">운영시간</div></div>
+      <div class="stat-card"><div class="stat-val">8</div><div class="stat-label">전문 트레이너</div></div>
+      <div class="stat-card"><div class="stat-val">5★</div><div class="stat-label">평균 만족도</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 프로그램 -->
+<section class="section program-section" id="program">
+  <div class="sec-inner">
+    <div class="sec-eyebrow reveal">Programs</div>
+    <h2 class="sec-title reveal">운동 프로그램</h2>
+    <p class="sec-sub reveal">목적에 맞는 전문 프로그램으로 확실한 변화를 만듭니다.</p>
+    <div class="program-grid reveal">
+      <div class="prog-card">
+        <div class="prog-icon">🏋️</div>
+        <div class="prog-name">웨이트 트레이닝</div>
+        <div class="prog-desc">최신 장비 100여 종 · 초급부터 고급까지 자유 이용</div>
+        <div class="prog-time">⏱ 자유이용 · 24시간</div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-icon">🔥</div>
+        <div class="prog-name">GX 그룹 수업</div>
+        <div class="prog-desc">줌바, 필라테스, 스피닝, HIIT — 하루 10개 수업</div>
+        <div class="prog-time">⏱ 매일 6:00 — 22:00</div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-icon">🤸</div>
+        <div class="prog-name">필라테스</div>
+        <div class="prog-desc">전문 필라테스 룸 · 소그룹 수업 최대 6명</div>
+        <div class="prog-time">⏱ 사전 예약 필수</div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-icon">🏃</div>
+        <div class="prog-name">러닝 트랙</div>
+        <div class="prog-desc">실내 400m 러닝 트랙 · 심박수 모니터링</div>
+        <div class="prog-time">⏱ 자유이용 · 24시간</div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-icon">💪</div>
+        <div class="prog-name">1:1 PT</div>
+        <div class="prog-desc">전담 트레이너와 맞춤 식단+운동 프로그램</div>
+        <div class="prog-time">⏱ 예약제 · 50분</div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-icon">🧘</div>
+        <div class="prog-name">요가 · 명상</div>
+        <div class="prog-desc">전용 요가룸 · 아침 명상 / 저녁 이완 요가</div>
+        <div class="prog-time">⏱ 매일 7:00, 19:00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 가격 -->
+<section class="section pricing-section" id="pricing">
+  <div class="sec-inner">
+    <div class="sec-eyebrow reveal">Membership</div>
+    <h2 class="sec-title reveal">회원권 요금</h2>
+    <p class="sec-sub reveal">입장 제한 없는 무제한 이용, 투명한 요금제입니다.</p>
+    <div class="pricing-grid reveal">
+      <div class="price-card">
+        <div class="price-name">1개월</div>
+        <div class="price-amount">79,000</div>
+        <div class="price-period">원 / 월</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feat"><span class="ck">✓</span> 웨이트 자유이용</div>
+          <div class="price-feat"><span class="ck">✓</span> GX 그룹수업 참여</div>
+          <div class="price-feat"><span class="ck">✓</span> 러닝 트랙 이용</div>
+          <div class="price-feat"><span class="xx">✗</span> PT 포함</div>
+          <div class="price-feat"><span class="xx">✗</span> 필라테스 수업</div>
+        </div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">인기</div>
+        <div class="price-name">3개월</div>
+        <div class="price-amount">199,000</div>
+        <div class="price-period">원 / 3개월</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feat"><span class="ck">✓</span> 웨이트 자유이용</div>
+          <div class="price-feat"><span class="ck">✓</span> GX 그룹수업 참여</div>
+          <div class="price-feat"><span class="ck">✓</span> 러닝 트랙 이용</div>
+          <div class="price-feat"><span class="ck">✓</span> PT 2회 포함</div>
+          <div class="price-feat"><span class="ck">✓</span> 필라테스 월 2회</div>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="price-name">12개월</div>
+        <div class="price-amount">599,000</div>
+        <div class="price-period">원 / 년</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feat"><span class="ck">✓</span> 웨이트 자유이용</div>
+          <div class="price-feat"><span class="ck">✓</span> GX 그룹수업 무제한</div>
+          <div class="price-feat"><span class="ck">✓</span> 러닝 트랙 이용</div>
+          <div class="price-feat"><span class="ck">✓</span> PT 10회 포함</div>
+          <div class="price-feat"><span class="ck">✓</span> 필라테스 월 4회</div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:24px;">* PT 추가 10회 150,000원 · 학생 10% 할인</p>
+  </div>
+</section>
+
+<!-- 이벤트 -->
+<section class="section event-section" id="event">
+  <div class="sec-inner">
+    <div class="sec-eyebrow reveal">Event</div>
+    <h2 class="sec-title reveal">지금 이벤트</h2>
+    <p class="sec-sub reveal">한라FIT 신규 등록 혜택을 놓치지 마세요.</p>
+    <div class="event-grid reveal">
+      <div class="event-card">
+        <div class="event-badge">신규 등록</div>
+        <div class="event-title">첫 달 50% 할인</div>
+        <div class="event-desc">처음 등록하시는 분께 첫 달 이용료를 50% 할인해드립니다. 무료 체험 후 바로 등록 시 적용.</div>
+        <div class="event-period">📅 3월 한정</div>
+      </div>
+      <div class="event-card">
+        <div class="event-badge">친구 추천</div>
+        <div class="event-title">2명 함께 등록 → PT 2회 무료</div>
+        <div class="event-desc">친구와 함께 등록 시 두 분 모두 PT 2회를 무료로 드립니다. 함께 운동하면 더 재밌어요!</div>
+        <div class="event-period">📅 상시 운영</div>
+      </div>
+      <div class="event-card">
+        <div class="event-badge">무료 체험</div>
+        <div class="event-title">1일 무료 이용권</div>
+        <div class="event-desc">QR 스캔 후 카톡 문의 시 1일 무료 이용권을 발급해드립니다. 아무 조건 없이 체험해보세요.</div>
+        <div class="event-period">📅 상시 운영</div>
+      </div>
+      <div class="event-card">
+        <div class="event-badge">외국인 특별</div>
+        <div class="event-title">영어 트레이너 무료 배정</div>
+        <div class="event-desc">외국인 회원 등록 시 영어 가능 트레이너를 1개월간 무료로 배정해드립니다.</div>
+        <div class="event-period">📅 상시 운영</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 등록 -->
+<section class="section join-section" id="join">
+  <div class="sec-inner">
+    <div class="sec-eyebrow reveal">Join</div>
+    <h2 class="sec-title reveal">무료 체험 &amp; 등록 신청</h2>
+    <p class="sec-sub reveal">부담 없이 신청하세요. 무료 체험 후 결정하셔도 됩니다.</p>
+    <div class="join-box">
+      <div class="reveal">
+        <form id="joinForm">
+          <div class="form-row2">
+            <div class="form-field">
+              <label class="form-label">성함</label>
+              <input type="text" class="form-input" id="j-name" placeholder="홍길동" required>
+            </div>
+            <div class="form-field">
+              <label class="form-label">연락처</label>
+              <input type="tel" class="form-input" id="j-phone" placeholder="010-0000-0000" required>
+            </div>
+          </div>
+          <div class="form-row2">
+            <div class="form-field">
+              <label class="form-label">관심 프로그램</label>
+              <select class="form-select" id="j-prog">
+                <option>무료 체험</option>
+                <option>1개월 등록</option>
+                <option>3개월 등록</option>
+                <option>12개월 등록</option>
+                <option>PT 상담</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="form-label">희망 방문일</label>
+              <input type="text" class="form-input" id="j-date" placeholder="예) 3월 15일">
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label">문의사항</label>
+            <textarea class="form-textarea" id="j-memo" placeholder="운동 목표나 궁금한 점을 적어주세요."></textarea>
+          </div>
+          <button type="submit" class="submit-btn">신청하기 →</button>
+        </form>
+      </div>
+      <div class="reveal">
+        <div class="contact-list">
+          <div class="contact-item"><div class="c-icon">📞</div><div><div class="c-label">전화</div><div class="c-val">064-456-7890</div></div></div>
+          <div class="contact-item"><div class="c-icon">💛</div><div><div class="c-label">카카오톡</div><div class="c-val">@한라FIT</div></div></div>
+          <div class="contact-item"><div class="c-icon">🕐</div><div><div class="c-label">운영시간</div><div class="c-val">24시간 연중무휴</div></div></div>
+          <div class="contact-item"><div class="c-icon">📍</div><div><div class="c-label">위치</div><div class="c-val">제주시 노형동 789번지<br><span style="font-size:12px;color:var(--muted)">노형오거리에서 도보 2분</span></div></div></div>
+        </div>
+        <div class="qr-wrap">
+          <div class="qr-box"><div id="qrCode"></div></div>
+          <div>
+            <div class="qr-label">QR 무료 체험권</div>
+            <div class="qr-desc">스캔하면 1일 무료<br>체험권이 발급됩니다</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">한라<span>FIT</span></div>
+  <div class="footer-info">
+    제주시 노형동 789번지 · 064-456-7890<br>
+    24시간 연중무휴 운영<br>
+    <span style="font-size:11px;color:rgba(136,136,136,.3)">이 페이지는 LocalBoost가 제작한 샘플입니다</span>
+  </div>
+  <div class="footer-copy">© 2026 한라FIT · Powered by LocalBoost</div>
+</footer>
+
+<script>
+window.addEventListener('load',function(){
+  try{
+    new QRCode(document.getElementById('qrCode'),{
+      text:'https://localboost.kr/fitness-sample',
+      width:60,height:60,colorDark:'#0F0F0F',colorLight:'#FFFFFF',
+      correctLevel:QRCode.CorrectLevel.M
+    });
+  }catch(e){}
+});
+document.getElementById('joinForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const name=document.getElementById('j-name').value.trim();
+  if(!name){showToast('⚠️ 성함을 입력해 주세요');return;}
+  showToast('✅ '+name+'님 신청 완료! 곧 연락드릴게요.');
+  this.reset();
+});
+let tt;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2800);
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

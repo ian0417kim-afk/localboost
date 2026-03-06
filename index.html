@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LocalBoost — 제주 소상공인 디지털 전단지</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --green:   #1A5C45;
+  --green2:  #256B52;
+  --mint:    #3A9E7A;
+  --mintL:   #E6F5F0;
+  --sand:    #F7F4EE;
+  --warm:    #EDE8DF;
+  --text:    #1A1A1A;
+  --muted:   #7A7060;
+  --white:   #FDFCF9;
+  --gold:    #C4883A;
+  --border:  #E0D8CC;
+}
+
+/* ── 상단 네비바 ── */
+.topnav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  background: rgba(26,26,26,.95); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 28px; height: 52px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.topnav-logo { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; color: #fff; }
+.topnav-logo span { color: #3A9E7A; }
+.topnav-samples { display: flex; align-items: center; gap: 8px; }
+.topnav-label { font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,.4); text-transform: uppercase; margin-right: 4px; }
+.sample-btn { display: flex; align-items: center; gap: 6px; padding: 6px 14px; font-size: 12px; font-weight: 600; text-decoration: none; transition: all .2s; white-space: nowrap; border: 1px solid transparent; }
+.sample-btn.jeju { background: rgba(27,75,58,.8); border-color: rgba(76,168,130,.4); color: #7ECFB0; }
+.sample-btn.jeju:hover { background: #1B4B3A; border-color: #4CA882; color: #fff; }
+.sample-btn.lift { background: rgba(74,91,184,.2); border-color: rgba(74,91,184,.4); color: #8A9CF0; }
+.sample-btn.lift:hover { background: #4A5BB8; color: #fff; }
+.sample-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: blink 1.5s ease infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+@media(max-width:600px) { .topnav-label { display: none; } .sample-btn { padding: 5px 10px; font-size: 11px; } }
+
+body { padding-bottom: 76px; font-family: 'Noto Sans KR', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
+
+/* ── HERO ── */
+.hero { background: var(--green); min-height: 100svh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; padding-top: 52px; }
+@media(max-width:768px){ .hero{ grid-template-columns:1fr; } }
+.hero::before { content:''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: 48px 48px; }
+
+.hero-left { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+@media(max-width:768px){ .hero-left{ padding: 80px 28px 40px; } }
+
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.8); font-size: 11px; letter-spacing: 4px; padding: 7px 18px; text-transform: uppercase; width: fit-content; margin-bottom: 32px; font-family: 'Montserrat', sans-serif; font-weight: 600; opacity: 0; animation: up .7s ease .2s forwards; }
+.hero-badge span { color: #7ECFB0; }
+
+.hero-title { font-family: 'Noto Serif KR', serif; font-size: clamp(38px, 5vw, 62px); font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 24px; opacity: 0; animation: up .7s ease .4s forwards; }
+.hero-title em { font-style: italic; color: #7ECFB0; font-family: 'Noto Serif KR', serif; }
+
+.hero-desc { font-size: 16px; color: rgba(255,255,255,.65); line-height: 1.9; margin-bottom: 40px; max-width: 420px; opacity: 0; animation: up .7s ease .6s forwards; }
+
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; opacity: 0; animation: up .7s ease .8s forwards; }
+.btn-white { background: #fff; color: var(--green); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; padding: 16px 32px; border: none; cursor: pointer; text-decoration: none; transition: all .25s; }
+.btn-white:hover { background: #7ECFB0; color: #fff; }
+.btn-ghost { background: transparent; color: rgba(255,255,255,.8); font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; padding: 15px 32px; border: 1px solid rgba(255,255,255,.3); cursor: pointer; text-decoration: none; transition: all .25s; }
+.btn-ghost:hover { border-color: #fff; color: #fff; }
+
+/* ── HERO 오른쪽 ── */
+.hero-right { display: flex; align-items: center; justify-content: center; padding: 60px 40px; position: relative; z-index: 2; gap: 20px; }
+@media(max-width:900px){ .hero-right{ flex-direction: column; padding: 20px 28px 60px; } }
+
+/* ── 스마트폰 목업 ── */
+.phone-mockup { width: 210px; flex-shrink: 0; background: #0D1F1A; border-radius: 32px; padding: 10px; box-shadow: 0 40px 100px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.08); opacity: 0; animation: mockupIn .9s ease .5s forwards; }
+@keyframes mockupIn { from { opacity:0; transform: translateY(30px) rotate(2deg); } to { opacity:1; transform: translateY(0) rotate(0deg); } }
+
+.phone-notch { width: 60px; height: 18px; background: #0D1F1A; border-radius: 0 0 12px 12px; margin: 0 auto 6px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+.phone-notch-dot { width: 5px; height: 5px; border-radius: 50%; background: #1A3A2E; }
+.phone-notch-cam { width: 8px; height: 8px; border-radius: 50%; background: #1E4535; }
+
+.phone-screen { background: var(--white); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column; }
+.phone-statusbar { background: var(--green2); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+.phone-dots { display: flex; gap: 4px; }
+.phone-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,.25); }
+.phone-url { flex: 1; background: rgba(255,255,255,.1); border-radius: 2px; padding: 3px 8px; font-size: 8px; color: rgba(255,255,255,.5); letter-spacing: 1px; font-family: 'Montserrat', sans-serif; }
+
+.phone-hero-img { width: 100%; height: 90px; display: flex; align-items: center; justify-content: center; font-size: 36px; transition: background .5s; position: relative; }
+.phone-hero-label { position: absolute; bottom: 5px; left: 8px; font-size: 7px; letter-spacing: 1.5px; color: rgba(255,255,255,.8); font-family: 'Montserrat', sans-serif; font-weight: 600; background: rgba(0,0,0,.35); padding: 2px 6px; }
+
+.phone-content { padding: 8px 10px; }
+.phone-section-title { font-size: 8px; font-weight: 700; color: var(--text); letter-spacing: 1px; margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+.phone-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.phone-live-dot { width: 5px; height: 5px; border-radius: 50%; background: #E74C3C; animation: blink 1s ease infinite; flex-shrink: 0; }
+
+.phone-review-feed { display: flex; flex-direction: column; gap: 5px; }
+.phone-review-item { display: flex; align-items: flex-start; gap: 6px; padding: 6px 7px; background: var(--sand); border-left: 2px solid var(--mint); opacity: 0; transform: translateY(6px); transition: opacity .5s ease, transform .5s ease; }
+.phone-review-item.show { opacity: 1; transform: translateY(0); }
+.phone-review-avatar { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; }
+.phone-review-body { flex: 1; min-width: 0; }
+.phone-review-top { display: flex; align-items: center; gap: 4px; margin-bottom: 1px; flex-wrap: wrap; }
+.phone-review-name { font-size: 8px; font-weight: 700; color: var(--text); }
+.phone-review-stars { font-size: 7px; color: var(--gold); }
+.phone-review-new { font-size: 6px; background: var(--mint); color: #fff; padding: 1px 4px; }
+.phone-review-text { font-size: 8px; color: var(--muted); line-height: 1.5; }
+
+.phone-cta-btn { margin: 6px 8px 8px; padding: 7px; background: var(--green); color: #fff; font-size: 8px; letter-spacing: 2px; text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 600; border-radius: 2px; }
+.phone-homebar { height: 3px; width: 40px; background: rgba(255,255,255,.2); border-radius: 2px; margin: 5px auto 2px; }
+
+/* ── 제주 데이터 패널 ── */
+.jeju-data-panel { display: flex; flex-direction: column; gap: 8px; opacity: 0; animation: up .7s ease .9s forwards; }
+@media(max-width:900px){ .jeju-data-panel { flex-direction: row; flex-wrap: wrap; justify-content: center; } }
+.jeju-data-item { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); padding: 12px 16px; min-width: 140px; }
+.jeju-data-val { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 20px; color: #7ECFB0; line-height: 1; margin-bottom: 4px; }
+.jeju-data-label { font-size: 10px; color: rgba(255,255,255,.55); line-height: 1.5; }
+.jeju-data-source { font-size: 8px; color: rgba(255,255,255,.25); margin-top: 3px; font-family: 'Montserrat', sans-serif; }
+
+/* 스크롤 */
+.hero-scroll { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: 0; animation: up .7s ease 1.2s forwards; }
+.hero-scroll span { font-size: 9px; letter-spacing: 4px; color: rgba(255,255,255,.3); font-family:'Montserrat'; }
+.scroll-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); animation: bounce 1.5s ease infinite; }
+@keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(8px);} }
+@keyframes up { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── 숫자 바 ──
+   수정 시 HTML의 stat-val(숫자)과 stat-label(설명)만 바꾸면 됩니다 */
+.stat-bar { background: var(--sand); border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: center; }
+.stat-item { flex: 0 1 200px; padding: 24px 20px; border-right: 1px solid var(--border); text-align: center; }
+.stat-item:last-child { border-right: none; }
+.stat-val { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 32px; color: var(--green); line-height: 1; }
+.stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; letter-spacing: 1px; }
+
+/* ── SECTION ── */
+.section { padding: 90px 24px; }
+.sec-inner { max-width: 960px; margin: 0 auto; }
+.sec-tag { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 10px; letter-spacing: 6px; color: var(--mint); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.sec-tag::before { content:''; width: 24px; height: 1px; background: var(--mint); }
+.sec-title { font-family: 'Noto Serif KR', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 700; color: var(--text); line-height: 1.15; margin-bottom: 14px; }
+.sec-title em { font-style: italic; color: var(--mint); }
+.sec-sub { font-size: 15px; color: var(--muted); line-height: 1.9; margin-bottom: 50px; }
+
+/* ── 문제 → 해결 ── */
+.problem-section { background: var(--white); }
+.problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+@media(max-width:640px){ .problem-grid{ grid-template-columns:1fr; } }
+.prob-card { padding: 36px 32px; position: relative; overflow: hidden; }
+.prob-card.problem { background: var(--sand); }
+.prob-card.solution { background: var(--mintL); }
+.prob-label { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+.prob-label.p { color: var(--muted); }
+.prob-label.s { color: var(--mint); }
+.prob-label::before { content:''; width: 20px; height: 1px; }
+.prob-label.p::before { background: var(--muted); }
+.prob-label.s::before { background: var(--mint); }
+.prob-items { display: flex; flex-direction: column; gap: 14px; }
+.prob-item { display: flex; gap: 12px; align-items: flex-start; }
+.prob-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.prob-text { font-size: 14px; line-height: 1.7; color: var(--text); }
+.prob-text strong { color: var(--green); }
+
+/* ── 서비스 ── */
+.service-section { background: var(--sand); }
+.service-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+@media(max-width:700px){ .service-grid{ grid-template-columns:1fr; } }
+.svc-card { background: var(--white); padding: 36px 28px; border-top: 3px solid transparent; transition: border-color .3s; position: relative; }
+.svc-card:hover { border-color: var(--mint); }
+.svc-no { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 48px; color: rgba(26,92,69,.06); line-height: 1; position: absolute; top: 16px; right: 20px; }
+.svc-icon { font-size: 36px; margin-bottom: 18px; }
+.svc-name { font-family: 'Noto Serif KR', serif; font-weight: 700; font-size: 18px; color: var(--text); margin-bottom: 10px; }
+.svc-desc { font-size: 13px; color: var(--muted); line-height: 1.9; }
+
+/* ── 요금제 ── */
+.pricing-section { background: var(--white); }
+.pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+@media(max-width:700px){ .pricing-grid{ grid-template-columns:1fr; } }
+.price-card { background: var(--sand); padding: 36px 28px; position: relative; transition: all .3s; }
+.price-card.featured { background: var(--green); transform: translateY(-8px); box-shadow: 0 20px 60px rgba(26,92,69,.25); }
+.price-card:hover:not(.featured) { background: var(--warm); }
+.price-featured-badge { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 9px; letter-spacing: 3px; padding: 5px 16px; text-transform: uppercase; }
+.price-name { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 16px; }
+.price-card:not(.featured) .price-name { color: var(--mint); }
+.price-card.featured .price-name { color: #7ECFB0; }
+.price-amount { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 36px; line-height: 1; margin-bottom: 4px; }
+.price-card:not(.featured) .price-amount { color: var(--text); }
+.price-card.featured .price-amount { color: #fff; }
+.price-period { font-size: 12px; margin-bottom: 24px; }
+.price-card:not(.featured) .price-period { color: var(--muted); }
+.price-card.featured .price-period { color: rgba(255,255,255,.6); }
+.price-divider { height: 1px; margin-bottom: 20px; }
+.price-card:not(.featured) .price-divider { background: var(--border); }
+.price-card.featured .price-divider { background: rgba(255,255,255,.2); }
+.price-features { display: flex; flex-direction: column; gap: 10px; }
+.price-feature { font-size: 13px; display: flex; align-items: flex-start; gap: 8px; }
+.price-card:not(.featured) .price-feature { color: var(--muted); }
+.price-card.featured .price-feature { color: rgba(255,255,255,.8); }
+.price-feature .check { color: var(--mint); font-size: 14px; flex-shrink: 0; }
+.price-card.featured .price-feature .check { color: #7ECFB0; }
+.price-feature .cross { color: var(--border); flex-shrink: 0; }
+
+/* ── 실제 작업 사례 ── */
+.work-section { background: var(--white); }
+.work-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; margin-top: 8px; }
+.work-card { border: 1px solid var(--border); overflow: hidden; transition: all .25s; position: relative; background: var(--white); }
+.work-card:hover { border-color: var(--mint); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(27,75,58,.1); }
+.work-thumb { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+.work-thumb-inner { font-size: 72px; }
+.work-thumb-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,.5) 100%); }
+.work-tag { position: absolute; top: 12px; left: 12px; font-size: 10px; font-weight: 700; letter-spacing: 2px; padding: 4px 10px; background: var(--mint); color: #fff; z-index: 2; }
+.work-live { position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 700; padding: 4px 10px; color: #fff; z-index: 2; }
+.work-body { padding: 18px; }
+.work-client { font-size: 10px; letter-spacing: 2px; color: var(--mint); text-transform: uppercase; margin-bottom: 5px; }
+.work-name { font-family: 'Noto Serif KR', serif; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 7px; line-height: 1.3; }
+.work-desc { font-size: 12px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+.work-features { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.work-feat { font-size: 11px; background: var(--sand); color: var(--muted); padding: 3px 9px; }
+.work-link { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid var(--border); }
+.work-link a { font-size: 12px; color: var(--mint); text-decoration: none; font-weight: 600; letter-spacing: 1px; }
+.work-link a:hover { text-decoration: underline; }
+
+/* ── 샘플 업종 ── */
+.sample-section { background: var(--sand); }
+.sample-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 2px; }
+.sample-card { background: var(--white); padding: 28px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; transition: all .25s; cursor: default; }
+.sample-card:hover { background: var(--mintL); }
+.sample-icon { font-size: 40px; }
+.sample-name { font-family: 'Noto Serif KR', serif; font-weight: 700; font-size: 16px; color: var(--text); }
+.sample-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+/* ── 프로세스 ── */
+.process-section { background: var(--green); }
+.process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+@media(max-width:700px){ .process-grid{ grid-template-columns:1fr 1fr; } }
+@media(max-width:400px){ .process-grid{ grid-template-columns:1fr; } }
+.proc-item { padding: 36px 24px; text-align: center; border-right: 1px solid rgba(255,255,255,.1); position: relative; }
+.proc-item:last-child { border-right: none; }
+.proc-no { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 48px; color: rgba(255,255,255,.08); line-height: 1; margin-bottom: 12px; }
+.proc-icon { font-size: 32px; margin-bottom: 14px; }
+.proc-name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.proc-desc { font-size: 12px; color: rgba(255,255,255,.5); line-height: 1.7; }
+
+/* ── CTA ── */
+.cta-section { background: var(--sand); }
+.cta-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+.cta-title { font-family: 'Noto Serif KR', serif; font-weight: 700; font-size: clamp(28px,4vw,44px); color: var(--text); line-height: 1.2; margin-bottom: 16px; }
+.cta-title em { font-style: italic; color: var(--mint); }
+.cta-sub { font-size: 15px; color: var(--muted); line-height: 1.9; margin-bottom: 40px; }
+.cta-box { background: var(--white); border: 1px solid var(--border); padding: 40px 36px; }
+.cta-contact { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 28px; }
+@media(max-width:600px){ .cta-contact { grid-template-columns: 1fr; } }
+.cta-contact-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 18px 12px; text-decoration: none; color: var(--text); transition: all .2s; border: 2px solid transparent; text-align: center; }
+.cta-contact-item.tel  { background: #E8F5F0; border-color: #B2DDD0; }
+.cta-contact-item.sms  { background: #EEF2FF; border-color: #C5CEFC; }
+.cta-contact-item.kako { background: #FEF9C3; border-color: #FDE68A; }
+.cta-contact-item.tel:hover  { background: var(--mint); border-color: var(--mint); color: #fff; }
+.cta-contact-item.sms:hover  { background: #4F6EF7; border-color: #4F6EF7; color: #fff; }
+.cta-contact-item.kako:hover { background: #FAE100; border-color: #FAE100; color: #3C1E1E; }
+.cta-contact-icon { font-size: 26px; }
+.cta-contact-label { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; font-family:'Montserrat'; }
+.cta-contact-val { font-size: 14px; font-weight: 700; color: var(--green); }
+.cta-contact-item.tel:hover .cta-contact-val, .cta-contact-item.sms:hover .cta-contact-val { color: #fff; }
+.cta-contact-item.kako:hover .cta-contact-val { color: #3C1E1E; }
+
+/* QR 고정 바 */
+.qr-fixed { position: fixed; bottom: 0; left: 0; right: 0; z-index: 800; background: var(--green); display: flex; align-items: center; justify-content: center; gap: 20px; padding: 10px 20px; box-shadow: 0 -4px 20px rgba(0,0,0,.2); }
+/* qrFixedCanvas는 div여야 합니다. qrcodejs가 div 안에 이미지를 생성합니다. */
+.qr-fixed-img { width: 52px; height: 52px; background: #fff; padding: 4px; flex-shrink: 0; overflow: hidden; }
+.qr-fixed-text { color: #fff; font-size: 13px; line-height: 1.6; }
+.qr-fixed-text strong { display: block; font-size: 15px; color: #7ECFB0; }
+.qr-fixed-btns { display: flex; gap: 8px; }
+.qr-fixed-btn { padding: 8px 16px; font-size: 12px; font-weight: 700; text-decoration: none; border: none; cursor: pointer; transition: all .2s; white-space: nowrap; }
+.qr-fixed-btn.tel  { background: #7ECFB0; color: #0D1F1A; }
+.qr-fixed-btn.kako { background: #FAE100; color: #3C1E1E; }
+.qr-fixed-btn:hover { opacity: .85; transform: translateY(-1px); }
+.qr-fixed-close { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.15); border: none; color: #fff; width: 26px; height: 26px; border-radius: 50%; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+@media(max-width:500px){ .qr-fixed-text { display: none; } .qr-fixed { gap: 12px; } }
+
+.cta-divider { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; font-size: 12px; color: var(--muted); letter-spacing: 2px; }
+.cta-divider::before, .cta-divider::after { content:''; flex:1; height:1px; background: var(--border); }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+@media(max-width:480px){ .form-row{grid-template-columns:1fr;} }
+.form-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+.form-label { font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: 3px; color: var(--mint); text-transform: uppercase; }
+.form-input, .form-select, .form-textarea { background: var(--sand); border: 1px solid var(--border); color: var(--text); font-family: 'Noto Sans KR', sans-serif; font-size: 14px; padding: 13px 16px; outline: none; transition: border-color .2s; }
+.form-input::placeholder { color: var(--muted); }
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--mint); }
+.form-textarea { resize: none; min-height: 80px; }
+.submit-btn { width: 100%; margin-top: 6px; background: var(--green); color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; padding: 18px; border: none; cursor: pointer; transition: all .25s; }
+.submit-btn:hover { background: var(--mint); }
+.submit-btn:disabled { opacity: .6; cursor: not-allowed; }
+
+footer { background: var(--green); padding: 40px 24px; text-align: center; }
+.footer-logo { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 24px; letter-spacing: 4px; color: #fff; margin-bottom: 8px; }
+.footer-logo span { color: #7ECFB0; }
+.footer-info { font-size: 12px; color: rgba(255,255,255,.4); line-height: 2; }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,.2); margin-top: 16px; letter-spacing: 1px; }
+
+.toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--green); color: #fff; font-size: 13px; letter-spacing: 1px; padding: 14px 28px; z-index: 9999; opacity: 0; transition: all .4s cubic-bezier(.34,1.56,.64,1); white-space: nowrap; pointer-events: none; }
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+.reveal { opacity:0; transform:translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+@media(max-width:768px){
+  .section { padding: 60px 20px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .price-card.featured { transform: none; }
+  .process-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="toast" id="toast"></div>
+
+<!-- ── 상단 네비바 ──
+     샘플 버튼은 JS의 WORKS 배열에서 자동 생성됩니다. 새 샘플 추가 시 WORKS 배열만 수정하면 됩니다. -->
+<nav class="topnav">
+  <div class="topnav-logo">⚡ <span>LocalBoost</span></div>
+  <div class="topnav-samples" id="topnavSamples">
+    <span class="topnav-label">샘플 보기</span>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">⚡ <span>LocalBoost</span> &nbsp;·&nbsp; 제주 전용 서비스</div>
+    <h1 class="hero-title">
+      종이 전단지는<br>이제 그만,<br><em>디지털로 바꾸세요</em>
+    </h1>
+    <p class="hero-desc">
+      제주 소상공인을 위한 디지털 전단지 제작부터<br>
+      외국인 SNS 홍보까지 — 월 구독 하나로 해결합니다.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-white">무료 상담 신청</a>
+      <a href="#pricing" class="btn-ghost">요금제 보기</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <!-- 스마트폰 목업 -->
+    <div class="phone-mockup">
+      <div class="phone-notch">
+        <div class="phone-notch-dot"></div>
+        <div class="phone-notch-cam"></div>
+        <div class="phone-notch-dot"></div>
+      </div>
+      <div class="phone-screen">
+        <div class="phone-statusbar">
+          <div class="phone-dots">
+            <div class="phone-dot"></div><div class="phone-dot"></div><div class="phone-dot"></div>
+          </div>
+          <div class="phone-url">localboost.kr</div>
+        </div>
+        <div class="phone-hero-img" id="demoImg"></div>
+        <div class="phone-content">
+          <div class="phone-section-title">
+            <div class="phone-live-dot"></div>
+            고객 후기
+          </div>
+          <div class="phone-review-feed" id="reviewFeed"></div>
+        </div>
+        <div class="phone-cta-btn">지금 문의하기 →</div>
+      </div>
+      <div class="phone-homebar"></div>
+    </div>
+
+    <!-- 제주 데이터 패널 -->
+    <div class="jeju-data-panel">
+      <div class="jeju-data-item">
+        <div class="jeju-data-val">85,000+</div>
+        <div class="jeju-data-label">제주 소상공인<br>디지털 전환 대기 중</div>
+        <div class="jeju-data-source">Jeju · 2024</div>
+      </div>
+      <div class="jeju-data-item">
+        <div class="jeju-data-val">224만</div>
+        <div class="jeju-data-label">연간 외국인<br>관광객 방문</div>
+        <div class="jeju-data-source">제주관광공사</div>
+      </div>
+      <div class="jeju-data-item">
+        <div class="jeju-data-val">158만</div>
+        <div class="jeju-data-label">중국인 관광객<br>샤오홍수 주 사용</div>
+        <div class="jeju-data-source">전체의 70%</div>
+      </div>
+      <div class="jeju-data-item">
+        <div class="jeju-data-val">88%</div>
+        <div class="jeju-data-label">아직 디지털 마케팅<br>미활용 업체</div>
+        <div class="jeju-data-source">기회의 시장</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <div class="scroll-dot"></div>
+  </div>
+</section>
+
+<!-- ── 통계 바 ──
+     수정 시 stat-val(숫자)과 stat-label(설명)만 바꾸면 됩니다 -->
+<div class="stat-bar reveal">
+  <div class="stat-item">
+    <div class="stat-val">85,000+</div>
+    <div class="stat-label">제주 소상공인 디지털 전환 중</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-val">224만</div>
+    <div class="stat-label">연간 외국인 관광객 방문</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-val">158만</div>
+    <div class="stat-label">중국인 관광객 샤오홍수 주 사용</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-val">88%</div>
+    <div class="stat-label">아직 디지털 마케팅 미활용 업체</div>
+  </div>
+</div>
+
+<!-- ── 문제 vs 해결 ── -->
+<section class="section problem-section">
+  <div class="sec-inner">
+    <div class="sec-tag reveal">Why LocalBoost</div>
+    <h2 class="sec-title reveal">지금 이런 고민, <em>있으신가요?</em></h2>
+    <div class="problem-grid reveal">
+      <div class="prob-card problem">
+        <div class="prob-label p">지금의 문제</div>
+        <div class="prob-items">
+          <div class="prob-item"><div class="prob-icon">😓</div><div class="prob-text">종이 전단지 한 번 찍는데 30~80만 원, 뿌리고 나면 끝</div></div>
+          <div class="prob-item"><div class="prob-icon">🌏</div><div class="prob-text">외국인 손님이 많은데 영어·중국어 홍보는 엄두도 못 냄</div></div>
+          <div class="prob-item"><div class="prob-icon">📵</div><div class="prob-text">SNS 광고는 어렵고 비싸고, 뭘 해야 할지 모르겠음</div></div>
+          <div class="prob-item"><div class="prob-icon">🔄</div><div class="prob-text">메뉴·가격 바뀔 때마다 전단지 다시 만드는 번거로움</div></div>
+        </div>
+      </div>
+      <div class="prob-card solution">
+        <div class="prob-label s">LocalBoost 해결책</div>
+        <div class="prob-items">
+          <div class="prob-item"><div class="prob-icon">✅</div><div class="prob-text">제작비 <strong>0원</strong>, 월 구독료만으로 디지털 전단지 운영</div></div>
+          <div class="prob-item"><div class="prob-icon">✅</div><div class="prob-text">한국어·영어·중국어 <strong>다국어 전단지</strong>로 외국인 고객 확보</div></div>
+          <div class="prob-item"><div class="prob-icon">✅</div><div class="prob-text">샤오홍수 등 외국인 SNS에 <strong>대신 홍보</strong>해드립니다</div></div>
+          <div class="prob-item"><div class="prob-icon">✅</div><div class="prob-text">카톡으로 요청만 하면 <strong>당일 수정</strong> 완료</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 서비스 ── -->
+<section class="section service-section">
+  <div class="sec-inner">
+    <div class="sec-tag reveal">Services</div>
+    <h2 class="sec-title reveal">우리가 <em>해드리는 것</em></h2>
+    <p class="sec-sub reveal">업주님은 카톡으로 요청만 하세요. 나머지는 저희가 합니다.</p>
+    <div class="service-grid">
+      <div class="svc-card reveal"><div class="svc-no">01</div><div class="svc-icon">📱</div><div class="svc-name">디지털 전단지 제작</div><div class="svc-desc">업종에 맞는 맞춤 전단지를 제작해드립니다. 메뉴, 매물, 예약, 쿠폰까지 — 제작비 없이 구독 시작 즉시 제작합니다.</div></div>
+      <div class="svc-card reveal"><div class="svc-no">02</div><div class="svc-icon">📲</div><div class="svc-name">QR 코드 즉시 발급</div><div class="svc-desc">전단지 링크를 QR 코드로 변환하여 바로 전달합니다. 명함, 현수막, 카톡 어디서든 사용 가능합니다.</div></div>
+      <div class="svc-card reveal"><div class="svc-no">03</div><div class="svc-icon">🌏</div><div class="svc-name">한 · 영 · 중 다국어</div><div class="svc-desc">외국인 고객을 위한 영어·중국어 버전을 추가로 제공합니다. 제주 외국인 관광객에게 직접 닿습니다.</div></div>
+      <div class="svc-card reveal"><div class="svc-no">04</div><div class="svc-icon">📣</div><div class="svc-name">SNS 홍보 대행</div><div class="svc-desc">중국 최대 SNS 샤오홍수(小红书)에 업체 정보를 정기적으로 게재합니다. 중국인 관광객에게 직접 노출됩니다.</div></div>
+      <div class="svc-card reveal"><div class="svc-no">05</div><div class="svc-icon">✏️</div><div class="svc-name">수정 관리 대행</div><div class="svc-desc">메뉴 변경, 가격 수정, 사진 교체 — 카톡으로 연락만 주시면 당일 처리해드립니다.</div></div>
+      <div class="svc-card reveal"><div class="svc-no">06</div><div class="svc-icon">🤝</div><div class="svc-name">지속적인 관리</div><div class="svc-desc">한 번 계약으로 끝이 아닙니다. 월별 관리와 꾸준한 소통으로 항상 최신 상태를 유지합니다.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 요금제 ──
+     가격 수정 시 price-amount 숫자만 바꾸면 됩니다 -->
+<section class="section pricing-section" id="pricing">
+  <div class="sec-inner">
+    <div class="sec-tag reveal">Pricing</div>
+    <h2 class="sec-title reveal">투명한 <em>요금제</em></h2>
+    <p class="sec-sub reveal">초기 제작비 없음 — 구독 즉시 전단지 제작을 시작합니다.</p>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-name">베이직</div>
+        <div class="price-amount">49,000</div>
+        <div class="price-period">원 / 월</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feature"><span class="check">✓</span> 디지털 전단지 제작</div>
+          <div class="price-feature"><span class="check">✓</span> QR 코드 발급</div>
+          <div class="price-feature"><span class="check">✓</span> 수정 월 3건 포함</div>
+          <div class="price-feature"><span class="check">✓</span> 한국어</div>
+          <div class="price-feature"><span class="cross">✗</span> 다국어 (영어 · 중국어)</div>
+          <div class="price-feature"><span class="cross">✗</span> SNS 홍보</div>
+        </div>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="price-featured-badge">추천</div>
+        <div class="price-name">스탠다드</div>
+        <div class="price-amount">79,000</div>
+        <div class="price-period">원 / 월</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feature"><span class="check">✓</span> 디지털 전단지 제작</div>
+          <div class="price-feature"><span class="check">✓</span> QR 코드 발급</div>
+          <div class="price-feature"><span class="check">✓</span> 수정 월 5건 포함</div>
+          <div class="price-feature"><span class="check">✓</span> 한국어 · 영어</div>
+          <div class="price-feature"><span class="check">✓</span> SNS 홍보 월 4회</div>
+          <div class="price-feature"><span class="check">✓</span> 샤오홍수 · 인스타 · X</div>
+        </div>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-name">프리미엄</div>
+        <div class="price-amount">99,000</div><!-- 수정: 120,000 → 99,000 -->
+        <div class="price-period">원 / 월</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feature"><span class="check">✓</span> 디지털 전단지 제작</div>
+          <div class="price-feature"><span class="check">✓</span> QR 코드 발급</div>
+          <div class="price-feature"><span class="check">✓</span> 수정 월 10건 포함</div>
+          <div class="price-feature"><span class="check">✓</span> 한국어 · 영어 · 중국어</div>
+          <div class="price-feature"><span class="check">✓</span> SNS 홍보 월 8회</div>
+          <div class="price-feature"><span class="check">✓</span> 샤오홍수 우선 노출</div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:24px;">
+      * 초과 수정 건당 3,000원 · 부동산 업종 별도 협의 가능
+    </p>
+  </div>
+</section>
+
+<!-- ── 실제 작업 사례 ──
+     새 샘플 추가 시 WORKS 배열에만 추가하면 됩니다. -->
+<section class="section work-section">
+  <div class="sec-inner">
+    <div class="sec-tag reveal">Our Work</div>
+    <h2 class="sec-title reveal">실제 <em>제작 사례</em></h2>
+    <p class="sec-sub reveal">직접 만든 디지털 전단지입니다. 클릭해서 확인해보세요.</p>
+    <div class="work-grid" id="workGrid"></div>
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:28px;">
+      ✨ 내 업종 샘플이 궁금하다면? <a href="#contact" style="color:var(--mint);font-weight:600;">무료 상담 신청 →</a>
+    </p>
+  </div>
+</section>
+
+<!-- ── 업종 샘플 ── -->
+<section class="section sample-section">
+  <div class="sec-inner">
+    <div class="sec-tag reveal">Industry</div>
+    <h2 class="sec-title reveal">모든 업종에 <em>맞춤 제작</em></h2>
+    <p class="sec-sub reveal">업종별 특성에 맞게 처음부터 새로 디자인합니다.</p>
+    <div class="sample-grid">
+      <div class="sample-card reveal"><div class="sample-icon">🏠</div><div class="sample-name">부동산</div><div class="sample-desc">매물 리스트, 사진 슬라이더, 지도, 다국어 상담</div></div>
+      <div class="sample-card reveal"><div class="sample-icon">☕</div><div class="sample-name">카페 · 식당</div><div class="sample-desc">메뉴판, 쿠폰, 예약, 영업시간, 위치 안내</div></div>
+      <div class="sample-card reveal"><div class="sample-icon">📚</div><div class="sample-name">학원 · 교습소</div><div class="sample-desc">커리큘럼, 강사 소개, 수강 신청, 상담 예약</div></div>
+      <div class="sample-card reveal"><div class="sample-icon">💆</div><div class="sample-name">미용 · 네일</div><div class="sample-desc">시술 메뉴, 포트폴리오, 예약, 위치 안내</div></div>
+      <div class="sample-card reveal"><div class="sample-icon">🛍️</div><div class="sample-name">소매 · 쇼핑</div><div class="sample-desc">상품 소개, 이벤트, 쿠폰, 운영시간</div></div>
+      <div class="sample-card reveal"><div class="sample-icon">🏨</div><div class="sample-name">숙박 · 펜션</div><div class="sample-desc">객실 소개, 예약, 위치, 다국어 안내</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 프로세스 ── -->
+<section class="section process-section" style="padding:70px 0;">
+  <div style="max-width:960px;margin:0 auto;padding:0 24px;">
+    <div class="sec-tag reveal" style="color:#7ECFB0;">How It Works</div>
+    <h2 class="sec-title reveal" style="color:#fff;margin-bottom:40px;">딱 <em style="color:#7ECFB0;">4단계</em>면 끝납니다</h2>
+  </div>
+  <div class="process-grid">
+    <div class="proc-item reveal"><div class="proc-no">01</div><div class="proc-icon">📞</div><div class="proc-name">상담 신청</div><div class="proc-desc">전화 또는 카톡으로 간단히 상담</div></div>
+    <div class="proc-item reveal"><div class="proc-no">02</div><div class="proc-icon">🎨</div><div class="proc-name">전단지 제작</div><div class="proc-desc">업종 맞춤 디지털 전단지 3~5일 제작</div></div>
+    <div class="proc-item reveal"><div class="proc-no">03</div><div class="proc-icon">📲</div><div class="proc-name">링크 + QR 전달</div><div class="proc-desc">카톡으로 링크와 QR 코드 즉시 전달</div></div>
+    <div class="proc-item reveal"><div class="proc-no">04</div><div class="proc-icon">📣</div><div class="proc-name">홍보 시작</div><div class="proc-desc">SNS 홍보 대행으로 고객 유입 시작</div></div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="section cta-section" id="contact">
+  <div class="cta-inner">
+    <div class="sec-tag reveal" style="justify-content:center;">Contact</div>
+    <h2 class="cta-title reveal">지금 바로<br><em>무료 상담</em> 받으세요</h2>
+    <p class="cta-sub reveal">부담 없이 연락 주세요. 업종에 맞는 최적의 방법을 안내해드립니다.</p>
+    <div class="cta-box reveal">
+      <div class="cta-contact">
+        <a href="tel:01080698849" class="cta-contact-item tel">
+          <div class="cta-contact-icon">📞</div>
+          <div class="cta-contact-label">전화 통화</div>
+          <div class="cta-contact-val">010-8069-8849</div>
+        </a>
+        <a href="sms:01080698849" class="cta-contact-item sms">
+          <div class="cta-contact-icon">💬</div>
+          <div class="cta-contact-label">문자 메시지</div>
+          <div class="cta-contact-val">010-8069-8849</div>
+        </a>
+        <a href="https://open.kakao.com/o/gBKNMkji" target="_blank" class="cta-contact-item kako">
+          <div class="cta-contact-icon">🟡</div>
+          <div class="cta-contact-label">카카오 오픈채팅</div>
+          <div class="cta-contact-val">바로 채팅하기</div>
+        </a>
+      </div>
+      <div class="cta-divider">또는 아래 폼으로 남겨주세요</div>
+      <form id="contactForm" action="https://formspree.io/f/xykdqnbw" method="POST">
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">성함</label>
+            <input type="text" name="성함" class="form-input" id="f-name" placeholder="홍길동" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label">연락처</label>
+            <input type="tel" name="연락처" class="form-input" id="f-phone" placeholder="010-0000-0000" required>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">업종</label>
+          <select name="업종" class="form-select" id="f-type">
+            <option>부동산</option>
+            <option>카페 · 식당</option>
+            <option>학원 · 교습소</option>
+            <option>미용 · 네일</option>
+            <option>숙박 · 펜션</option>
+            <option>기타</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label">문의 내용</label>
+          <textarea name="문의내용" class="form-textarea" id="f-memo" placeholder="궁금한 점을 자유롭게 적어주세요."></textarea>
+        </div>
+        <input type="hidden" name="_replyto" value="ian0417kim@gmail.com">
+        <input type="hidden" name="_subject" value="[LocalBoost] 새 상담 신청이 왔어요!">
+        <button type="submit" class="submit-btn">상담 신청하기 →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">LOCAL<span>BOOST</span></div>
+  <div class="footer-info">
+    제주 소상공인 디지털 전단지 · SNS 홍보 대행<br>
+    대표 김현우 · 도약하는 개구리<br>
+    010-8069-8849 · 제주특별자치도
+  </div>
+  <div class="footer-copy">© 2026 LocalBoost · All rights reserved</div>
+</footer>
+
+<!-- ── 하단 고정 QR 바 ──
+     qrFixedCanvas는 div입니다. qrcodejs 라이브러리가 div 안에 이미지를 생성합니다. -->
+<div class="qr-fixed" id="qrFixed">
+  <div class="qr-fixed-img">
+    <div id="qrFixedCanvas"></div>
+  </div>
+  <div class="qr-fixed-text">
+    <strong>LocalBoost 무료 상담</strong>
+    QR 스캔 또는 아래 버튼으로 바로 연락하세요
+  </div>
+  <div class="qr-fixed-btns">
+    <a href="tel:01080698849" class="qr-fixed-btn tel">📞 전화</a>
+    <a href="https://open.kakao.com/o/gBKNMkji" target="_blank" class="qr-fixed-btn kako">💛 카카오 채팅</a>
+  </div>
+  <button class="qr-fixed-close" onclick="document.getElementById('qrFixed').style.display='none'" title="닫기">✕</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+/* =============================================================
+   ★★★ 데이터 관리 구역 ★★★
+   수정이 필요할 때 이 구역만 건드리면 됩니다.
+   HTML은 건드리지 않아도 됩니다.
+   ============================================================= */
+
+/* ── 샘플 작업 목록 ──
+   새 샘플 추가 시: 아래 배열에 객체 하나 추가
+   → Our Work 카드 + 상단 네비바 버튼이 자동 생성됩니다 */
+const WORKS = [
+  {
+    name: '정든부동산',
+    client: 'Jeju Real Estate',
+    tag: '부동산',
+    emoji: '🏡',
+    bg: 'linear-gradient(135deg,#1B4B3A,#2D6E55)',
+    liveLabel: 'LIVE',
+    liveBg: '#2471A3',
+    desc: '제주 공인중개사 디지털 전단지. 실사진 매물 슬라이더, 한·영·중 3개 언어, SMS 문의 버튼.',
+    features: ['📷 실사진 슬라이더', '🌏 3개 언어', '💬 SMS 문의', '📲 QR 생성'],
+    url: 'https://ian0417kim-afk.github.io/jung-deun/',
+    location: '제주시 일주서로',
+    navClass: 'jeju',
+  },
+  {
+    name: '릿츄업 학원',
+    client: 'Education · Academy',
+    tag: '학원',
+    emoji: '📚',
+    bg: 'linear-gradient(135deg,#1a1a2e,#4A5BB8)',
+    liveLabel: 'SAMPLE',
+    liveBg: '#7D3C98',
+    desc: '학원 디지털 전단지 샘플. 프로그램 소개, 강사 프로필, 수강료 안내, 상담 예약.',
+    features: ['📖 프로그램 소개', '👤 강사 프로필', '💰 수강료 안내', '📅 상담 예약'],
+    url: 'https://ian0417kim-afk.github.io/LITYOUUP/',
+    location: '제작 샘플',
+    navClass: 'lift',
+  },
+  // ▼ 새 샘플 추가 시 아래 주석을 복사해서 사용하세요
+  // {
+  //   name: '업체명',
+  //   client: 'English Name',
+  //   tag: '업종',
+  //   emoji: '☕',
+  //   bg: 'linear-gradient(135deg,#색1,#색2)',
+  //   liveLabel: 'LIVE',   // LIVE 또는 SAMPLE
+  //   liveBg: '#색상코드',
+  //   desc: '업체 설명',
+  //   features: ['특징1', '특징2', '특징3'],
+  //   url: 'https://링크주소',
+  //   location: '지역명',
+  //   navClass: 'jeju',    // jeju(녹색) 또는 lift(파란색)
+  // },
+  {
+    name: '제주한상',
+    client: 'Jeju Restaurant',
+    tag: '식당',
+    emoji: '🍖',
+    bg: 'linear-gradient(135deg,#1A0E08,#3D2010)',
+    liveLabel: 'SAMPLE',
+    liveBg: '#C0392B',
+    desc: '제주 향토 식당 디지털 전단지 샘플. 메뉴판, 이벤트, 예약 신청 포함.',
+    features: ['🍽️ 메뉴판', '🎉 이벤트', '📅 예약 신청', '🌏 다국어'],
+    url: 'https://ian0417kim-afk.github.io/localboost/restaurant.html',
+    location: '제작 샘플',
+    navClass: 'jeju',
+  },
+  {
+    name: '카페 돌담',
+    client: 'Cafe · Coffee Shop',
+    tag: '카페',
+    emoji: '☕',
+    bg: 'linear-gradient(135deg,#2A1508,#6B3A18)',
+    liveLabel: 'SAMPLE',
+    liveBg: '#7A4E2D',
+    desc: '제주 감성 카페 디지털 전단지 샘플. 시그니처 메뉴, 이벤트, 문의 폼 포함.',
+    features: ['☕ 시그니처 메뉴', '🎉 스탬프 이벤트', '💬 문의 폼', '📲 QR 주문'],
+    url: 'https://ian0417kim-afk.github.io/localboost/cafe.html',
+    location: '제작 샘플',
+    navClass: 'jeju',
+  },
+  {
+    name: '제주밝음내과',
+    client: 'Medical Clinic',
+    tag: '병원',
+    emoji: '🏥',
+    bg: 'linear-gradient(135deg,#0B2A4A,#1565C0)',
+    liveLabel: 'SAMPLE',
+    liveBg: '#1B8A5A',
+    desc: '내과 · 가정의학과 디지털 전단지 샘플. 진료과목, 시간표, 온라인 예약 포함.',
+    features: ['🩺 진료과목', '📅 시간표', '🌏 다국어 진료', '✅ 온라인 예약'],
+    url: 'https://ian0417kim-afk.github.io/localboost/hospital.html',
+    location: '제작 샘플',
+    navClass: 'lift',
+  },
+  {
+    name: '한라FIT',
+    client: 'Fitness Center',
+    tag: '헬스장',
+    emoji: '💪',
+    bg: 'linear-gradient(135deg,#0F0F0F,#2A0A0A)',
+    liveLabel: 'SAMPLE',
+    liveBg: '#E53935',
+    desc: '피트니스 센터 디지털 전단지 샘플. 프로그램, 요금제, 무료 체험 신청 포함.',
+    features: ['🏋️ 프로그램', '💰 요금제', '🎁 무료 체험', '📲 QR 체험권'],
+    url: 'https://ian0417kim-afk.github.io/localboost/fitness.html',
+    location: '제작 샘플',
+    navClass: 'jeju',
+  },
+  {
+    name: 'StepUp 어학원',
+    client: 'Language Academy',
+    tag: '학원',
+    emoji: '🎓',
+    bg: 'linear-gradient(135deg,#1A1D4E,#3D3D9A)',
+    liveLabel: 'SAMPLE',
+    liveBg: '#5B4FCF',
+    desc: '영어·중국어 어학원 디지털 전단지 샘플. 커리큘럼, 강사 소개, 무료 레벨테스트 신청.',
+    features: ['📚 커리큘럼', '👨‍🏫 강사 소개', '🎯 레벨 테스트', '📅 상담 예약'],
+    url: 'https://ian0417kim-afk.github.io/localboost/academy.html',
+    location: '제작 샘플',
+    navClass: 'lift',
+  },
+  {
+    name: '라나 인테리어',
+    client: 'Interior Design',
+    tag: '인테리어',
+    emoji: '🏠',
+    bg: 'linear-gradient(135deg,#2C1A0E,#6B4226)',
+    liveLabel: 'SAMPLE',
+    liveBg: '#C4A882',
+    desc: '인테리어 업체 디지털 전단지 샘플. 포트폴리오 갤러리, 서비스 안내, 상담 문의 포함.',
+    features: ['🖼️ 포트폴리오', '🎨 3D 시뮬레이션', '🔨 시공 프로세스', '💬 무료 상담'],
+    url: 'https://ian0417kim-afk.github.io/localboost/interior.html',
+    location: '제작 샘플',
+    navClass: 'jeju',
+  },
+];
+
+/* ── 고객 후기 목록 ──
+   실제 후기가 생기면 여기 내용을 교체하세요 */
+const REVIEWS = [
+  { avatar:'🏪', name:'제주 성산 고등어식당', text:'덕분에 장사가 잘됩니다^^ 외국 손님들도 QR 보고 찾아와요!', color:'#1B4B3A' },
+  { avatar:'☕', name:'연동 카페봄날', text:'중국 관광객이 한국어 못해도 바로 주문해요. 진짜 신기해요 ㅎㅎ', color:'#8B4513' },
+  { avatar:'🏠', name:'정든부동산 김대표', text:'외국 손님 홍보 이제 걱정 덜었습니다. 영어 중국어 다 되니까요!', color:'#2471A3' },
+  { avatar:'📚', name:'릿츄업 학원', text:'전단지 돌리던 돈이 반으로 줄었어요. 링크 하나로 다 해결!', color:'#4A5BB8' },
+  { avatar:'🍖', name:'애월 흑돼지집', text:'일본 손님들이 번역된 메뉴 보고 바로 예약해요. 대박입니다', color:'#C0392B' },
+  { avatar:'🛍️', name:'제주시 기념품샵', text:'QR코드 계산대에 붙여놨더니 외국인들이 알아서 스캔해요', color:'#C4883A' },
+  { avatar:'🍰', name:'한림 베이커리', text:'SNS에 링크 올렸더니 외국인 팔로워들이 직접 찾아와요 감사해요', color:'#9B59B6' },
+  { avatar:'🎣', name:'중문 낚시체험', text:'영어로 된 예약 페이지 덕분에 외국 커플 손님 많이 늘었어요!', color:'#2980B9' },
+  { avatar:'🌿', name:'한라봉농장 직거래', text:'중국 바이어한테 링크 보냈더니 바로 대량 주문 들어왔어요!', color:'#27AE60' },
+];
+
+/* =============================================================
+   이하 코드는 수정하지 않아도 됩니다.
+   ============================================================= */
+
+// Our Work 카드 자동 생성
+(function renderWorks() {
+  const grid = document.getElementById('workGrid');
+  if (!grid) return;
+  WORKS.forEach(w => {
+    const card = document.createElement('div');
+    card.className = 'work-card reveal';
+    card.innerHTML = `
+      <div class="work-thumb" style="background:${w.bg}">
+        <div class="work-thumb-inner">${w.emoji}</div>
+        <div class="work-thumb-overlay"></div>
+        <div class="work-tag">${w.tag}</div>
+        <div class="work-live" style="background:${w.liveBg}">${w.liveLabel}</div>
+      </div>
+      <div class="work-body">
+        <div class="work-client">${w.client}</div>
+        <div class="work-name">${w.name}</div>
+        <div class="work-desc">${w.desc}</div>
+        <div class="work-features">${w.features.map(f=>`<span class="work-feat">${f}</span>`).join('')}</div>
+        <div class="work-link">
+          <a href="${w.url}" target="_blank">🔗 전단지 보기 →</a>
+          <span style="font-size:11px;color:var(--muted)">${w.location}</span>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+})();
+
+// 네비바 샘플 버튼 자동 생성
+(function renderNavBtns() {
+  const nav = document.getElementById('topnavSamples');
+  if (!nav) return;
+  const label = nav.querySelector('.topnav-label');
+  nav.innerHTML = '';
+  if (label) nav.appendChild(label);
+  WORKS.forEach(w => {
+    const a = document.createElement('a');
+    a.href = w.url;
+    a.target = '_blank';
+    a.className = `sample-btn ${w.navClass || 'jeju'}`;
+    a.innerHTML = `<div class="sample-dot"></div>${w.emoji} ${w.name}`;
+    nav.appendChild(a);
+  });
+})();
+
+// 스크롤 reveal 애니메이션
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// 하단 QR 생성 (div 방식 — canvas 사용 시 QR 생성 안 됨)
+window.addEventListener('load', function() {
+  try {
+    new QRCode(document.getElementById('qrFixedCanvas'), {
+      text: 'https://ian0417kim-afk.github.io/localboost/',
+      width: 44,
+      height: 44,
+      colorDark: '#1A5C45',
+      colorLight: '#FFFFFF',
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  } catch(e) {
+    console.warn('QR 생성 실패:', e);
+  }
+});
+
+// 상담 폼 제출 (비동기 + 토스트)
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const name  = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  if (!name || !phone) { showToast('⚠️ 성함과 연락처를 입력해 주세요'); return; }
+  const btn = this.querySelector('.submit-btn');
+  btn.textContent = '전송 중...';
+  btn.disabled = true;
+  try {
+    const res = await fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) { showToast('✅ ' + name + '님, 곧 연락드릴게요!'); this.reset(); }
+    else { showToast('⚠️ 전송 실패. 전화나 카톡으로 연락 주세요!'); }
+  } catch(err) {
+    showToast('⚠️ 네트워크 오류. 전화나 카톡으로 연락 주세요!');
+  }
+  btn.textContent = '상담 신청하기 →';
+  btn.disabled = false;
+});
+
+// 토스트 메시지
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+</script>
+
+<script>
+/* 후기 피드 스크립트 */
+const demoImages = WORKS.map(w => ({ emoji: w.emoji, bg: w.bg, label: w.name }));
+let reviewIndex = 0;
+let imgIdx = 0;
+const feed = document.getElementById('reviewFeed');
+const demoImg = document.getElementById('demoImg');
+
+function setDemoImage(idx) {
+  const img = demoImages[idx];
+  demoImg.style.background = img.bg;
+  demoImg.innerHTML = `<span style="font-size:36px">${img.emoji}</span><span class="phone-hero-label">${img.label}</span>`;
+}
+
+function addReview() {
+  const r = REVIEWS[reviewIndex % REVIEWS.length];
+  reviewIndex++;
+  if (reviewIndex % 3 === 0) {
+    imgIdx = (imgIdx + 1) % demoImages.length;
+    setDemoImage(imgIdx);
+  }
+  const el = document.createElement('div');
+  el.className = 'phone-review-item';
+  el.innerHTML = `
+    <div class="phone-review-avatar" style="background:${r.color}">${r.avatar}</div>
+    <div class="phone-review-body">
+      <div class="phone-review-top">
+        <span class="phone-review-name">${r.name}</span>
+        <span class="phone-review-stars">★★★★★</span>
+        ${reviewIndex <= 2 ? '<span class="phone-review-new">NEW</span>' : ''}
+      </div>
+      <div class="phone-review-text">${r.text}</div>
+    </div>`;
+  feed.insertBefore(el, feed.firstChild);
+  requestAnimationFrame(() => { requestAnimationFrame(() => { el.classList.add('show'); }); });
+  if (feed.children.length > 3) {
+    const last = feed.lastChild;
+    last.style.opacity = '0';
+    setTimeout(() => last.remove(), 400);
+  }
+}
+
+setDemoImage(0);
+addReview();
+setTimeout(addReview, 700);
+setInterval(addReview, 3500);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제주 밝음 내과 — 제주 신뢰 병원</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{
+  --bg:#F7F9FC;
+  --white:#FFFFFF;
+  --navy:#0B2A4A;
+  --blue:#1565C0;
+  --sky:#E8F1FB;
+  --accent:#2196F3;
+  --muted:#6B7A8D;
+  --border:#DDE5EF;
+  --green:#1B8A5A;
+}
+body{background:var(--bg);color:var(--navy);font-family:'Noto Sans KR',sans-serif;overflow-x:hidden;}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:99;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 2px 12px rgba(11,42,74,.06);}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo-mark{width:32px;height:32px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;}
+.nav-logo-text{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--navy);}
+.nav-logo-text span{color:var(--blue);}
+.nav-links{display:flex;gap:24px;}
+.nav-links a{font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:1px;}
+.nav-links a:hover{color:var(--navy);}
+
+/* 히어로 */
+.hero{padding-top:56px;min-height:100svh;background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);display:flex;align-items:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 80% 20%,rgba(255,255,255,.04) 0%,transparent 50%),radial-gradient(circle at 20% 80%,rgba(255,255,255,.03) 0%,transparent 40%);}
+.hero-cross{position:absolute;right:10%;top:50%;transform:translateY(-50%);opacity:.04;font-size:400px;line-height:1;}
+.hero-inner{max-width:960px;margin:0 auto;padding:60px 24px;position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+@media(max-width:700px){.hero-inner{grid-template-columns:1fr;gap:40px;}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8);font-size:10px;letter-spacing:3px;padding:6px 16px;text-transform:uppercase;margin-bottom:20px;}
+.hero-title{font-family:'Noto Serif KR',serif;font-size:clamp(32px,4.5vw,52px);font-weight:700;color:#fff;line-height:1.2;margin-bottom:20px;opacity:0;animation:fadeUp .7s ease .2s forwards;}
+.hero-title em{font-style:normal;color:#7EC8FA;}
+.hero-desc{font-size:14px;color:rgba(255,255,255,.65);line-height:1.9;margin-bottom:32px;opacity:0;animation:fadeUp .7s ease .4s forwards;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:fadeUp .7s ease .6s forwards;}
+.btn-white{background:#fff;color:var(--blue);font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:14px 28px;border:none;cursor:pointer;text-decoration:none;transition:all .25s;}
+.btn-white:hover{background:#7EC8FA;}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.8);font-size:11px;letter-spacing:2px;padding:13px 28px;border:1px solid rgba(255,255,255,.3);cursor:pointer;text-decoration:none;transition:all .25s;}
+.btn-ghost:hover{border-color:#fff;color:#fff;}
+.hero-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;opacity:0;animation:fadeUp .7s ease .5s forwards;}
+.hero-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:18px 16px;text-align:center;}
+.hero-card-icon{font-size:28px;margin-bottom:8px;}
+.hero-card-label{font-size:9px;color:rgba(255,255,255,.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.hero-card-val{font-size:13px;color:#fff;font-weight:500;line-height:1.5;}
+
+/* 진료과목 */
+.dept-section{background:var(--white);padding:80px 24px;}
+.sec-inner{max-width:960px;margin:0 auto;}
+.sec-tag{font-size:10px;letter-spacing:5px;color:var(--blue);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.sec-tag::before{content:'';width:20px;height:1px;background:var(--blue);}
+.sec-title{font-family:'Noto Serif KR',serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;line-height:1.2;margin-bottom:12px;}
+.sec-title em{font-style:italic;color:var(--blue);}
+.sec-sub{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:48px;}
+.dept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+@media(max-width:700px){.dept-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:420px){.dept-grid{grid-template-columns:1fr;}}
+.dept-card{background:var(--sky);padding:28px 24px;border-top:3px solid var(--blue);transition:all .25s;}
+.dept-card:hover{background:var(--blue);color:#fff;}
+.dept-card:hover .dept-name,.dept-card:hover .dept-desc{color:#fff;}
+.dept-card:hover .dept-desc{color:rgba(255,255,255,.7);}
+.dept-icon{font-size:32px;margin-bottom:12px;}
+.dept-name{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;transition:color .25s;}
+.dept-desc{font-size:12px;color:var(--muted);line-height:1.7;transition:color .25s;}
+
+/* 시간표 */
+.hours-section{background:var(--bg);padding:80px 24px;}
+.hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media(max-width:700px){.hours-grid{grid-template-columns:1fr;}}
+.hours-table{background:var(--white);border:1px solid var(--border);overflow:hidden;}
+.hours-table-head{background:var(--navy);padding:16px 20px;font-size:12px;font-weight:700;color:#fff;letter-spacing:2px;}
+.hours-row{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);}
+.hours-row:last-child{border-bottom:none;}
+.hours-day{font-size:14px;color:var(--navy);font-weight:500;}
+.hours-time{font-size:13px;color:var(--muted);}
+.hours-time.closed{color:#E53935;font-weight:600;}
+.hours-notice{background:var(--sky);border:1px solid var(--border);padding:24px;}
+.notice-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.notice-items{display:flex;flex-direction:column;gap:8px;}
+.notice-item{font-size:13px;color:var(--muted);display:flex;gap:8px;line-height:1.6;}
+.notice-item::before{content:'•';color:var(--blue);flex-shrink:0;}
+
+/* 이벤트 */
+.event-section{background:var(--white);padding:80px 24px;}
+.event-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:600px){.event-grid{grid-template-columns:1fr;}}
+.event-card{border:1px solid var(--border);padding:28px 24px;position:relative;overflow:hidden;transition:all .25s;}
+.event-card:hover{border-color:var(--blue);box-shadow:0 8px 32px rgba(21,101,192,.08);}
+.event-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--blue);}
+.event-badge{display:inline-block;font-size:9px;letter-spacing:2px;color:var(--blue);background:var(--sky);padding:4px 10px;margin-bottom:12px;}
+.event-title{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.event-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:12px;}
+.event-period{font-size:11px;color:var(--blue);}
+
+/* 예약 */
+.reserve-section{background:var(--navy);padding:80px 24px;}
+.reserve-title-tag{font-size:10px;letter-spacing:5px;color:#7EC8FA;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.reserve-title-tag::before{content:'';width:20px;height:1px;background:#7EC8FA;}
+.reserve-title{font-family:'Noto Serif KR',serif;font-size:clamp(26px,3.5vw,40px);font-weight:700;color:#fff;line-height:1.2;margin-bottom:12px;}
+.reserve-title em{font-style:italic;color:#7EC8FA;}
+.reserve-sub{font-size:14px;color:rgba(255,255,255,.5);line-height:1.9;margin-bottom:48px;}
+.reserve-box{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+@media(max-width:700px){.reserve-box{grid-template-columns:1fr;}}
+.form-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+.form-label{font-size:9px;letter-spacing:3px;color:#7EC8FA;text-transform:uppercase;}
+.form-input,.form-select,.form-textarea{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#fff;font-family:'Noto Sans KR',sans-serif;font-size:14px;padding:12px 16px;outline:none;transition:border-color .2s;}
+.form-input::placeholder{color:rgba(255,255,255,.3);}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:#7EC8FA;}
+.form-select option{background:var(--navy);}
+.form-textarea{resize:none;min-height:80px;}
+.form-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:480px){.form-row2{grid-template-columns:1fr;}}
+.submit-btn{width:100%;background:var(--accent);color:#fff;font-weight:700;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:16px;border:none;cursor:pointer;transition:all .25s;margin-top:4px;}
+.submit-btn:hover{background:#42A5F5;}
+.contact-list{display:flex;flex-direction:column;gap:14px;}
+.contact-item{display:flex;align-items:center;gap:14px;padding:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);}
+.contact-icon{font-size:22px;}
+.contact-label{font-size:9px;color:#7EC8FA;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;}
+.contact-val{font-size:14px;color:#fff;font-weight:500;}
+.qr-wrap{margin-top:16px;padding:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;gap:16px;}
+.qr-box{background:#fff;padding:6px;width:72px;height:72px;flex-shrink:0;}
+.qr-label{font-size:9px;color:#7EC8FA;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.qr-desc{font-size:12px;color:rgba(255,255,255,.5);line-height:1.6;}
+
+footer{background:#061A2E;padding:36px 24px;text-align:center;}
+.footer-name{font-family:'Noto Serif KR',serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;}
+.footer-name span{color:#7EC8FA;}
+.footer-info{font-size:12px;color:rgba(255,255,255,.35);line-height:2;}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.15);margin-top:12px;}
+
+.toast{position:fixed;bottom:60px;left:50%;transform:translateX(-50%) translateY(40px);background:var(--blue);color:#fff;font-size:13px;font-weight:700;padding:12px 24px;z-index:9999;opacity:0;transition:all .4s;white-space:nowrap;pointer-events:none;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div class="toast" id="toast"></div>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="nav-logo-mark">✚</div>
+    <div class="nav-logo-text">제주 <span>밝음</span> 내과</div>
+  </div>
+  <div class="nav-links">
+    <a href="#dept">진료과목</a>
+    <a href="#hours">진료시간</a>
+    <a href="#reserve">예약</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-cross">✚</div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">제주시 · 내과 · 가정의학과</div>
+      <h1 class="hero-title">건강한 제주 생활,<br><em>밝음 내과</em>와<br>함께합니다</h1>
+      <p class="hero-desc">15년 경력 전문의가 직접 진료합니다.<br>당일 예약 가능 · 외국인 환자 환영 · 다국어 안내</p>
+      <div class="hero-btns">
+        <a href="#reserve" class="btn-white">진료 예약하기</a>
+        <a href="#dept" class="btn-ghost">진료과목 보기</a>
+      </div>
+    </div>
+    <div class="hero-cards">
+      <div class="hero-card">
+        <div class="hero-card-icon">🩺</div>
+        <div class="hero-card-label">진료과목</div>
+        <div class="hero-card-val">내과 · 가정의학과<br>건강검진</div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">🕐</div>
+        <div class="hero-card-label">진료시간</div>
+        <div class="hero-card-val">평일 9:00—18:00<br>토요일 9:00—13:00</div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">🌏</div>
+        <div class="hero-card-label">언어 지원</div>
+        <div class="hero-card-val">한국어 · 영어<br>중국어</div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">🅿️</div>
+        <div class="hero-card-label">주차</div>
+        <div class="hero-card-val">건물 지하주차장<br>1시간 무료</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 진료과목 -->
+<section class="dept-section" id="dept">
+  <div class="sec-inner">
+    <div class="sec-tag reveal">Department</div>
+    <h2 class="sec-title reveal">진료 <em>과목</em></h2>
+    <p class="sec-sub reveal">다양한 증상에 대해 전문적인 진료를 제공합니다.</p>
+    <div class="dept-grid reveal">
+      <div class="dept-card">
+        <div class="dept-icon">🫀</div>
+        <div class="dept-name">내과</div>
+        <div class="dept-desc">고혈압, 당뇨, 고지혈증, 소화기 질환 등 내과 전반</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon">👨‍👩‍👧</div>
+        <div class="dept-name">가정의학과</div>
+        <div class="dept-desc">감기, 두통, 피로, 생활습관 관리 등 가족 건강 주치의</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon">🔬</div>
+        <div class="dept-name">건강검진</div>
+        <div class="dept-desc">기본 검진, 직장인 검진, 공단 건강검진 지정 의료기관</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon">💉</div>
+        <div class="dept-name">예방접종</div>
+        <div class="dept-desc">독감, 폐렴, 대상포진 등 성인 예방접종 전문</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon">🩻</div>
+        <div class="dept-name">영상 진단</div>
+        <div class="dept-desc">흉부 X-ray, 복부 초음파 당일 검사 가능</div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-icon">✈️</div>
+        <div class="dept-name">여행자 클리닉</div>
+        <div class="dept-desc">여행 전 건강상담, 여행자 설사, 외국인 진료 전문</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 진료시간 -->
+<section class="hours-section" id="hours">
+  <div class="sec-inner">
+    <div class="sec-tag reveal">Hours</div>
+    <h2 class="sec-title reveal">진료 <em>시간표</em></h2>
+    <p class="sec-sub reveal">당일 예약을 원하시면 오전 중에 연락 주세요.</p>
+    <div class="hours-grid reveal">
+      <div class="hours-table">
+        <div class="hours-table-head">📅 진료시간 안내</div>
+        <div class="hours-row"><span class="hours-day">월 · 화 · 수</span><span class="hours-time">09:00 — 18:00</span></div>
+        <div class="hours-row"><span class="hours-day">목요일</span><span class="hours-time">09:00 — 20:00 (야간)</span></div>
+        <div class="hours-row"><span class="hours-day">금요일</span><span class="hours-time">09:00 — 18:00</span></div>
+        <div class="hours-row"><span class="hours-day">토요일</span><span class="hours-time">09:00 — 13:00</span></div>
+        <div class="hours-row"><span class="hours-day">일요일 · 공휴일</span><span class="hours-time closed">휴진</span></div>
+        <div class="hours-row"><span class="hours-day">점심시간</span><span class="hours-time">13:00 — 14:00</span></div>
+      </div>
+      <div class="hours-notice">
+        <div class="notice-title">📋 진료 안내사항</div>
+        <div class="notice-items">
+          <div class="notice-item">초진 환자는 신분증을 지참해 주세요.</div>
+          <div class="notice-item">건강보험증 미지참 시 전액 본인 부담입니다.</div>
+          <div class="notice-item">외국인 환자는 여권 또는 외국인등록증 지참.</div>
+          <div class="notice-item">영어·중국어 통역 서비스 제공 (사전 예약 권장).</div>
+          <div class="notice-item">공휴일 응급 문의는 전화로 연락해 주세요.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 이벤트 -->
+<section class="event-section" id="event">
+  <div class="sec-inner">
+    <div class="sec-tag reveal">Event</div>
+    <h2 class="sec-title reveal">건강 <em>혜택</em></h2>
+    <p class="sec-sub reveal">밝음 내과에서 드리는 건강 이벤트입니다.</p>
+    <div class="event-grid reveal">
+      <div class="event-card">
+        <div class="event-badge">신규 환자</div>
+        <div class="event-title">첫 방문 건강상담 무료</div>
+        <div class="event-desc">처음 방문하시는 분께 기본 혈압·혈당 측정 및 10분 건강상담을 무료로 제공합니다.</div>
+        <div class="event-period">📅 상시 운영</div>
+      </div>
+      <div class="event-card">
+        <div class="event-badge">봄 검진 이벤트</div>
+        <div class="event-title">건강검진 패키지 20% 할인</div>
+        <div class="event-desc">3~4월 건강검진 예약 시 기본 검진 패키지를 20% 할인된 가격에 제공합니다.</div>
+        <div class="event-period">📅 2026년 3월~4월</div>
+      </div>
+      <div class="event-card">
+        <div class="event-badge">외국인 환자</div>
+        <div class="event-title">다국어 진료 · 통역 무료</div>
+        <div class="event-desc">영어·중국어 가능한 코디네이터가 상주합니다. 사전 예약 시 전담 통역 서비스 제공.</div>
+        <div class="event-period">📅 상시 운영</div>
+      </div>
+      <div class="event-card">
+        <div class="event-badge">독감 시즌</div>
+        <div class="event-title">독감 예방접종 사전 예약</div>
+        <div class="event-desc">사전 예약 시 대기 없이 바로 접종 가능합니다. 65세 이상 무료 접종 대상자 우선 예약.</div>
+        <div class="event-period">📅 매년 9~11월</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 예약 -->
+<section class="reserve-section" id="reserve">
+  <div class="sec-inner">
+    <div class="reserve-title-tag reveal">Appointment</div>
+    <h2 class="reserve-title reveal">진료 <em>예약</em></h2>
+    <p class="reserve-sub reveal">온라인 예약 후 방문하시면 대기 없이 진료받으실 수 있습니다.</p>
+    <div class="reserve-box">
+      <div class="reveal">
+        <form id="reserveForm">
+          <div class="form-row2">
+            <div class="form-field">
+              <label class="form-label">성함</label>
+              <input type="text" class="form-input" id="r-name" placeholder="홍길동" required>
+            </div>
+            <div class="form-field">
+              <label class="form-label">생년월일</label>
+              <input type="text" class="form-input" id="r-birth" placeholder="예) 1985-03-15">
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label">연락처</label>
+            <input type="tel" class="form-input" id="r-phone" placeholder="010-0000-0000" required>
+          </div>
+          <div class="form-row2">
+            <div class="form-field">
+              <label class="form-label">진료과목</label>
+              <select class="form-select" id="r-dept">
+                <option>내과</option>
+                <option>가정의학과</option>
+                <option>건강검진</option>
+                <option>예방접종</option>
+                <option>여행자 클리닉</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label class="form-label">희망 날짜</label>
+              <input type="text" class="form-input" id="r-date" placeholder="예) 3월 15일 오전">
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label">증상 / 요청사항</label>
+            <textarea class="form-textarea" id="r-memo" placeholder="주요 증상이나 요청사항을 적어주세요."></textarea>
+          </div>
+          <button type="submit" class="submit-btn">예약 신청하기 →</button>
+        </form>
+      </div>
+      <div class="reveal">
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div><div class="contact-label">전화 예약</div><div class="contact-val">064-345-6789</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">💬</div>
+            <div><div class="contact-label">카카오톡</div><div class="contact-val">@제주밝음내과</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div><div class="contact-label">위치</div><div class="contact-val">제주시 연동 456번지 3층<br><span style="font-size:12px;color:rgba(255,255,255,.4)">이마트 제주점 맞은편</span></div></div>
+          </div>
+        </div>
+        <div class="qr-wrap">
+          <div class="qr-box"><div id="qrCode"></div></div>
+          <div>
+            <div class="qr-label">QR 예약</div>
+            <div class="qr-desc">스캔하면 바로<br>온라인 예약 페이지로 이동합니다</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">제주 <span>밝음</span> 내과</div>
+  <div class="footer-info">
+    제주시 연동 456번지 3층 · 064-345-6789<br>
+    평일 09:00—18:00 · 목요일 야간진료 20:00 · 토요일 13:00<br>
+    <span style="font-size:11px;color:rgba(255,255,255,.15)">이 페이지는 LocalBoost가 제작한 샘플입니다</span>
+  </div>
+  <div class="footer-copy">© 2026 제주밝음내과 · Powered by LocalBoost</div>
+</footer>
+
+<script>
+window.addEventListener('load',function(){
+  try{
+    new QRCode(document.getElementById('qrCode'),{
+      text:'https://localboost.kr/hospital-sample',
+      width:60,height:60,colorDark:'#0B2A4A',colorLight:'#FFFFFF',
+      correctLevel:QRCode.CorrectLevel.M
+    });
+  }catch(e){}
+});
+document.getElementById('reserveForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const name=document.getElementById('r-name').value.trim();
+  if(!name){showToast('⚠️ 성함을 입력해 주세요');return;}
+  showToast('✅ '+name+'님 예약 완료! 확인 후 연락드릴게요.');
+  this.reset();
+});
+let tt;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2800);
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
