@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOOD · 무드 네일 — 제주 1인 네일 스튜디오</title>
+<meta name="description" content="과하지 않은 뉴트럴 팔레트. 1인 네일 스튜디오에서 조용히 누리는 시술 시간.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Cormorant:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+:root{
+  --paper:#FBF6F0;
+  --paper-2:#F3EAE1;
+  --blush:#E8C7BB;
+  --rose:#D9A89C;
+  --mauve:#B08A7E;
+  --nude:#E8D0C2;
+  --ink:#2B201C;
+  --ink-2:#4A3933;
+  --ink-soft:#8C7B74;
+  --line:#E4D6CC;
+  --line-soft:#EEE4DB;
+  --gold:#C9A66B;
+  --serif:'Fraunces','Noto Serif KR',Georgia,serif;
+  --cor:'Cormorant',Georgia,serif;
+  --sans:'Pretendard',-apple-system,sans-serif;
+}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:15px;line-height:1.75;letter-spacing:-0.005em}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 36px}
+@media(max-width:640px){.wrap{padding:0 22px}}
+
+/* Nav */
+.nav{padding:28px 0}
+.nav-inner{display:flex;justify-content:space-between;align-items:center}
+.brand{font-family:var(--cor);font-style:italic;font-size:28px;letter-spacing:0.02em;color:var(--ink)}
+.brand::after{content:' ♡';color:var(--rose);font-style:normal;font-size:14px;vertical-align:middle}
+.nav-links{display:flex;gap:30px;font-size:12px;color:var(--ink-soft);letter-spacing:0.1em;text-transform:uppercase}
+.nav-links a:hover{color:var(--mauve)}
+@media(max-width:720px){.nav-links{display:none}}
+
+/* Hero */
+.hero{padding:64px 0 120px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:48px}}
+.hero-eyebrow{font-family:var(--cor);font-style:italic;font-size:15px;color:var(--mauve);margin-bottom:24px;letter-spacing:0.05em}
+.hero-title{font-family:var(--serif);font-weight:300;font-size:clamp(44px,7vw,92px);line-height:1.02;letter-spacing:-0.025em;margin-bottom:28px}
+.hero-title em{font-family:var(--cor);font-style:italic;font-weight:300;color:var(--mauve);display:block}
+.hero-sub{max-width:440px;font-size:15px;color:var(--ink-2);line-height:1.85;margin-bottom:36px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;background:var(--ink);color:var(--paper);border-radius:999px;font-size:13px;font-weight:500;letter-spacing:0.02em;transition:background .2s}
+.btn-primary:hover{background:var(--mauve)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border:1px solid var(--ink);border-radius:999px;font-size:13px;font-weight:500;color:var(--ink);transition:background .2s}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.hero-visual{aspect-ratio:4/5;overflow:hidden;border-radius:2px}
+.hero-visual svg{width:100%;height:100%;display:block}
+
+/* small stats row */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:72px;padding:32px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat-n{font-family:var(--serif);font-weight:400;font-size:36px;color:var(--ink);letter-spacing:-0.02em;margin-bottom:2px}
+.stat-n em{font-family:var(--cor);font-style:italic;color:var(--mauve);font-size:0.6em;margin-left:4px;font-weight:300}
+.stat-l{font-size:12px;color:var(--ink-soft);letter-spacing:0.08em;text-transform:uppercase}
+
+/* Section */
+.section{padding:110px 0}
+.eyebrow{font-family:var(--cor);font-style:italic;font-size:15px;color:var(--mauve);letter-spacing:0.05em;margin-bottom:14px;display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--mauve)}
+.section-title{font-family:var(--serif);font-weight:300;font-size:clamp(32px,4.5vw,64px);letter-spacing:-0.025em;line-height:1.08;margin-bottom:16px}
+.section-title em{font-family:var(--cor);font-style:italic;color:var(--mauve)}
+.section-lede{color:var(--ink-2);font-size:15px;line-height:1.85;max-width:560px}
+
+/* Menu */
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);margin-top:56px}
+@media(max-width:640px){.menu-grid{grid-template-columns:1fr}}
+.menu-row{background:var(--paper);padding:30px 28px;display:grid;grid-template-columns:60px 1fr auto;gap:16px;align-items:baseline}
+.menu-no{font-family:var(--cor);font-style:italic;font-size:16px;color:var(--mauve)}
+.menu-item{display:flex;flex-direction:column;gap:4px}
+.menu-name{font-family:var(--serif);font-size:18px;font-weight:400;letter-spacing:-0.012em}
+.menu-desc{font-size:12px;color:var(--ink-soft);letter-spacing:0.02em}
+.menu-price{font-family:var(--serif);font-size:16px;color:var(--ink);white-space:nowrap}
+.menu-price em{font-family:var(--cor);font-style:italic;font-size:12px;color:var(--ink-soft);margin-left:4px;font-weight:300}
+
+/* Gallery */
+.gallery{background:var(--paper-2)}
+.gallery-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:56px}
+@media(max-width:900px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:540px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+.gallery-item{aspect-ratio:1/1;overflow:hidden;background:var(--paper);position:relative}
+.gallery-item svg{width:100%;height:100%;display:block}
+.gallery-item.tall{aspect-ratio:1/1.3;grid-row:span 2}
+.gallery-caption{position:absolute;left:10px;bottom:8px;font-family:var(--cor);font-style:italic;font-size:11px;color:var(--ink);background:rgba(251,246,240,0.88);padding:2px 8px;border-radius:2px}
+
+/* About artist */
+.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:center;margin-top:48px}
+@media(max-width:800px){.about-grid{grid-template-columns:1fr;gap:32px}}
+.artist-img{aspect-ratio:4/5;overflow:hidden;background:var(--paper-2);border-radius:2px}
+.artist-img svg{width:100%;height:100%;display:block}
+.artist-name{font-family:var(--serif);font-weight:400;font-size:34px;letter-spacing:-0.02em;margin:16px 0 6px}
+.artist-role{font-family:var(--cor);font-style:italic;font-size:16px;color:var(--mauve);margin-bottom:22px}
+.artist-desc{color:var(--ink-2);font-size:15px;line-height:1.85;margin-bottom:20px;max-width:520px}
+.artist-list{display:flex;flex-direction:column;gap:0;margin-top:20px}
+.artist-list li{display:grid;grid-template-columns:70px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-size:13px;list-style:none}
+.artist-list dt{color:var(--ink-soft);font-family:var(--cor);font-style:italic}
+
+/* Visit */
+.visit{background:var(--ink);color:var(--paper);padding:100px 0}
+.visit .eyebrow{color:var(--blush)}
+.visit .eyebrow::before{background:var(--blush)}
+.visit .section-title{color:var(--paper)}
+.visit .section-title em{color:var(--blush)}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
+@media(max-width:800px){.visit-grid{grid-template-columns:1fr}}
+.info-box{background:rgba(255,255,255,0.05);padding:32px;border:1px solid rgba(232,199,187,0.25)}
+.info-row{padding:16px 0;border-bottom:1px solid rgba(232,199,187,0.18);display:grid;grid-template-columns:90px 1fr;gap:14px;font-size:14px}
+.info-row:last-child{border-bottom:none}
+.info-row dt{color:var(--blush);font-family:var(--cor);font-style:italic;font-size:13px}
+.info-row dd{color:var(--paper)}
+.visit-actions{display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding-top:4px}
+.v-btn{padding:16px 26px;width:100%;text-align:center;border-radius:999px;font-size:14px;font-weight:500}
+.v-btn.primary{background:var(--blush);color:var(--ink)}
+.v-btn.line{background:transparent;border:1px solid rgba(232,199,187,0.5);color:var(--paper)}
+.visit-note{margin-top:14px;font-size:12px;color:rgba(232,199,187,0.65);font-family:var(--cor);font-style:italic;line-height:1.8}
+
+/* Footer */
+.footer{padding:48px 0 36px;background:var(--ink);color:rgba(232,199,187,0.55);font-size:12px;border-top:1px solid rgba(232,199,187,0.12)}
+.footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px}
+.footer-brand{font-family:var(--cor);font-style:italic;font-size:18px;color:var(--paper);margin-bottom:4px}
+</style>
+</head>
+<body>
+
+<!-- ───── NAV ───── -->
+<nav class="nav"><div class="wrap nav-inner">
+  <a href="#" class="brand">mood nail</a>
+  <div class="nav-links">
+    <a href="#menu">Menu</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#artist">Artist</a>
+    <a href="#visit">Visit</a>
+  </div>
+</div></nav>
+
+<!-- ───── HERO ───── -->
+<section class="hero"><div class="wrap">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">A private nail studio in Jeju</div>
+      <h1 class="hero-title">
+        과하지 않은,
+        <em>당신만의 무드</em>
+      </h1>
+      <p class="hero-sub">
+        하루 여섯 분만 받습니다. 뉴트럴 베이스부터 은은한 자개와 매그넷까지,
+        당신의 손에 맞는 한 가지 톤을 같이 찾아드릴게요.
+      </p>
+      <div class="hero-actions">
+        <a href="#visit" class="btn-primary">예약 문의 <span>→</span></a>
+        <a href="#menu" class="btn-ghost">메뉴 보기</a>
+      </div>
+    </div>
+
+    <!-- Hero visual: hand with soft rose nails -->
+    <div class="hero-visual">
+      <svg viewBox="0 0 500 620" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F6E8DE"/>
+            <stop offset="1" stop-color="#E9CEC0"/>
+          </linearGradient>
+          <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F8E4D4"/>
+            <stop offset="1" stop-color="#E9C5B1"/>
+          </linearGradient>
+          <linearGradient id="nailRose" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#E5B0A2"/>
+            <stop offset="1" stop-color="#C08275"/>
+          </linearGradient>
+        </defs>
+        <rect width="500" height="620" fill="url(#bg)"/>
+        <!-- soft shadow circle behind -->
+        <ellipse cx="250" cy="320" rx="220" ry="260" fill="#E0B8A7" opacity="0.3"/>
+
+        <!-- hand — stylized -->
+        <g transform="translate(250 350)">
+          <!-- palm -->
+          <path d="M -95 150 Q -130 40 -90 -40 Q -40 -70 40 -70 Q 110 -40 110 60 Q 100 160 60 200 L -50 210 Z" fill="url(#skin)"/>
+          <!-- palm shading -->
+          <path d="M -95 150 Q -120 80 -95 20 Q -80 0 -50 -5" fill="none" stroke="#D4A28A" stroke-width="1.2" opacity="0.5"/>
+          <!-- wrist / sleeve -->
+          <path d="M -75 195 L 80 195 L 100 360 L -95 360 Z" fill="#EFE2D0"/>
+          <path d="M -75 195 L 80 195 L 82 215 L -77 215 Z" fill="#DCC6AD"/>
+
+          <!-- fingers — 4 main + thumb -->
+          <!-- thumb (leftmost) -->
+          <g transform="rotate(-28)">
+            <rect x="-130" y="-35" width="46" height="90" rx="22" fill="url(#skin)"/>
+            <!-- nail -->
+            <ellipse cx="-107" cy="-35" rx="18" ry="22" fill="url(#nailRose)"/>
+            <ellipse cx="-113" cy="-42" rx="6" ry="4" fill="#F5D9CC" opacity="0.6"/>
+          </g>
+
+          <!-- index -->
+          <g>
+            <rect x="-55" y="-205" width="38" height="160" rx="19" fill="url(#skin)"/>
+            <!-- nail -->
+            <path d="M -55 -205 Q -36 -232 -17 -205 Q -17 -180 -36 -175 Q -55 -180 -55 -205 Z" fill="url(#nailRose)"/>
+            <ellipse cx="-42" cy="-215" rx="7" ry="4" fill="#F5D9CC" opacity="0.55"/>
+          </g>
+
+          <!-- middle (tallest) -->
+          <g>
+            <rect x="-10" y="-230" width="40" height="185" rx="20" fill="url(#skin)"/>
+            <path d="M -10 -230 Q 10 -260 30 -230 Q 30 -200 10 -195 Q -10 -200 -10 -230 Z" fill="url(#nailRose)"/>
+            <ellipse cx="5" cy="-242" rx="8" ry="4" fill="#F5D9CC" opacity="0.55"/>
+          </g>
+
+          <!-- ring (with gold band) -->
+          <g>
+            <rect x="37" y="-215" width="38" height="170" rx="19" fill="url(#skin)"/>
+            <path d="M 37 -215 Q 56 -243 75 -215 Q 75 -188 56 -183 Q 37 -188 37 -215 Z" fill="url(#nailRose)"/>
+            <ellipse cx="50" cy="-226" rx="7" ry="4" fill="#F5D9CC" opacity="0.55"/>
+            <!-- gold ring -->
+            <rect x="36" y="-65" width="40" height="7" rx="2" fill="#D9B675"/>
+            <rect x="36" y="-65" width="40" height="2" rx="1" fill="#F2DAA8"/>
+          </g>
+
+          <!-- pinky -->
+          <g>
+            <rect x="82" y="-175" width="34" height="130" rx="17" fill="url(#skin)"/>
+            <path d="M 82 -175 Q 99 -200 116 -175 Q 116 -153 99 -148 Q 82 -153 82 -175 Z" fill="url(#nailRose)"/>
+            <ellipse cx="94" cy="-185" rx="6" ry="3" fill="#F5D9CC" opacity="0.55"/>
+          </g>
+        </g>
+
+        <!-- tiny script caption -->
+        <text x="40" y="590" font-family="Cormorant" font-style="italic" font-size="18" fill="#B08A7E">mood nail</text>
+        <text x="40" y="608" font-family="Cormorant" font-style="italic" font-size="12" fill="#8C7B74">— signature nude №1</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div>
+      <div class="stat-n">6<em>/ day</em></div>
+      <div class="stat-l">하루 예약 한계</div>
+    </div>
+    <div>
+      <div class="stat-n">8<em>년</em></div>
+      <div class="stat-l">원장 경력</div>
+    </div>
+    <div>
+      <div class="stat-n">100%<em>수제</em></div>
+      <div class="stat-l">모든 아트 핸드메이드</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ───── MENU ───── -->
+<section class="section" id="menu"><div class="wrap">
+  <div class="eyebrow">Menu · 시그니처 메뉴</div>
+  <h2 class="section-title">손끝의 <em>톤을 고르는 일</em></h2>
+  <p class="section-lede">젤 네일 기본 케어부터 자개·매그넷·골드 파우더 아트까지.
+    평일에는 기본 케어 시술 위주, 주말은 디자인 시술 중심으로 예약 받습니다.</p>
+
+  <div class="menu-grid">
+    <div class="menu-row">
+      <div class="menu-no">01.</div>
+      <div class="menu-item">
+        <div class="menu-name">원톤 젤 · One-tone Gel</div>
+        <div class="menu-desc">베이스 컬러 단일. 뉴트럴 32가지 팔레트</div>
+      </div>
+      <div class="menu-price">₩45,000 <em>· 60분</em></div>
+    </div>
+    <div class="menu-row">
+      <div class="menu-no">02.</div>
+      <div class="menu-item">
+        <div class="menu-name">프렌치 · Natural French</div>
+        <div class="menu-desc">누드 베이스 + 팁 마감. 자연스러운 결</div>
+      </div>
+      <div class="menu-price">₩58,000 <em>· 80분</em></div>
+    </div>
+    <div class="menu-row">
+      <div class="menu-no">03.</div>
+      <div class="menu-item">
+        <div class="menu-name">매그넷 아트 · Magnet Gel</div>
+        <div class="menu-desc">캣츠아이 효과. 은은한 입체 무드</div>
+      </div>
+      <div class="menu-price">₩68,000 <em>· 90분</em></div>
+    </div>
+    <div class="menu-row">
+      <div class="menu-no">04.</div>
+      <div class="menu-item">
+        <div class="menu-name">골드 파우더 · Gold Dust</div>
+        <div class="menu-desc">누드 베이스 + 골드 미세 글리터 팁</div>
+      </div>
+      <div class="menu-price">₩72,000 <em>· 90분</em></div>
+    </div>
+    <div class="menu-row">
+      <div class="menu-no">05.</div>
+      <div class="menu-item">
+        <div class="menu-name">자개 아트 · Mother-of-Pearl</div>
+        <div class="menu-desc">은은한 자개 레이어. 포인트 또는 전체</div>
+      </div>
+      <div class="menu-price">₩85,000 <em>· 110분</em></div>
+    </div>
+    <div class="menu-row">
+      <div class="menu-no">06.</div>
+      <div class="menu-item">
+        <div class="menu-name">풋 케어 · Pedicure Care</div>
+        <div class="menu-desc">각질 제거 + 큐티클 + 원톤 젤</div>
+      </div>
+      <div class="menu-price">₩55,000 <em>· 70분</em></div>
+    </div>
+    <div class="menu-row">
+      <div class="menu-no">07.</div>
+      <div class="menu-item">
+        <div class="menu-name">리무브 · Soak-off</div>
+        <div class="menu-desc">기존 젤 제거 + 큐티클 케어</div>
+      </div>
+      <div class="menu-price">₩15,000 <em>· 30분</em></div>
+    </div>
+    <div class="menu-row">
+      <div class="menu-no">08.</div>
+      <div class="menu-item">
+        <div class="menu-name">브라이덜 · Bridal Package</div>
+        <div class="menu-desc">상담 + 스킨케어 + 맞춤 디자인</div>
+      </div>
+      <div class="menu-price">₩135,000 <em>· 150분</em></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ───── GALLERY ───── -->
+<section class="section gallery" id="gallery"><div class="wrap">
+  <div class="eyebrow">Gallery · 시그니처 룩</div>
+  <h2 class="section-title">지난 손끝의 <em>기록들</em></h2>
+  <p class="section-lede">매달 새로 업데이트되는 시그니처 룩. 인스타그램 @moodnail.jeju 에서 더 많은 예시를 보실 수 있어요.</p>
+
+  <div class="gallery-grid">
+    <!-- 01 tall -->
+    <div class="gallery-item tall">
+      <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5E3D6"/><stop offset="1" stop-color="#E2B8A5"/></linearGradient></defs>
+        <rect width="200" height="260" fill="url(#g1)"/>
+        <!-- 5 nail swatches arranged -->
+        <g>
+          <ellipse cx="50" cy="120" rx="14" ry="22" fill="#E8B0A0"/>
+          <ellipse cx="100" cy="100" rx="14" ry="24" fill="#D89584"/>
+          <ellipse cx="150" cy="120" rx="14" ry="22" fill="#E8B0A0"/>
+          <ellipse cx="75" cy="180" rx="14" ry="22" fill="#D89584"/>
+          <ellipse cx="125" cy="180" rx="14" ry="22" fill="#C8826F"/>
+        </g>
+        <text x="15" y="245" font-family="Cormorant" font-style="italic" font-size="11" fill="#2B201C">signature № 01 · rose</text>
+      </svg>
+      <div class="gallery-caption">№ 01 · rose</div>
+    </div>
+    <!-- 02 -->
+    <div class="gallery-item">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="200" fill="#F5EADE"/>
+        <ellipse cx="60" cy="100" rx="14" ry="22" fill="#EDDBC5"/>
+        <ellipse cx="100" cy="90" rx="14" ry="24" fill="#E3CDB5"/>
+        <ellipse cx="140" cy="100" rx="14" ry="22" fill="#EDDBC5"/>
+        <!-- french tip -->
+        <path d="M 86 66 Q 100 60 114 66 Q 114 72 100 73 Q 86 72 86 66 Z" fill="#F5EADE"/>
+      </svg>
+      <div class="gallery-caption">№ 02 · french</div>
+    </div>
+    <!-- 03 -->
+    <div class="gallery-item">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="mag" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B8AED0"/><stop offset="1" stop-color="#7A6F95"/></linearGradient></defs>
+        <rect width="200" height="200" fill="#E8E1E5"/>
+        <ellipse cx="60" cy="100" rx="14" ry="22" fill="url(#mag)"/>
+        <ellipse cx="100" cy="90" rx="14" ry="24" fill="url(#mag)"/>
+        <ellipse cx="140" cy="100" rx="14" ry="22" fill="url(#mag)"/>
+        <!-- shimmer streak -->
+        <path d="M 54 95 Q 60 92 66 95" stroke="#F0E8DB" stroke-width="1.5" fill="none" opacity="0.7"/>
+        <path d="M 94 85 Q 100 82 106 85" stroke="#F0E8DB" stroke-width="1.5" fill="none" opacity="0.7"/>
+        <path d="M 134 95 Q 140 92 146 95" stroke="#F0E8DB" stroke-width="1.5" fill="none" opacity="0.7"/>
+      </svg>
+      <div class="gallery-caption">№ 03 · magnet</div>
+    </div>
+    <!-- 04 -->
+    <div class="gallery-item">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="200" fill="#F0E3D1"/>
+        <ellipse cx="60" cy="100" rx="14" ry="22" fill="#E0C8AA"/>
+        <ellipse cx="100" cy="90" rx="14" ry="24" fill="#D4B88E"/>
+        <ellipse cx="140" cy="100" rx="14" ry="22" fill="#E0C8AA"/>
+        <!-- gold dust tip -->
+        <g fill="#D9B675">
+          <circle cx="100" cy="68" r="1.2"/><circle cx="96" cy="72" r="1"/><circle cx="104" cy="71" r="1"/>
+          <circle cx="60" cy="80" r="1"/><circle cx="64" cy="84" r="0.8"/><circle cx="56" cy="82" r="0.8"/>
+          <circle cx="140" cy="80" r="1"/><circle cx="144" cy="82" r="0.8"/><circle cx="136" cy="84" r="0.8"/>
+        </g>
+      </svg>
+      <div class="gallery-caption">№ 04 · gold dust</div>
+    </div>
+    <!-- 05 -->
+    <div class="gallery-item">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="200" fill="#E9E1D0"/>
+        <ellipse cx="60" cy="100" rx="14" ry="22" fill="#F0E5D0"/>
+        <ellipse cx="100" cy="90" rx="14" ry="24" fill="#F0E5D0"/>
+        <ellipse cx="140" cy="100" rx="14" ry="22" fill="#F0E5D0"/>
+        <!-- pearl specks -->
+        <g fill="#C0C8D8" opacity="0.75">
+          <circle cx="58" cy="96" r="1.5"/><circle cx="62" cy="104" r="1"/>
+          <circle cx="98" cy="88" r="1.5"/><circle cx="102" cy="96" r="1"/>
+          <circle cx="138" cy="96" r="1.5"/><circle cx="142" cy="104" r="1"/>
+        </g>
+      </svg>
+      <div class="gallery-caption">№ 05 · pearl</div>
+    </div>
+    <!-- 06 -->
+    <div class="gallery-item">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="200" fill="#E5D1C6"/>
+        <ellipse cx="60" cy="100" rx="14" ry="22" fill="#C88572"/>
+        <ellipse cx="100" cy="90" rx="14" ry="24" fill="#C88572"/>
+        <ellipse cx="140" cy="100" rx="14" ry="22" fill="#C88572"/>
+        <!-- dot cluster art -->
+        <g fill="#F5E8DF">
+          <circle cx="100" cy="85" r="1.5"/><circle cx="104" cy="90" r="1"/>
+          <circle cx="96" cy="90" r="1"/>
+        </g>
+      </svg>
+      <div class="gallery-caption">№ 06 · terracotta</div>
+    </div>
+    <!-- 07 -->
+    <div class="gallery-item">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="200" fill="#EDDCCB"/>
+        <ellipse cx="60" cy="100" rx="14" ry="22" fill="#E0C5AE"/>
+        <ellipse cx="100" cy="90" rx="14" ry="24" fill="#E0C5AE"/>
+        <ellipse cx="140" cy="100" rx="14" ry="22" fill="#E0C5AE"/>
+        <!-- gold line -->
+        <line x1="86" y1="76" x2="114" y2="76" stroke="#D9B675" stroke-width="1.2"/>
+        <line x1="46" y1="86" x2="74" y2="86" stroke="#D9B675" stroke-width="1.2"/>
+        <line x1="126" y1="86" x2="154" y2="86" stroke="#D9B675" stroke-width="1.2"/>
+      </svg>
+      <div class="gallery-caption">№ 07 · line</div>
+    </div>
+    <!-- 08 -->
+    <div class="gallery-item">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="mauve" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BFA0A8"/><stop offset="1" stop-color="#8A6B74"/></linearGradient></defs>
+        <rect width="200" height="200" fill="#E4D4D7"/>
+        <ellipse cx="60" cy="100" rx="14" ry="22" fill="url(#mauve)"/>
+        <ellipse cx="100" cy="90" rx="14" ry="24" fill="url(#mauve)"/>
+        <ellipse cx="140" cy="100" rx="14" ry="22" fill="url(#mauve)"/>
+      </svg>
+      <div class="gallery-caption">№ 08 · mauve</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ───── ARTIST ───── -->
+<section class="section" id="artist"><div class="wrap">
+  <div class="eyebrow">Artist · 원장</div>
+  <h2 class="section-title">8년의 손,<br><em>같이 톤을 찾아드릴게요</em></h2>
+
+  <div class="about-grid">
+    <div class="artist-img">
+      <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="studio" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F5EADE"/>
+            <stop offset="1" stop-color="#E0C4B5"/>
+          </linearGradient>
+          <linearGradient id="skinArt" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F5D8C3"/>
+            <stop offset="1" stop-color="#D9B398"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="500" fill="url(#studio)"/>
+        <!-- window light -->
+        <polygon points="0,0 220,0 120,500 0,500" fill="#FBF6F0" opacity="0.5"/>
+
+        <!-- Abstract bust silhouette -->
+        <!-- hair -->
+        <path d="M 140 150 Q 200 70 280 100 Q 340 140 325 220 Q 340 280 320 360 L 310 380 L 300 300 Q 275 250 245 255 Q 215 255 210 230 Q 180 220 180 260 L 170 340 L 150 360 L 140 280 Q 130 220 140 150 Z" fill="#3E2A22"/>
+        <!-- face -->
+        <ellipse cx="225" cy="200" rx="48" ry="58" fill="url(#skinArt)"/>
+        <!-- neck -->
+        <path d="M 210 250 L 240 250 L 248 290 L 202 290 Z" fill="url(#skinArt)"/>
+        <!-- shirt cream -->
+        <path d="M 150 290 L 300 290 L 330 500 L 120 500 Z" fill="#F0E3D1"/>
+        <!-- subtle face features -->
+        <ellipse cx="210" cy="200" rx="2" ry="3" fill="#3E2A22"/>
+        <ellipse cx="242" cy="200" rx="2" ry="3" fill="#3E2A22"/>
+        <path d="M 218 228 Q 225 233 232 228" fill="none" stroke="#B08A7E" stroke-width="1.2"/>
+        <!-- earring -->
+        <circle cx="182" cy="215" r="3" fill="#D9B675"/>
+        <circle cx="270" cy="215" r="3" fill="#D9B675"/>
+
+        <!-- working hand lower left holding brush -->
+        <g transform="translate(90 440) rotate(-15)">
+          <!-- forearm -->
+          <rect x="0" y="-30" width="120" height="30" rx="8" fill="url(#skinArt)"/>
+          <!-- brush -->
+          <rect x="110" y="-40" width="50" height="6" fill="#6B4A30"/>
+          <rect x="155" y="-42" width="12" height="10" rx="2" fill="#D9B675"/>
+          <path d="M 167 -37 L 180 -34" stroke="#3A2820" stroke-width="2"/>
+        </g>
+
+        <!-- polish bottles on side -->
+        <g transform="translate(320 350)">
+          <rect x="0" y="0" width="28" height="45" fill="#E5B0A2"/>
+          <rect x="5" y="-10" width="18" height="12" fill="#3A2820"/>
+          <rect x="40" y="5" width="28" height="40" fill="#D89584"/>
+          <rect x="45" y="-4" width="18" height="10" fill="#3A2820"/>
+        </g>
+      </svg>
+    </div>
+
+    <div>
+      <div class="artist-name">이지우 · LEE JIWOO</div>
+      <div class="artist-role">Founder & Nail Artist</div>
+      <p class="artist-desc">
+        "매번 새 컬러에 흔들리지 마세요. 손 모양·손톱 길이·피부 톤에
+        맞는 베이스를 찾으시면, 그 안에서 자유롭게 무드를 바꿀 수 있거든요.
+        첫 예약은 꼭 20분 상담부터 시작합니다."
+      </p>
+      <ul class="artist-list">
+        <li><dt>Career</dt><dd>강남 소재 네일샵 7년 · 2024년 제주 독립</dd></li>
+        <li><dt>Certification</dt><dd>한국 네일테크니션 1급 · CND 어드밴스드</dd></li>
+        <li><dt>Specialty</dt><dd>뉴트럴 원톤 · 매그넷 · 자개 아트</dd></li>
+        <li><dt>Instagram</dt><dd>@moodnail.jeju · 지금까지 1,400 손</dd></li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- ───── VISIT ───── -->
+<section class="visit" id="visit"><div class="wrap">
+  <div class="eyebrow">Visit · 예약</div>
+  <h2 class="section-title">예약은 <em>카카오톡</em>으로</h2>
+  <p class="section-lede" style="color:rgba(251,246,240,0.82)">
+    매주 월요일 오전 10시, 다음 주 예약을 오픈합니다.
+    카카오톡 또는 인스타그램 DM으로 원하시는 시술과 날짜를 알려주세요.
+  </p>
+
+  <div class="visit-grid">
+    <dl class="info-box">
+      <div class="info-row"><dt>주소</dt><dd>제주시 연동 연북로 00-00 3층 MOOD<br>(주차 가능 · 연동초등학교 옆)</dd></div>
+      <div class="info-row"><dt>영업시간</dt><dd>화–토 · 10:30 – 19:30 · 일·월 정기 휴무</dd></div>
+      <div class="info-row"><dt>예약</dt><dd>카카오톡 · 인스타그램 DM</dd></div>
+      <div class="info-row"><dt>취소</dt><dd>시술 24시간 전까지 무료</dd></div>
+      <div class="info-row"><dt>결제</dt><dd>카드 · 현금 · 계좌이체</dd></div>
+    </dl>
+
+    <div class="visit-actions">
+      <a href="#" class="v-btn primary">카카오톡 예약 문의 →</a>
+      <a href="#" class="v-btn line">Instagram @moodnail.jeju</a>
+      <a href="#" class="v-btn line">전화 010-0000-0000</a>
+      <p class="visit-note">
+        당일 예약은 어렵습니다. 최소 3일 전 문의 부탁드려요.<br>
+        브라이덜·시술 2인 동반은 사전 협의 필요.
+      </p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ───── FOOTER ───── -->
+<footer class="footer"><div class="wrap footer-inner">
+  <div>
+    <div class="footer-brand">mood nail · 무드 네일</div>
+    <div>제주시 연동 연북로 · 운영 이지우 · hello@moodnail.kr</div>
+  </div>
+  <div style="text-align:right">© 2026 Mood Nail. Sample site by LocalBoost.</div>
+</div></footer>
+
+</body>
+</html>

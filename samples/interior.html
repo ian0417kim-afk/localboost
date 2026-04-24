@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>단담 스튜디오 · DANDAM STUDIO — 주거·상업 인테리어</title>
+<meta name="description" content="단정하고 담백한 공간을 설계합니다. 주거, 상업, 세컨드 하우스 인테리어·건축 스튜디오.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=Fraunces:ital,opsz,wght@1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+:root{
+  --paper:#FAFAFA;
+  --paper-2:#F1EEE8;
+  --ink:#0E0E10;
+  --ink-2:#2A2A2E;
+  --ink-soft:#6B6B72;
+  --line:#D4D0C8;
+  --line-soft:#E8E4DC;
+  --concrete:#8E8A80;
+  --sand:#D4C4A8;
+  --warm:#C2725A;
+  --warm-deep:#8E4F3B;
+  --serif:'Fraunces',Georgia,serif;
+  --display:'Archivo','Pretendard',-apple-system,sans-serif;
+  --sans:'Pretendard',-apple-system,sans-serif;
+}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:15px;line-height:1.7;letter-spacing:-0.005em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+@media(max-width:640px){.wrap{padding:0 20px}}
+
+/* ───── Nav ───── */
+.nav{padding:28px 0;border-bottom:1px solid var(--line-soft)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center}
+.brand{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:0.02em}
+.brand-sub{color:var(--ink-soft);font-weight:400;margin-left:8px}
+.nav-links{display:flex;gap:28px;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.08em}
+.nav-links a:hover{color:var(--ink)}
+@media(max-width:720px){.nav-links{display:none}}
+
+/* ───── Hero ───── */
+.hero{padding:72px 0 0;position:relative}
+.hero-head{display:flex;align-items:center;gap:32px;margin-bottom:64px}
+.hero-firm{font-family:var(--display);font-weight:500;font-size:14px;letter-spacing:0.02em;white-space:nowrap}
+.hero-divider{flex:1;height:1px;background:var(--ink)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-end}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+.hero-title{font-family:var(--display);font-weight:900;font-size:clamp(88px,13vw,176px);line-height:0.88;letter-spacing:-0.04em;color:var(--ink)}
+.hero-title .year{display:block}
+.hero-title .label{display:block}
+.hero-visuals{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.hero-visual{aspect-ratio:1/1;position:relative;overflow:hidden}
+.hero-visual svg{width:100%;height:100%;display:block}
+
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;margin-top:56px;padding-bottom:64px}
+.hero-sub{max-width:460px;font-size:15px;color:var(--ink-2);line-height:1.75}
+.hero-sub strong{color:var(--ink);font-weight:500}
+.btn-ghost{display:inline-flex;align-items:center;gap:14px;padding:14px 26px;border:1px solid var(--ink);font-family:var(--display);font-weight:500;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;transition:background .2s,color .2s}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+
+/* ───── Section ───── */
+.section{padding:96px 0;border-top:1px solid var(--line-soft)}
+.sec-head{display:flex;align-items:center;gap:32px;margin-bottom:56px}
+.sec-label{font-family:var(--display);font-weight:500;font-size:13px;letter-spacing:0.02em}
+.sec-divider{flex:1;height:1px;background:var(--ink)}
+
+/* ───── Featured Project ───── */
+.featured{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:flex-start}
+@media(max-width:900px){.featured{grid-template-columns:1fr}}
+.featured-main{position:relative;aspect-ratio:4/3;overflow:hidden}
+.featured-main svg{width:100%;height:100%;display:block}
+.featured-side{display:flex;flex-direction:column;gap:32px}
+.featured-plan{aspect-ratio:4/3;border:1px solid var(--line);padding:20px;background:var(--paper)}
+.featured-plan svg{width:100%;height:100%;display:block}
+.featured-caption{text-align:left}
+.featured-title{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px}
+.featured-desc{color:var(--ink-soft);font-size:14px;line-height:1.7;max-width:360px}
+.featured-spec{margin-top:20px;display:grid;grid-template-columns:auto 1fr;gap:8px 24px;font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.08em;font-family:var(--display);font-weight:500}
+.featured-spec dd{color:var(--ink);font-weight:400;text-transform:none;letter-spacing:0}
+
+/* ───── Works Grid ───── */
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 28px}
+@media(max-width:900px){.works{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.works{grid-template-columns:1fr}}
+.work{display:flex;flex-direction:column;gap:14px}
+.work-img{aspect-ratio:4/5;overflow:hidden;position:relative}
+.work-img svg{width:100%;height:100%;display:block}
+.work-no{font-family:var(--display);font-weight:500;font-size:11px;color:var(--ink-soft);letter-spacing:0.12em}
+.work-name{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase}
+.work-meta{font-size:12px;color:var(--ink-soft);display:flex;gap:12px}
+.work-meta span:not(:last-child)::after{content:'·';margin-left:12px;opacity:0.5}
+
+/* ───── Services ───── */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft)}
+@media(max-width:800px){.services-grid{grid-template-columns:1fr}}
+.svc{background:var(--paper);padding:40px 32px;display:flex;flex-direction:column;gap:12px;min-height:240px}
+.svc-no{font-family:var(--display);font-weight:500;font-size:12px;color:var(--ink-soft);letter-spacing:0.1em}
+.svc-name{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-0.01em;margin-top:8px}
+.svc-kr{font-size:13px;color:var(--ink-soft);margin-top:-4px}
+.svc-desc{font-size:13px;color:var(--ink-2);line-height:1.7;margin-top:auto}
+
+/* ───── Contact ───── */
+.contact{padding:120px 0;border-top:1px solid var(--line-soft);background:var(--paper-2)}
+.contact-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:flex-start}
+@media(max-width:800px){.contact-inner{grid-template-columns:1fr;gap:32px}}
+.contact-title{font-family:var(--display);font-weight:900;font-size:clamp(48px,6vw,84px);line-height:0.95;letter-spacing:-0.035em;margin-bottom:24px}
+.contact-sub{color:var(--ink-2);font-size:16px;line-height:1.75;max-width:440px;margin-bottom:32px}
+.contact-box{background:var(--paper);border:1px solid var(--line);padding:36px}
+.contact-row{display:grid;grid-template-columns:90px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line-soft);font-size:14px}
+.contact-row:last-child{border-bottom:none}
+.contact-row dt{color:var(--ink-soft);font-family:var(--display);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;padding-top:3px}
+.contact-row dd{color:var(--ink)}
+
+/* ───── Footer ───── */
+.footer{padding:48px 0 36px;border-top:1px solid var(--line-soft);color:var(--ink-soft);font-size:12px;font-family:var(--display);letter-spacing:0.02em}
+.footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+</style>
+</head>
+<body>
+
+<!-- ───── NAV ───── -->
+<nav class="nav"><div class="wrap nav-inner">
+  <div class="brand">DANDAM STUDIO<span class="brand-sub">· 단담 스튜디오</span></div>
+  <div class="nav-links">
+    <a href="#works">Works</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div></nav>
+
+<!-- ───── HERO ───── -->
+<section class="hero"><div class="wrap">
+  <div class="hero-head">
+    <div class="hero-firm">Dandam Studio, Interior · Architecture</div>
+    <div class="hero-divider"></div>
+  </div>
+
+  <div class="hero-grid">
+    <h1 class="hero-title">
+      <span class="year">2026</span>
+      <span class="label">Portfolio</span>
+    </h1>
+
+    <div class="hero-visuals">
+      <!-- Visual 1: Iso house with warm window glow -->
+      <div class="hero-visual">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#E8E4DC"/>
+              <stop offset="1" stop-color="#C5BFB3"/>
+            </linearGradient>
+            <linearGradient id="warmWin" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#E9AE6E"/>
+              <stop offset="1" stop-color="#B86E3E"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="400" fill="#EDE9E1"/>
+          <!-- Ground -->
+          <polygon points="0,320 400,320 400,400 0,400" fill="#D6CFC1"/>
+          <!-- Iso cube back block -->
+          <polygon points="120,100 250,60 250,230 120,270" fill="#3D3D40"/>
+          <polygon points="250,60 360,100 360,270 250,230" fill="#28282B"/>
+          <polygon points="120,100 250,60 360,100 230,140" fill="#525258"/>
+          <!-- Front block lower -->
+          <polygon points="80,200 200,170 200,300 80,330" fill="#FAFAFA"/>
+          <polygon points="200,170 300,200 300,330 200,300" fill="#E0DCD3"/>
+          <polygon points="80,200 200,170 300,200 180,230" fill="#F1EEE8"/>
+          <!-- Warm window -->
+          <rect x="110" y="240" width="50" height="60" fill="url(#warmWin)"/>
+          <rect x="225" y="230" width="40" height="60" fill="url(#warmWin)" opacity="0.85"/>
+          <rect x="290" y="150" width="42" height="80" fill="url(#warmWin)" opacity="0.7"/>
+          <!-- Tree -->
+          <circle cx="55" cy="300" r="28" fill="#5A5F4E"/>
+          <rect x="52" y="300" width="6" height="30" fill="#3E3A32"/>
+          <!-- Roof detail -->
+          <polygon points="120,100 160,85 280,125 250,135" fill="#1A1A1D" opacity="0.3"/>
+        </svg>
+      </div>
+      <!-- Visual 2: Concrete facade with windows -->
+      <div class="hero-visual">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="conc" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#B5B1A8"/>
+              <stop offset="1" stop-color="#7E7A71"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="400" fill="url(#conc)"/>
+          <!-- concrete texture with subtle vertical lines -->
+          <g opacity="0.25" stroke="#4A4640" stroke-width="0.5">
+            <line x1="60" y1="0" x2="60" y2="400"/>
+            <line x1="140" y1="0" x2="140" y2="400"/>
+            <line x1="250" y1="0" x2="250" y2="400"/>
+            <line x1="330" y1="0" x2="330" y2="400"/>
+          </g>
+          <!-- concrete form dots (tie holes) -->
+          <g fill="#58544B">
+            <circle cx="80" cy="80" r="2"/><circle cx="160" cy="80" r="2"/><circle cx="240" cy="80" r="2"/><circle cx="320" cy="80" r="2"/>
+            <circle cx="80" cy="180" r="2"/><circle cx="160" cy="180" r="2"/><circle cx="240" cy="180" r="2"/><circle cx="320" cy="180" r="2"/>
+            <circle cx="80" cy="280" r="2"/><circle cx="160" cy="280" r="2"/><circle cx="240" cy="280" r="2"/><circle cx="320" cy="280" r="2"/>
+          </g>
+          <!-- Long narrow window -->
+          <rect x="180" y="130" width="160" height="50" fill="#1E1E20"/>
+          <rect x="184" y="134" width="152" height="42" fill="#2F363D"/>
+          <line x1="260" y1="130" x2="260" y2="180" stroke="#F6F4EE" stroke-width="2"/>
+          <!-- Entrance niche -->
+          <rect x="50" y="240" width="90" height="140" fill="#2A2622"/>
+          <rect x="58" y="248" width="74" height="124" fill="#4E463A"/>
+          <!-- Light beam -->
+          <polygon points="140,240 180,260 180,380 140,380" fill="#FAF6EE" opacity="0.14"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <p class="hero-sub">
+      <strong>주거·상업 공간 전문 스튜디오.</strong>
+      콘크리트·우드·빛 세 가지 재료를 기본으로,
+      단정하고 담백한 공간을 설계합니다.
+      2019년부터 약 47개 프로젝트를 진행했습니다.
+    </p>
+    <a href="#works" class="btn-ghost">View Projects <span>→</span></a>
+  </div>
+</div></section>
+
+<!-- ───── FEATURED PROJECT ───── -->
+<section class="section"><div class="wrap">
+  <div class="sec-head">
+    <div class="sec-label">Recent Project</div>
+    <div class="sec-divider"></div>
+  </div>
+
+  <div class="featured">
+    <!-- Main image: concrete + warm interior -->
+    <div class="featured-main">
+      <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#E8E6DF"/>
+            <stop offset="1" stop-color="#CCC8BD"/>
+          </linearGradient>
+          <linearGradient id="warmInt" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#E9B778"/>
+            <stop offset="1" stop-color="#B36F3E"/>
+          </linearGradient>
+        </defs>
+        <rect width="800" height="600" fill="url(#sky2)"/>
+        <!-- Ground shadow -->
+        <rect x="0" y="500" width="800" height="100" fill="#B8B2A5"/>
+        <!-- Back concrete tower -->
+        <rect x="520" y="80" width="220" height="500" fill="#88847A"/>
+        <rect x="520" y="80" width="220" height="500" fill="url(#conc)" opacity="0.5"/>
+        <!-- Vertical window slit in tower -->
+        <rect x="620" y="120" width="30" height="380" fill="#1C1C20"/>
+        <!-- Front block -->
+        <rect x="160" y="200" width="380" height="380" fill="#9B9688"/>
+        <rect x="160" y="200" width="380" height="380" fill="url(#conc)" opacity="0.4"/>
+        <!-- Large glass window with warm interior -->
+        <rect x="200" y="260" width="300" height="220" fill="url(#warmInt)"/>
+        <!-- Window mullions -->
+        <line x1="300" y1="260" x2="300" y2="480" stroke="#4B4138" stroke-width="3"/>
+        <line x1="400" y1="260" x2="400" y2="480" stroke="#4B4138" stroke-width="3"/>
+        <line x1="200" y1="370" x2="500" y2="370" stroke="#4B4138" stroke-width="3"/>
+        <!-- Silhouette in window (person) -->
+        <ellipse cx="340" cy="420" rx="12" ry="34" fill="#3A2820" opacity="0.6"/>
+        <!-- Front overhang wood slab -->
+        <rect x="160" y="200" width="380" height="22" fill="#5E4A36"/>
+        <!-- Entrance -->
+        <rect x="250" y="500" width="60" height="80" fill="#1C1A18"/>
+        <!-- Steps -->
+        <rect x="200" y="560" width="160" height="8" fill="#706B5F"/>
+        <rect x="210" y="572" width="140" height="8" fill="#817C6F"/>
+        <!-- Tree left -->
+        <rect x="90" y="400" width="8" height="160" fill="#2F2B24"/>
+        <ellipse cx="94" cy="380" rx="40" ry="55" fill="#4F5440" opacity="0.85"/>
+        <!-- Small plant right -->
+        <rect x="560" y="540" width="4" height="40" fill="#2F2B24"/>
+        <ellipse cx="562" cy="535" rx="12" ry="16" fill="#5A6048" opacity="0.8"/>
+      </svg>
+    </div>
+
+    <div class="featured-side">
+      <!-- Plan drawing -->
+      <div class="featured-plan">
+        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#0E0E10" stroke-width="1.2">
+          <!-- outer walls -->
+          <rect x="40" y="40" width="320" height="220"/>
+          <!-- interior walls -->
+          <line x1="200" y1="40" x2="200" y2="160"/>
+          <line x1="200" y1="160" x2="360" y2="160"/>
+          <line x1="120" y1="160" x2="120" y2="260"/>
+          <line x1="260" y1="160" x2="260" y2="260"/>
+          <!-- door swings -->
+          <path d="M 200 140 A 20 20 0 0 0 220 160" stroke-width="1"/>
+          <line x1="200" y1="140" x2="200" y2="160" stroke-dasharray="3 3" stroke-width="0.8"/>
+          <path d="M 120 200 A 22 22 0 0 1 142 222" stroke-width="1"/>
+          <!-- bathroom fixtures -->
+          <rect x="268" y="170" width="36" height="60" stroke-width="0.8"/>
+          <circle cx="320" cy="200" r="10" stroke-width="0.8"/>
+          <!-- kitchen counter -->
+          <rect x="50" y="50" width="140" height="16" stroke-width="0.8"/>
+          <circle cx="78" cy="58" r="5" stroke-width="0.6"/>
+          <circle cx="98" cy="58" r="5" stroke-width="0.6"/>
+          <!-- stairs -->
+          <g stroke-width="0.7">
+            <rect x="210" y="170" width="40" height="80"/>
+            <line x1="210" y1="180" x2="250" y2="180"/>
+            <line x1="210" y1="190" x2="250" y2="190"/>
+            <line x1="210" y1="200" x2="250" y2="200"/>
+            <line x1="210" y1="210" x2="250" y2="210"/>
+            <line x1="210" y1="220" x2="250" y2="220"/>
+            <line x1="210" y1="230" x2="250" y2="230"/>
+            <line x1="210" y1="240" x2="250" y2="240"/>
+          </g>
+          <!-- dimensions -->
+          <g font-family="Archivo" font-size="9" fill="#6B6B72" stroke="none">
+            <text x="180" y="30">8.4 m</text>
+            <text x="370" y="155">5.6 m</text>
+            <text x="60" y="280" font-style="italic">Plan — 1F</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="featured-caption">
+        <div class="featured-title">Hannam-Dong Triplex</div>
+        <div class="featured-desc">
+          좁고 긴 대지 위, 세 가족의 세대 분리와
+          공용 중정을 중심으로 구성한 3층 타운하우스.
+          노출 콘크리트와 오크 플로어를 주 재료로 사용했습니다.
+        </div>
+        <dl class="featured-spec">
+          <dt>Location</dt><dd>서울 한남동</dd>
+          <dt>Area</dt><dd>198 m² / 3F</dd>
+          <dt>Year</dt><dd>2025</dd>
+          <dt>Scope</dt><dd>건축 + 인테리어</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ───── SELECTED WORKS ───── -->
+<section class="section" id="works"><div class="wrap">
+  <div class="sec-head">
+    <div class="sec-label">Selected Works</div>
+    <div class="sec-divider"></div>
+  </div>
+
+  <div class="works">
+    <!-- Work 1 -->
+    <div class="work">
+      <div class="work-img">
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="500" fill="#2C2A27"/>
+          <!-- warm interior seen through -->
+          <rect x="40" y="120" width="320" height="260" fill="#E8AB6C"/>
+          <rect x="40" y="120" width="320" height="260" fill="url(#warmWin)" opacity="0.8"/>
+          <!-- window mullions -->
+          <line x1="160" y1="120" x2="160" y2="380" stroke="#1C1914" stroke-width="3"/>
+          <line x1="280" y1="120" x2="280" y2="380" stroke="#1C1914" stroke-width="3"/>
+          <!-- interior silhouette (chair) -->
+          <rect x="190" y="280" width="40" height="60" fill="#2C1D10" opacity="0.6"/>
+          <!-- Overhang -->
+          <rect x="20" y="100" width="360" height="22" fill="#151310"/>
+          <!-- ground -->
+          <rect x="0" y="440" width="400" height="60" fill="#1F1D1A"/>
+          <defs>
+            <linearGradient id="warmWin" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F1BC7A"/>
+              <stop offset="1" stop-color="#9B5A32"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div>
+        <div class="work-no">No. 01</div>
+        <div class="work-name">Seongsu Showroom</div>
+        <div class="work-meta"><span>Seoul</span><span>2025</span><span>Retail</span></div>
+      </div>
+    </div>
+
+    <!-- Work 2 -->
+    <div class="work">
+      <div class="work-img">
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#F4F1EA"/>
+              <stop offset="1" stop-color="#D4CFC2"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="500" fill="url(#bg2)"/>
+          <!-- Iso house -->
+          <polygon points="120,180 240,140 330,180 210,220" fill="#F9F7F1"/>
+          <polygon points="120,180 210,220 210,380 120,340" fill="#E3DED2"/>
+          <polygon points="210,220 330,180 330,340 210,380" fill="#CCC5B5"/>
+          <!-- Roof lines -->
+          <polygon points="120,180 180,160 300,195 240,220" fill="#2F2B24" opacity="0.15"/>
+          <!-- Windows -->
+          <rect x="140" y="240" width="30" height="50" fill="#3A3632"/>
+          <rect x="180" y="260" width="20" height="40" fill="#3A3632"/>
+          <rect x="240" y="250" width="30" height="55" fill="#3A3632"/>
+          <rect x="290" y="240" width="30" height="60" fill="#3A3632"/>
+          <!-- door -->
+          <rect x="150" y="310" width="28" height="54" fill="#1F1C19"/>
+          <!-- ground -->
+          <rect x="0" y="420" width="400" height="80" fill="#BDB7AA"/>
+          <!-- plant -->
+          <ellipse cx="60" cy="440" rx="32" ry="18" fill="#5F6449" opacity="0.7"/>
+        </svg>
+      </div>
+      <div>
+        <div class="work-no">No. 02</div>
+        <div class="work-name">Jeju Second House</div>
+        <div class="work-meta"><span>Jeju</span><span>2025</span><span>Residential</span></div>
+      </div>
+    </div>
+
+    <!-- Work 3 -->
+    <div class="work">
+      <div class="work-img">
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="500" fill="#DFDAD0"/>
+          <!-- Stair -->
+          <g>
+            <polygon points="100,420 180,400 180,420 100,440" fill="#8A7A60"/>
+            <polygon points="120,400 200,380 200,400 120,420" fill="#9B8A6E"/>
+            <polygon points="140,380 220,360 220,380 140,400" fill="#A89778"/>
+            <polygon points="160,360 240,340 240,360 160,380" fill="#B6A586"/>
+            <polygon points="180,340 260,320 260,340 180,360" fill="#C2B28F"/>
+            <polygon points="200,320 280,300 280,320 200,340" fill="#CEBC9A"/>
+            <polygon points="220,300 300,280 300,300 220,320" fill="#D8C5A2"/>
+            <polygon points="240,280 320,260 320,280 240,300" fill="#E2CEA9"/>
+          </g>
+          <!-- glass railing -->
+          <line x1="100" y1="425" x2="240" y2="290" stroke="#8A8A8A" stroke-width="1" opacity="0.5"/>
+          <line x1="180" y1="420" x2="320" y2="285" stroke="#8A8A8A" stroke-width="1" opacity="0.5"/>
+          <!-- wall -->
+          <polygon points="320,0 400,0 400,260 320,280" fill="#4A463F"/>
+          <polygon points="0,0 320,0 320,280 240,300 160,340 100,420 0,420" fill="#B4AD9F"/>
+          <!-- LED light strips -->
+          <rect x="340" y="60" width="2" height="70" fill="#FAF4E6"/>
+          <rect x="360" y="40" width="2" height="100" fill="#FAF4E6"/>
+          <rect x="380" y="80" width="2" height="60" fill="#FAF4E6"/>
+          <!-- chair -->
+          <ellipse cx="55" cy="430" rx="22" ry="16" fill="#2F4A50"/>
+          <rect x="45" y="410" width="20" height="28" fill="#2F4A50"/>
+          <!-- floor -->
+          <rect x="0" y="440" width="400" height="60" fill="#867D6C"/>
+        </svg>
+      </div>
+      <div>
+        <div class="work-no">No. 03</div>
+        <div class="work-name">Hannam Triplex</div>
+        <div class="work-meta"><span>Seoul</span><span>2025</span><span>Residential</span></div>
+      </div>
+    </div>
+
+    <!-- Work 4 -->
+    <div class="work">
+      <div class="work-img">
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="500" fill="#F3EFE7"/>
+          <!-- office interior — concrete columns -->
+          <rect x="60" y="80" width="24" height="340" fill="#8A857A"/>
+          <rect x="200" y="80" width="24" height="340" fill="#8A857A"/>
+          <rect x="316" y="80" width="24" height="340" fill="#8A857A"/>
+          <!-- ceiling -->
+          <rect x="0" y="80" width="400" height="30" fill="#D6D0C2"/>
+          <!-- floor -->
+          <rect x="0" y="420" width="400" height="80" fill="#B5A88C"/>
+          <!-- desk -->
+          <rect x="100" y="330" width="200" height="8" fill="#4A3C2A"/>
+          <rect x="110" y="338" width="4" height="90" fill="#3A2F21"/>
+          <rect x="286" y="338" width="4" height="90" fill="#3A2F21"/>
+          <!-- pendant lights -->
+          <line x1="150" y1="110" x2="150" y2="230" stroke="#3A3A3A" stroke-width="1"/>
+          <polygon points="138,230 162,230 158,250 142,250" fill="#CCC5B5"/>
+          <circle cx="150" cy="252" r="4" fill="#F1B978"/>
+          <line x1="260" y1="110" x2="260" y2="230" stroke="#3A3A3A" stroke-width="1"/>
+          <polygon points="248,230 272,230 268,250 252,250" fill="#CCC5B5"/>
+          <circle cx="260" cy="252" r="4" fill="#F1B978"/>
+          <!-- chair -->
+          <ellipse cx="180" cy="400" rx="18" ry="10" fill="#2A2A30"/>
+          <rect x="172" y="370" width="16" height="32" fill="#2A2A30"/>
+        </svg>
+      </div>
+      <div>
+        <div class="work-no">No. 04</div>
+        <div class="work-name">Seochon Office Remodel</div>
+        <div class="work-meta"><span>Seoul</span><span>2024</span><span>Commercial</span></div>
+      </div>
+    </div>
+
+    <!-- Work 5 -->
+    <div class="work">
+      <div class="work-img">
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="spot" cx="0.5" cy="0.2" r="0.6">
+              <stop offset="0" stop-color="#F8F2E4" stop-opacity="0.95"/>
+              <stop offset="1" stop-color="#F8F2E4" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="400" height="500" fill="#9E988A"/>
+          <!-- Concrete walls -->
+          <rect width="400" height="500" fill="url(#conc)" opacity="0.35"/>
+          <!-- Light from above -->
+          <polygon points="140,0 260,0 320,500 80,500" fill="url(#spot)"/>
+          <!-- subtle light pattern -->
+          <g fill="#F8F2E4" opacity="0.12">
+            <circle cx="180" cy="300" r="22"/>
+            <circle cx="220" cy="340" r="14"/>
+            <circle cx="160" cy="370" r="10"/>
+            <circle cx="240" cy="380" r="18"/>
+          </g>
+          <!-- corner line -->
+          <line x1="200" y1="0" x2="200" y2="500" stroke="#4F4B42" stroke-width="0.6" opacity="0.3"/>
+        </svg>
+      </div>
+      <div>
+        <div class="work-no">No. 05</div>
+        <div class="work-name">Light Chamber — Study</div>
+        <div class="work-meta"><span>Gyeonggi</span><span>2024</span><span>Private</span></div>
+      </div>
+    </div>
+
+    <!-- Work 6 -->
+    <div class="work">
+      <div class="work-img">
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="500" fill="#EEE8DC"/>
+          <!-- Pendant lamp -->
+          <line x1="200" y1="0" x2="200" y2="180" stroke="#2A2622" stroke-width="2"/>
+          <!-- socket -->
+          <rect x="188" y="180" width="24" height="14" fill="#2A2622"/>
+          <!-- glass shade -->
+          <path d="M 140 200 Q 200 260 260 200 L 240 260 L 160 260 Z" fill="#8A8278" opacity="0.4" stroke="#55504A" stroke-width="1"/>
+          <!-- bulb glow -->
+          <circle cx="200" cy="240" r="14" fill="#F5C87A"/>
+          <circle cx="200" cy="240" r="22" fill="#F5C87A" opacity="0.3"/>
+          <!-- Wooden shelf -->
+          <rect x="60" y="360" width="280" height="10" fill="#6E5A3C"/>
+          <!-- objects on shelf -->
+          <rect x="90" y="320" width="18" height="40" fill="#3C3A34"/>
+          <ellipse cx="145" cy="345" rx="16" ry="14" fill="#C2725A"/>
+          <rect x="190" y="310" width="24" height="50" fill="#2C4A50"/>
+          <rect x="250" y="325" width="14" height="35" fill="#8E8A80"/>
+        </svg>
+      </div>
+      <div>
+        <div class="work-no">No. 06</div>
+        <div class="work-name">Material Study 02</div>
+        <div class="work-meta"><span>Studio</span><span>2024</span><span>Research</span></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ───── SERVICES ───── -->
+<section class="section" id="services"><div class="wrap">
+  <div class="sec-head">
+    <div class="sec-label">Services</div>
+    <div class="sec-divider"></div>
+  </div>
+
+  <div class="services-grid">
+    <div class="svc">
+      <div class="svc-no">01 · Residential</div>
+      <div class="svc-name">주거 인테리어</div>
+      <div class="svc-kr">Apartment · House · Villa</div>
+      <div class="svc-desc">
+        구조 검토부터 시공·감리까지 전 과정.
+        30평~80평 규모 단독·타운하우스를
+        주로 다룹니다.
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-no">02 · Commercial</div>
+      <div class="svc-name">상업 공간</div>
+      <div class="svc-kr">Retail · Office · Café</div>
+      <div class="svc-desc">
+        브랜드 정체성을 공간 언어로 번역합니다.
+        쇼룸, 플래그십 스토어, 스몰 오피스
+        프로젝트 위주.
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-no">03 · Second Home</div>
+      <div class="svc-name">세컨드 하우스</div>
+      <div class="svc-kr">Jeju · Gangwon · Coastal</div>
+      <div class="svc-desc">
+        제주·강원 중심의 세컨드 홈 신축과
+        전면 리모델링. 지역 건축 허가·
+        시공 협력사 네트워크 보유.
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ───── CONTACT ───── -->
+<section class="contact" id="contact"><div class="wrap contact-inner">
+  <div>
+    <div class="sec-label" style="margin-bottom:24px">Inquiry</div>
+    <h2 class="contact-title">Begin<br>with a <em style="font-family:var(--serif);font-style:italic;font-weight:300">conversation</em></h2>
+    <p class="contact-sub">
+      프로젝트 브리핑과 견적은 무료입니다.
+      대지 주소, 평수, 원하는 일정 정도만 먼저 알려주세요.
+      첫 미팅은 줌 또는 스튜디오에서 진행합니다.
+    </p>
+    <a href="#" class="btn-ghost" style="border-color:var(--ink);color:var(--ink)">Start a Project <span>→</span></a>
+  </div>
+
+  <dl class="contact-box">
+    <div class="contact-row"><dt>Email</dt><dd>studio@dandam.kr</dd></div>
+    <div class="contact-row"><dt>Phone</dt><dd>02-0000-0000</dd></div>
+    <div class="contact-row"><dt>Studio</dt><dd>서울 성동구 연무장길 단담빌딩 3F</dd></div>
+    <div class="contact-row"><dt>Hours</dt><dd>MON–FRI · 10:00–18:00</dd></div>
+    <div class="contact-row"><dt>Instagram</dt><dd>@dandam.studio</dd></div>
+  </dl>
+</div></section>
+
+<!-- ───── FOOTER ───── -->
+<footer class="footer"><div class="wrap footer-inner">
+  <div>© 2026 DANDAM STUDIO · 단담 스튜디오</div>
+  <div>Sample site built by LocalBoost</div>
+</div></footer>
+
+</body>
+</html>
