@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오름 · OREUM STAY — 제주 동부 억새밭 힐탑 스테이</title>
+<meta name="description" content="제주 동부 오름 자락. 억새밭·노을·한라산 능선이 창으로 들어오는 힐탑 부티크 스테이.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+:root{
+  --paper:#F6F0E2;
+  --paper-2:#EDE4CF;
+  --cream:#FBF6E8;
+  --wheat:#D8C48A;
+  --wheat-deep:#A88E4E;
+  --earth:#8A6B3E;
+  --earth-deep:#5E4528;
+  --sunset:#C47954;
+  --sunset-deep:#8E4F35;
+  --ink:#2A1F14;
+  --ink-2:#4A3A2A;
+  --ink-soft:#8A7A62;
+  --line:#D6C8A8;
+  --serif:'Fraunces','Noto Serif KR',Georgia,serif;
+  --sans:'Pretendard',-apple-system,sans-serif;
+}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:15px;line-height:1.8;letter-spacing:-0.008em}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+@media(max-width:640px){.wrap{padding:0 22px}}
+
+.nav{padding:26px 0;position:absolute;top:0;left:0;right:0;z-index:10}
+.nav-inner{display:flex;justify-content:space-between;align-items:center}
+.brand{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--cream);letter-spacing:0.02em}
+.brand em{font-style:italic;font-weight:300}
+.nav-links{display:flex;gap:26px;font-size:12px;color:rgba(251,246,232,0.85);letter-spacing:0.08em;text-transform:uppercase}
+@media(max-width:720px){.nav-links{display:none}}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;padding-bottom:80px}
+.hero-bg{position:absolute;inset:0;z-index:1}
+.hero-bg svg{width:100%;height:100%}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,31,20,0.1) 0%,rgba(42,31,20,0.05) 40%,rgba(42,31,20,0.7) 100%);z-index:2}
+.hero-content{position:relative;z-index:3;color:var(--cream);width:100%}
+.hero-eyebrow{font-family:var(--serif);font-style:italic;font-size:14px;color:rgba(251,246,232,0.82);display:inline-flex;align-items:center;gap:14px;margin-bottom:28px}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:rgba(251,246,232,0.65)}
+.hero-title{font-family:var(--serif);font-weight:300;font-size:clamp(56px,8vw,120px);line-height:0.98;letter-spacing:-0.03em;margin-bottom:28px}
+.hero-title em{font-style:italic;display:block}
+.hero-sub{max-width:500px;font-size:16px;color:rgba(251,246,232,0.9);line-height:1.85;margin-bottom:40px}
+.hero-cta{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:var(--ink);padding:18px 32px;border-radius:999px;font-size:14px;font-weight:500;transition:transform .25s}
+.hero-cta:hover{transform:translateX(4px)}
+
+.section{padding:110px 0}
+.section.alt{background:var(--paper-2)}
+.eyebrow{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--sunset-deep);margin-bottom:16px;display:inline-flex;align-items:center;gap:14px}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--sunset-deep)}
+.section-title{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.8vw,64px);line-height:1.08;letter-spacing:-0.025em;margin-bottom:18px}
+.section-title em{font-style:italic;font-weight:300;color:var(--sunset-deep)}
+.section-lede{color:var(--ink-2);font-size:16px;line-height:1.85;max-width:620px}
+
+/* Suites */
+.suites{display:grid;gap:52px;margin-top:56px}
+.suite{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.suite:nth-child(even){grid-template-columns:1fr 1.1fr}
+.suite:nth-child(even) .suite-media{order:2}
+@media(max-width:900px){.suite,.suite:nth-child(even){grid-template-columns:1fr}.suite:nth-child(even) .suite-media{order:0}}
+.suite-media{aspect-ratio:5/4;overflow:hidden;border-radius:6px}
+.suite-media svg{width:100%;height:100%}
+.suite-no{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--sunset-deep);margin-bottom:10px}
+.suite-name{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,40px);letter-spacing:-0.02em;margin-bottom:14px}
+.suite-name em{font-style:italic;color:var(--sunset-deep)}
+.suite-desc{color:var(--ink-2);font-size:15px;line-height:1.85;max-width:460px;margin-bottom:20px}
+.suite-specs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 24px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:13px;margin-bottom:18px}
+.suite-spec dt{color:var(--ink-soft);font-family:var(--serif);font-style:italic;font-size:12px;margin-bottom:2px}
+.suite-spec dd{color:var(--ink);font-weight:500}
+.suite-price{font-family:var(--serif);font-size:19px;color:var(--earth-deep)}
+.suite-price em{font-style:italic;font-size:12px;color:var(--ink-soft);margin-left:6px;font-weight:300}
+
+/* Experience */
+.experience{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+@media(max-width:800px){.experience{grid-template-columns:1fr}}
+.exp{background:var(--cream);border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.exp-img{aspect-ratio:5/4}
+.exp-img svg{width:100%;height:100%}
+.exp-body{padding:24px}
+.exp-no{font-family:var(--serif);font-style:italic;font-size:12px;color:var(--sunset-deep);margin-bottom:8px}
+.exp-name{font-family:var(--serif);font-size:20px;font-weight:400;margin-bottom:8px}
+.exp-desc{font-size:13px;color:var(--ink-2);line-height:1.75}
+
+/* Booking */
+.booking{background:var(--earth-deep);color:var(--cream);padding:100px 0}
+.booking .eyebrow{color:var(--wheat)}
+.booking .eyebrow::before{background:var(--wheat)}
+.booking .section-title{color:var(--cream)}
+.booking .section-title em{color:var(--wheat)}
+.booking-inner{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;margin-top:48px;align-items:flex-start}
+@media(max-width:800px){.booking-inner{grid-template-columns:1fr}}
+.rates{display:flex;flex-direction:column}
+.rate{display:grid;grid-template-columns:auto 1fr auto;gap:18px;padding:20px 0;border-bottom:1px solid rgba(216,196,138,0.2);align-items:baseline}
+.rate:first-child{border-top:1px solid rgba(216,196,138,0.2)}
+.rate-label{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--wheat);min-width:70px}
+.rate-name{font-family:var(--serif);font-size:17px}
+.rate-amt{font-family:var(--serif);font-size:19px}
+.rate-amt em{font-style:normal;font-size:12px;color:rgba(216,196,138,0.65);margin-left:4px}
+.actions{display:flex;flex-direction:column;gap:12px}
+.btn{padding:17px 26px;border-radius:6px;font-size:14px;font-weight:500;text-align:center}
+.btn.primary{background:var(--wheat);color:var(--ink)}
+.btn.ghost{background:transparent;border:1px solid rgba(216,196,138,0.4);color:var(--cream)}
+.note{margin-top:14px;font-size:12px;color:rgba(216,196,138,0.7);font-family:var(--serif);font-style:italic;line-height:1.85}
+.footer{padding:44px 0 32px;background:var(--ink);color:rgba(216,196,138,0.55);font-size:12px}
+.footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-brand{font-family:var(--serif);color:var(--cream);font-size:17px;margin-bottom:4px}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap nav-inner">
+  <a href="#" class="brand">OREUM<em> · 오름</em></a>
+  <div class="nav-links">
+    <a href="#suites">Suites</a>
+    <a href="#experience">Experience</a>
+    <a href="#booking">Booking</a>
+  </div>
+</div></nav>
+
+<!-- HERO — 억새밭 선셋 오름 -->
+<section class="hero">
+  <div class="hero-bg">
+    <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="sunsetSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#E8C598"/>
+          <stop offset="0.4" stop-color="#D4875A"/>
+          <stop offset="0.75" stop-color="#A0563C"/>
+          <stop offset="1" stop-color="#5E3828"/>
+        </linearGradient>
+        <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#C8A870"/>
+          <stop offset="0.5" stop-color="#9E8250"/>
+          <stop offset="1" stop-color="#5E4530"/>
+        </linearGradient>
+      </defs>
+      <rect width="1920" height="1080" fill="url(#sunsetSky)"/>
+      <!-- Sun -->
+      <circle cx="1400" cy="480" r="80" fill="#F8DAA6" opacity="0.95"/>
+      <circle cx="1400" cy="480" r="120" fill="#F8DAA6" opacity="0.3"/>
+      <!-- Hallasan silhouette -->
+      <polygon points="0,540 250,420 500,480 800,380 1100,470 1400,400 1700,460 1920,440 1920,620 0,620" fill="#3E2E20" opacity="0.7"/>
+      <polygon points="0,600 200,520 500,560 900,500 1300,540 1700,510 1920,530 1920,680 0,680" fill="#2A1F14" opacity="0.8"/>
+      <!-- Oreum hills (volcanic cones) in middle ground -->
+      <g fill="#4A3424" opacity="0.85">
+        <path d="M 300 720 Q 500 580 700 720 Z"/>
+        <path d="M 900 700 Q 1100 600 1300 700 Z"/>
+        <path d="M 1500 730 Q 1650 640 1800 730 Z"/>
+      </g>
+      <!-- Grass field -->
+      <rect x="0" y="680" width="1920" height="400" fill="url(#grass)"/>
+      <!-- Pampas / silver grass (억새) stalks -->
+      <g stroke="#F8DAA6" stroke-width="1.5" opacity="0.85">
+        <line x1="80" y1="1080" x2="75" y2="820"/>
+        <line x1="120" y1="1080" x2="118" y2="840"/>
+        <line x1="180" y1="1080" x2="175" y2="810"/>
+        <line x1="260" y1="1080" x2="258" y2="850"/>
+        <line x1="340" y1="1080" x2="335" y2="830"/>
+        <line x1="420" y1="1080" x2="418" y2="860"/>
+        <line x1="500" y1="1080" x2="495" y2="840"/>
+        <line x1="580" y1="1080" x2="576" y2="820"/>
+        <line x1="640" y1="1080" x2="640" y2="850"/>
+        <line x1="720" y1="1080" x2="714" y2="830"/>
+        <line x1="800" y1="1080" x2="800" y2="840"/>
+        <line x1="900" y1="1080" x2="895" y2="860"/>
+        <line x1="1000" y1="1080" x2="1000" y2="830"/>
+        <line x1="1100" y1="1080" x2="1095" y2="840"/>
+        <line x1="1200" y1="1080" x2="1200" y2="820"/>
+        <line x1="1300" y1="1080" x2="1295" y2="850"/>
+        <line x1="1400" y1="1080" x2="1400" y2="830"/>
+        <line x1="1500" y1="1080" x2="1495" y2="840"/>
+        <line x1="1600" y1="1080" x2="1600" y2="820"/>
+        <line x1="1700" y1="1080" x2="1695" y2="850"/>
+        <line x1="1800" y1="1080" x2="1800" y2="830"/>
+        <line x1="1870" y1="1080" x2="1865" y2="840"/>
+      </g>
+      <!-- Pampas plumes (at tops of stalks) -->
+      <g fill="#F8DAA6" opacity="0.92">
+        <ellipse cx="75" cy="820" rx="8" ry="20"/>
+        <ellipse cx="118" cy="840" rx="7" ry="18"/>
+        <ellipse cx="175" cy="810" rx="9" ry="22"/>
+        <ellipse cx="258" cy="850" rx="7" ry="16"/>
+        <ellipse cx="335" cy="830" rx="8" ry="20"/>
+        <ellipse cx="418" cy="860" rx="7" ry="16"/>
+        <ellipse cx="495" cy="840" rx="8" ry="18"/>
+        <ellipse cx="576" cy="820" rx="9" ry="22"/>
+        <ellipse cx="640" cy="850" rx="7" ry="18"/>
+        <ellipse cx="714" cy="830" rx="8" ry="20"/>
+        <ellipse cx="800" cy="840" rx="7" ry="18"/>
+        <ellipse cx="895" cy="860" rx="8" ry="18"/>
+        <ellipse cx="1000" cy="830" rx="8" ry="22"/>
+        <ellipse cx="1095" cy="840" rx="7" ry="18"/>
+        <ellipse cx="1200" cy="820" rx="9" ry="22"/>
+        <ellipse cx="1295" cy="850" rx="7" ry="16"/>
+        <ellipse cx="1400" cy="830" rx="8" ry="20"/>
+        <ellipse cx="1495" cy="840" rx="7" ry="18"/>
+        <ellipse cx="1600" cy="820" rx="8" ry="22"/>
+        <ellipse cx="1695" cy="850" rx="7" ry="18"/>
+        <ellipse cx="1800" cy="830" rx="8" ry="20"/>
+        <ellipse cx="1865" cy="840" rx="7" ry="16"/>
+      </g>
+
+      <!-- Stay building — earth-tone modern hilltop structure -->
+      <g>
+        <rect x="700" y="550" width="500" height="180" fill="#E8D5B0"/>
+        <rect x="700" y="550" width="500" height="12" fill="#C8B490"/>
+        <!-- huge window -->
+        <rect x="760" y="600" width="400" height="110" fill="url(#sunsetSky)" opacity="0.7"/>
+        <rect x="760" y="600" width="400" height="110" fill="#C47954" opacity="0.4"/>
+        <g stroke="#6B4E2E" stroke-width="2" fill="none">
+          <line x1="860" y1="600" x2="860" y2="710"/>
+          <line x1="960" y1="600" x2="960" y2="710"/>
+          <line x1="1060" y1="600" x2="1060" y2="710"/>
+        </g>
+        <!-- entrance niche -->
+        <rect x="900" y="680" width="80" height="50" fill="#3E2E20"/>
+        <!-- pergola shadow -->
+        <rect x="700" y="540" width="500" height="14" fill="#5E4530" opacity="0.6"/>
+      </g>
+
+      <!-- landscape lights -->
+      <g>
+        <circle cx="600" cy="760" r="6" fill="#F5DFA5"/>
+        <circle cx="600" cy="760" r="18" fill="#F5DFA5" opacity="0.3"/>
+        <circle cx="1320" cy="750" r="6" fill="#F5DFA5"/>
+        <circle cx="1320" cy="750" r="18" fill="#F5DFA5" opacity="0.3"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content"><div class="wrap">
+    <div class="hero-eyebrow"><span>Hilltop Stay · 제주 동부 오름 자락</span></div>
+    <h1 class="hero-title">
+      바람과 억새,
+      <em>붉은 노을의 집</em>
+    </h1>
+    <p class="hero-sub">
+      제주 동부 한 오름의 남사면. 억새밭과 낮은 돌담을 지나면
+      세 채의 독채가 각자의 노을을 바라보며 서 있습니다.
+    </p>
+    <a href="#booking" class="hero-cta">예약 가능일 보기 <span>→</span></a>
+  </div></div>
+</section>
+
+<!-- SUITES -->
+<section class="section" id="suites"><div class="wrap">
+  <div class="eyebrow">Three Villas · 독채 3동</div>
+  <h2 class="section-title">오름의 <em>세 방향</em></h2>
+  <p class="section-lede">동쪽 일출, 남쪽 파노라마, 서쪽 노을. 원하시는 빛의 방향으로 머무시길.</p>
+
+  <div class="suites">
+    <!-- 01 Sunset -->
+    <article class="suite">
+      <div class="suite-media">
+        <svg viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="sss" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#E8C598"/><stop offset="0.6" stop-color="#D4875A"/><stop offset="1" stop-color="#8E4F35"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="480" fill="#F3EAD0"/>
+          <!-- sunset window -->
+          <rect x="60" y="60" width="360" height="300" fill="url(#sss)"/>
+          <rect x="60" y="60" width="360" height="300" fill="none" stroke="#6B4E2E" stroke-width="3"/>
+          <circle cx="300" cy="200" r="35" fill="#F8DAA6" opacity="0.95"/>
+          <!-- oreum silhouette through window -->
+          <path d="M 60 280 Q 160 220 260 270 Q 360 200 420 260 L 420 360 L 60 360 Z" fill="#5E3828" opacity="0.8"/>
+          <!-- grass at bottom of window -->
+          <rect x="60" y="340" width="360" height="20" fill="#9E8250"/>
+          <!-- wood wall right -->
+          <rect x="440" y="60" width="160" height="300" fill="#D4B88E"/>
+          <g stroke="#8A6E48" stroke-width="0.6" opacity="0.3">
+            <line x1="470" y1="60" x2="470" y2="360"/><line x1="510" y1="60" x2="510" y2="360"/><line x1="550" y1="60" x2="550" y2="360"/>
+          </g>
+          <!-- cove LED -->
+          <rect x="440" y="360" width="160" height="3" fill="#F5DFA5"/>
+          <rect x="435" y="358" width="170" height="12" fill="#F5DFA5" opacity="0.35"/>
+          <!-- bed -->
+          <rect x="160" y="320" width="280" height="90" fill="#3E2E20"/>
+          <rect x="180" y="290" width="240" height="38" fill="#F5EDD4"/>
+          <rect x="195" y="278" width="70" height="22" rx="4" fill="#FAF3E1"/>
+          <rect x="275" y="278" width="70" height="22" rx="4" fill="#FAF3E1"/>
+          <rect x="180" y="368" width="240" height="28" fill="#B48968"/>
+          <!-- floor -->
+          <rect x="0" y="400" width="600" height="80" fill="#B89E70"/>
+          <g stroke="#8A6E48" stroke-width="0.5" opacity="0.4">
+            <line x1="0" y1="435" x2="600" y2="435"/><line x1="0" y1="465" x2="600" y2="465"/>
+          </g>
+          <!-- chair by window -->
+          <rect x="100" y="360" width="45" height="38" fill="#B48968"/>
+          <rect x="92" y="340" width="58" height="26" fill="#B48968"/>
+          <!-- floor lamp -->
+          <line x1="510" y1="280" x2="510" y2="400" stroke="#2A1F14" stroke-width="2"/>
+          <polygon points="495,260 525,260 520,290 500,290" fill="#2A1F14"/>
+          <circle cx="510" cy="298" r="5" fill="#F5DFA5"/>
+        </svg>
+      </div>
+      <div>
+        <div class="suite-no">Villa No. 01</div>
+        <h3 class="suite-name">노(老) — <em>the sunset</em></h3>
+        <p class="suite-desc">서향 통창. 매일 오후 5–7시 금빛으로 물드는 공간. 노을을 보며 와인 한 잔 할 수 있도록 테라스에 파이어핏을 두었습니다.</p>
+        <dl class="suite-specs">
+          <div class="suite-spec"><dt>Size</dt><dd>68 m² · 21평</dd></div>
+          <div class="suite-spec"><dt>Guests</dt><dd>최대 2인</dd></div>
+          <div class="suite-spec"><dt>View</dt><dd>서향 · 선셋</dd></div>
+          <div class="suite-spec"><dt>Outdoor</dt><dd>파이어핏</dd></div>
+        </dl>
+        <div class="suite-price">₩ 460,000 <em>/ 1박</em></div>
+      </div>
+    </article>
+
+    <!-- 02 Dawn -->
+    <article class="suite">
+      <div class="suite-media">
+        <svg viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="480" fill="#EBE3D0"/>
+          <!-- dawn window -->
+          <rect x="60" y="60" width="360" height="300" fill="#D6CEB8"/>
+          <rect x="60" y="60" width="360" height="300" fill="none" stroke="#8A7A62" stroke-width="3"/>
+          <!-- morning light gradient -->
+          <rect x="60" y="60" width="360" height="160" fill="#F5DFA5" opacity="0.5"/>
+          <!-- oreum with morning mist -->
+          <path d="M 60 260 Q 180 200 300 240 Q 400 190 420 250 L 420 360 L 60 360 Z" fill="#8A7A5E" opacity="0.7"/>
+          <!-- mist -->
+          <rect x="60" y="250" width="360" height="30" fill="#F5F0E0" opacity="0.55"/>
+          <!-- grass -->
+          <rect x="60" y="340" width="360" height="20" fill="#A88E4E"/>
+          <!-- plaster wall right -->
+          <rect x="440" y="60" width="160" height="300" fill="#E8DDC8"/>
+          <g opacity="0.25" stroke="#C4B48E" stroke-width="0.5">
+            <path d="M 440 120 Q 480 115 520 125 Q 560 115 600 122"/>
+            <path d="M 440 220 Q 480 215 520 225 Q 560 215 600 222"/>
+          </g>
+          <!-- built-in bench -->
+          <rect x="60" y="360" width="480" height="8" fill="#8A6E48"/>
+          <rect x="60" y="368" width="480" height="32" fill="#C4B48E"/>
+          <!-- Matress -->
+          <rect x="180" y="300" width="240" height="60" fill="#FAF6EA"/>
+          <rect x="195" y="286" width="65" height="20" rx="4" fill="#FFFFFF"/>
+          <rect x="270" y="286" width="65" height="20" rx="4" fill="#FFFFFF"/>
+          <rect x="345" y="289" width="55" height="18" rx="4" fill="#D6CEB8"/>
+          <!-- bedframe wood -->
+          <rect x="170" y="355" width="260" height="15" fill="#8A6E48"/>
+          <!-- floor -->
+          <rect x="0" y="400" width="600" height="80" fill="#D6C8A8"/>
+        </svg>
+      </div>
+      <div>
+        <div class="suite-no">Villa No. 02</div>
+        <h3 class="suite-name">여(旅) — <em>the dawn</em></h3>
+        <p class="suite-desc">동향 큰 창. 오름 사이로 떠오르는 해를 침대에서 바로 볼 수 있는 구조. 조용히 하루를 시작하기 위한 방.</p>
+        <dl class="suite-specs">
+          <div class="suite-spec"><dt>Size</dt><dd>54 m² · 16평</dd></div>
+          <div class="suite-spec"><dt>Guests</dt><dd>최대 2인</dd></div>
+          <div class="suite-spec"><dt>View</dt><dd>동향 · 일출</dd></div>
+          <div class="suite-spec"><dt>Extra</dt><dd>아침 요가 매트</dd></div>
+        </dl>
+        <div class="suite-price">₩ 380,000 <em>/ 1박</em></div>
+      </div>
+    </article>
+
+    <!-- 03 Panorama -->
+    <article class="suite">
+      <div class="suite-media">
+        <svg viewBox="0 0 600 480" xmlns="http://www.w3.org/2000/svg">
+          <rect width="600" height="480" fill="#F3EAD0"/>
+          <!-- panoramic window 3 panes -->
+          <g>
+            <rect x="30" y="80" width="180" height="260" fill="#C4A870"/>
+            <rect x="210" y="80" width="180" height="260" fill="#E8C598"/>
+            <rect x="390" y="80" width="180" height="260" fill="#D4875A" opacity="0.7"/>
+            <line x1="210" y1="80" x2="210" y2="340" stroke="#6B4E2E" stroke-width="3"/>
+            <line x1="390" y1="80" x2="390" y2="340" stroke="#6B4E2E" stroke-width="3"/>
+            <rect x="30" y="80" width="540" height="260" fill="none" stroke="#6B4E2E" stroke-width="3"/>
+          </g>
+          <!-- oreum layers -->
+          <path d="M 30 260 Q 120 200 210 250 L 210 340 L 30 340 Z" fill="#5E4530" opacity="0.7"/>
+          <path d="M 210 240 Q 300 180 390 230 L 390 340 L 210 340 Z" fill="#6B5238" opacity="0.7"/>
+          <path d="M 390 260 Q 480 200 570 260 L 570 340 L 390 340 Z" fill="#4A3424" opacity="0.8"/>
+          <!-- sun -->
+          <circle cx="460" cy="160" r="25" fill="#F8DAA6" opacity="0.85"/>
+          <!-- sofa -->
+          <rect x="100" y="380" width="400" height="40" fill="#C4A870"/>
+          <rect x="90" y="360" width="80" height="40" rx="6" fill="#E0CBA0"/>
+          <rect x="430" y="360" width="80" height="40" rx="6" fill="#E0CBA0"/>
+          <rect x="170" y="378" width="260" height="28" fill="#D4B88E"/>
+          <!-- coffee table -->
+          <ellipse cx="300" cy="438" rx="70" ry="10" fill="#8A6E48"/>
+          <rect x="230" y="428" width="140" height="14" fill="#A88158"/>
+          <!-- floor -->
+          <rect x="0" y="440" width="600" height="40" fill="#B89E70"/>
+        </svg>
+      </div>
+      <div>
+        <div class="suite-no">Villa No. 03</div>
+        <h3 class="suite-name">롱(龍) — <em>the panorama</em></h3>
+        <p class="suite-desc">180도 파노라믹 창. 세 개의 오름과 한라산이 하나의 창으로 이어집니다. 가족이나 친구들이 함께 머물기 좋습니다.</p>
+        <dl class="suite-specs">
+          <div class="suite-spec"><dt>Size</dt><dd>98 m² · 30평</dd></div>
+          <div class="suite-spec"><dt>Guests</dt><dd>최대 5인</dd></div>
+          <div class="suite-spec"><dt>View</dt><dd>남향 · 파노라마</dd></div>
+          <div class="suite-spec"><dt>Extra</dt><dd>오픈 키친 + 바비큐</dd></div>
+        </dl>
+        <div class="suite-price">₩ 620,000 <em>/ 1박</em></div>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<!-- EXPERIENCE -->
+<section class="section alt" id="experience"><div class="wrap">
+  <div class="eyebrow">Experience · 오름 체험</div>
+  <h2 class="section-title">오름을 <em>가장 천천히</em> 걷는 법</h2>
+  <p class="section-lede">스테이와 함께 제공되는 세 가지 로컬 체험 프로그램. 사전 예약으로 이용하실 수 있습니다.</p>
+
+  <div class="experience">
+    <div class="exp">
+      <div class="exp-img">
+        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F5E3C0"/><stop offset="1" stop-color="#D4875A"/></linearGradient></defs>
+          <rect width="400" height="320" fill="url(#dawn)"/>
+          <!-- oreum -->
+          <path d="M 0 220 Q 100 130 200 200 Q 300 130 400 210 L 400 320 L 0 320 Z" fill="#5E4530"/>
+          <path d="M 0 250 Q 120 180 240 240 Q 320 200 400 240 L 400 320 L 0 320 Z" fill="#3E2E20" opacity="0.85"/>
+          <!-- hiker silhouette -->
+          <g fill="#1A120A">
+            <circle cx="200" cy="195" r="6"/>
+            <rect x="196" y="200" width="8" height="20"/>
+            <line x1="200" y1="220" x2="195" y2="240" stroke="#1A120A" stroke-width="3"/>
+            <line x1="200" y1="220" x2="205" y2="240" stroke="#1A120A" stroke-width="3"/>
+            <line x1="196" y1="208" x2="186" y2="215" stroke="#1A120A" stroke-width="2"/>
+            <line x1="186" y1="215" x2="188" y2="238" stroke="#1A120A" stroke-width="1.5"/>
+          </g>
+          <!-- sun just rising -->
+          <circle cx="330" cy="170" r="26" fill="#F8DAA6" opacity="0.95"/>
+        </svg>
+      </div>
+      <div class="exp-body">
+        <div class="exp-no">01 · Dawn Hike</div>
+        <div class="exp-name">오름 일출 트레킹</div>
+        <div class="exp-desc">체크인 다음 날 새벽 5시, 호스트와 함께 오름 정상까지. 약 30분 소요, 커피 보온병 동반.</div>
+      </div>
+    </div>
+    <div class="exp">
+      <div class="exp-img">
+        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="320" fill="#F5EFDE"/>
+          <!-- table -->
+          <rect x="0" y="220" width="400" height="100" fill="#B48968"/>
+          <rect x="0" y="220" width="400" height="8" fill="#8A6E48"/>
+          <!-- tea ware -->
+          <ellipse cx="120" cy="215" rx="30" ry="8" fill="#D8C8A8"/>
+          <rect x="100" y="190" width="40" height="30" rx="4" fill="#E5D5B3"/>
+          <rect x="140" y="200" width="15" height="12" fill="#E5D5B3"/>
+          <!-- teacups -->
+          <ellipse cx="220" cy="215" rx="15" ry="4" fill="#D8C8A8"/>
+          <rect x="208" y="200" width="24" height="15" rx="3" fill="#F5EDD4"/>
+          <ellipse cx="280" cy="215" rx="15" ry="4" fill="#D8C8A8"/>
+          <rect x="268" y="200" width="24" height="15" rx="3" fill="#F5EDD4"/>
+          <!-- dried orange slices -->
+          <g fill="#C47954">
+            <circle cx="340" cy="215" r="8"/>
+            <circle cx="355" cy="213" r="7"/>
+          </g>
+          <!-- steam -->
+          <g stroke="#D6C8A8" stroke-width="1" fill="none">
+            <path d="M 115 180 Q 110 170 120 160"/>
+            <path d="M 125 180 Q 130 170 120 160"/>
+          </g>
+          <!-- window view -->
+          <rect x="60" y="40" width="280" height="120" fill="#D4875A" opacity="0.5"/>
+          <rect x="60" y="40" width="280" height="120" fill="none" stroke="#8A6E48" stroke-width="2"/>
+          <path d="M 60 130 Q 150 90 240 120 Q 320 100 340 130 L 340 160 L 60 160 Z" fill="#5E4530" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="exp-body">
+        <div class="exp-no">02 · Tea Service</div>
+        <div class="exp-name">제주 한라봉 웰컴티</div>
+        <div class="exp-desc">체크인 시간. 한라봉 말린 차와 감귤 다식. 주인장 직접 차를 내려드립니다.</div>
+      </div>
+    </div>
+    <div class="exp">
+      <div class="exp-img">
+        <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="firepit" cx="0.5" cy="0.5" r="0.4"><stop offset="0" stop-color="#F8DAA6"/><stop offset="1" stop-color="#8E4F35" stop-opacity="0"/></radialGradient></defs>
+          <rect width="400" height="320" fill="#2A1F14"/>
+          <!-- stars -->
+          <g fill="#F5EDD4" opacity="0.75">
+            <circle cx="60" cy="40" r="1"/><circle cx="130" cy="30" r="1.2"/><circle cx="240" cy="50" r="1"/><circle cx="320" cy="35" r="1.3"/><circle cx="380" cy="70" r="1"/>
+          </g>
+          <!-- oreum silhouette -->
+          <path d="M 0 220 Q 120 180 240 210 Q 320 190 400 215 L 400 320 L 0 320 Z" fill="#3E2E20"/>
+          <!-- fire pit -->
+          <ellipse cx="200" cy="250" rx="50" ry="12" fill="#1A120A"/>
+          <ellipse cx="200" cy="248" rx="60" ry="30" fill="url(#firepit)"/>
+          <g fill="#F8DAA6">
+            <path d="M 180 255 Q 185 230 200 240 Q 215 230 220 255 L 215 265 L 185 265 Z"/>
+            <path d="M 192 250 Q 195 235 200 245 Q 205 235 208 250" fill="#FFF5D4"/>
+          </g>
+          <!-- chairs around -->
+          <rect x="120" y="270" width="24" height="20" fill="#5E4530"/>
+          <rect x="260" y="270" width="24" height="20" fill="#5E4530"/>
+          <rect x="110" y="250" width="40" height="28" fill="#B48968"/>
+          <rect x="250" y="250" width="40" height="28" fill="#B48968"/>
+        </svg>
+      </div>
+      <div class="exp-body">
+        <div class="exp-no">03 · Night</div>
+        <div class="exp-name">파이어핏 나이트</div>
+        <div class="exp-desc">저녁 8시 이후. 파이어핏에 불을 붙여드립니다. 마시멜로·레드와인·별 셋. 날씨 좋은 날에만.</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking"><div class="wrap">
+  <div class="eyebrow">Reservation</div>
+  <h2 class="section-title">오름의 <em>한 조각</em>을 예약하세요</h2>
+  <p class="section-lede" style="color:rgba(216,196,138,0.85)">하루 세 팀만. 성수기·주말은 별도 요율.</p>
+
+  <div class="booking-inner">
+    <div class="rates">
+      <div class="rate"><span class="rate-label">Villa 01</span><span class="rate-name">노(老) · 선셋 스위트</span><span class="rate-amt">₩460,000 <em>/박</em></span></div>
+      <div class="rate"><span class="rate-label">Villa 02</span><span class="rate-name">여(旅) · 돈 스위트</span><span class="rate-amt">₩380,000 <em>/박</em></span></div>
+      <div class="rate"><span class="rate-label">Villa 03</span><span class="rate-name">롱(龍) · 파노라마 스위트</span><span class="rate-amt">₩620,000 <em>/박</em></span></div>
+      <div class="rate"><span class="rate-label">체험</span><span class="rate-name">오름 일출 트레킹</span><span class="rate-amt">₩35,000 <em>/인</em></span></div>
+      <div class="rate"><span class="rate-label">체험</span><span class="rate-name">파이어핏 나이트</span><span class="rate-amt">₩60,000 <em>/팀</em></span></div>
+      <p class="note">
+        * 주중 1박 기준 · 금·토·공휴일 전일 15% 가산<br>
+        * 체크인 16:00 · 체크아웃 11:00
+      </p>
+    </div>
+    <div class="actions">
+      <a href="#" class="btn primary">카카오톡 예약 문의 →</a>
+      <a href="#" class="btn ghost">전화 010-0000-0000</a>
+      <a href="#" class="btn ghost">네이버 예약</a>
+    </div>
+  </div>
+</div></section>
+
+<footer class="footer"><div class="wrap footer-inner">
+  <div>
+    <div class="footer-brand">OREUM · 오름 스테이</div>
+    <div>제주시 구좌읍 오름로 · 운영 한지원 · hello@oreumstay.kr</div>
+  </div>
+  <div style="text-align:right">© 2026 Oreum Stay · Sample by LocalBoost</div>
+</div></footer>
+
+</body>
+</html>

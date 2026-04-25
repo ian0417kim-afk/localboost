@@ -1,0 +1,67 @@
+<svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="hSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B8D0DB"/>
+      <stop offset="0.45" stop-color="#8FB0C0"/>
+      <stop offset="1" stop-color="#6D93A8"/>
+    </linearGradient>
+    <linearGradient id="hSea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3F6274"/><stop offset="1" stop-color="#1E3B4D"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="450" fill="url(#hSky)"/>
+  <polygon points="0,220 120,180 240,200 360,175 480,195 600,185 600,245 0,245" fill="#4F7088" opacity="0.4"/>
+  <rect x="0" y="245" width="600" height="135" fill="url(#hSea)"/>
+  <rect x="0" y="243" width="600" height="3" fill="#F5E3C0" opacity="0.6"/>
+  <g fill="#D5E2EA" opacity="0.22">
+    <rect x="0" y="270" width="600" height="2"/>
+    <rect x="0" y="300" width="600" height="2"/>
+    <rect x="0" y="335" width="600" height="2"/>
+  </g>
+  <polygon points="340,245 380,245 390,380 330,380" fill="#F5E3C0" opacity="0.35"/>
+  <!-- rocky shore -->
+  <g fill="#2A3540">
+    <ellipse cx="60" cy="375" rx="60" ry="12"/>
+    <ellipse cx="140" cy="380" rx="50" ry="10"/>
+  </g>
+  <g fill="#3E4C5A">
+    <ellipse cx="460" cy="378" rx="55" ry="11"/>
+    <ellipse cx="545" cy="385" rx="48" ry="10"/>
+  </g>
+  <!-- stay building -->
+  <g>
+    <rect x="170" y="270" width="260" height="110" fill="#F5F8F9"/>
+    <rect x="185" y="215" width="230" height="60" fill="#FFFFFF"/>
+    <rect x="185" y="213" width="230" height="4" fill="#D8E0E4"/>
+    <!-- ocean-facing glass -->
+    <rect x="185" y="290" width="230" height="70" fill="#3F6274" opacity="0.65"/>
+    <rect x="185" y="290" width="230" height="70" fill="url(#hSea)" opacity="0.5"/>
+    <g stroke="#B8C4CC" stroke-width="1.5" fill="none">
+      <line x1="245" y1="290" x2="245" y2="360"/>
+      <line x1="300" y1="290" x2="300" y2="360"/>
+      <line x1="355" y1="290" x2="355" y2="360"/>
+    </g>
+    <!-- 2F windows -->
+    <rect x="195" y="230" width="55" height="30" fill="#5B7C92"/>
+    <rect x="260" y="230" width="55" height="30" fill="#5B7C92"/>
+    <rect x="325" y="230" width="55" height="30" fill="#5B7C92"/>
+    <!-- terrace furniture -->
+    <rect x="215" y="360" width="40" height="8" fill="#CEBC95"/>
+    <rect x="215" y="353" width="40" height="10" fill="#E8DEC9"/>
+    <rect x="345" y="360" width="38" height="8" fill="#CEBC95"/>
+    <rect x="345" y="353" width="38" height="10" fill="#E8DEC9"/>
+    <rect x="295" y="340" width="2" height="25" fill="#2A3540"/>
+    <polygon points="278,340 312,340 295,325" fill="#F5E3C0"/>
+  </g>
+  <!-- stone wall foreground -->
+  <rect x="0" y="400" width="600" height="22" fill="#3E4C5A"/>
+  <g fill="#5A6B7A">
+    <ellipse cx="50" cy="400" rx="12" ry="6"/><ellipse cx="90" cy="402" rx="11" ry="5"/>
+    <ellipse cx="130" cy="400" rx="13" ry="6"/><ellipse cx="470" cy="400" rx="12" ry="6"/>
+    <ellipse cx="510" cy="402" rx="11" ry="5"/><ellipse cx="550" cy="400" rx="13" ry="6"/>
+  </g>
+  <!-- wordmark -->
+  <text x="30" y="55" font-family="Fraunces, Georgia, serif" font-size="28" fill="#FFFFFF" letter-spacing="0.02em">HANDAM<tspan font-style="italic" font-weight="300" font-size="22" dx="4">Stay</tspan></text>
+  <text x="30" y="78" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="12" fill="#E8EEF2" opacity="0.9" letter-spacing="0.06em">On the Handam coastal walk · 한담해변</text>
+  <text x="30" y="438" font-family="Pretendard, sans-serif" font-size="11" fill="#1A2530" letter-spacing="0.04em">오션뷰 스위트 4실 · 도보 0분 해안산책</text>
+</svg>

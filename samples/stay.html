@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>돌담 스테이 · DOLDAM — 제주 프리미엄 부티크 리조트</title>
+<meta name="description" content="제주 조천 바닷가 언덕의 독채 3동. 노천탕, 인피니티풀, 피톤치드 숲을 품은 프리미엄 부티크 스테이.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+:root{
+  --cream:#F5EEE0;
+  --linen:#ECE2CE;
+  --sand:#DDD0B6;
+  --warm:#C8AE85;
+  --mocha:#8B6F4E;
+  --deep:#4A3A2A;
+  --ink:#1E1A15;
+  --ink-2:#3A322B;
+  --ink-soft:#7A6F5F;
+  --line:#CFC4AD;
+  --night:#1B2637;
+  --serif:'Fraunces','Noto Serif KR',Georgia,serif;
+  --sans:'Pretendard',-apple-system,sans-serif;
+}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7;letter-spacing:-0.008em}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+@media(max-width:640px){.wrap{padding:0 22px}}
+
+.nav{padding:26px 0;position:absolute;top:0;left:0;right:0;z-index:10}
+.nav-inner{display:flex;justify-content:space-between;align-items:center}
+.brand{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:0.02em;color:var(--cream)}
+.brand em{font-style:italic;font-weight:300;margin-left:4px}
+.nav-links{display:flex;gap:28px;font-size:12px;color:rgba(245,238,224,0.82);letter-spacing:0.08em;text-transform:uppercase}
+@media(max-width:720px){.nav-links{display:none}}
+
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;padding:0 0 80px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:1}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,38,55,0.18) 0%,rgba(27,38,55,0.05) 35%,rgba(27,38,55,0.7) 100%);z-index:2}
+.hero-content{position:relative;z-index:3;color:var(--cream);width:100%}
+.hero-issue{font-family:var(--serif);font-style:italic;font-size:13px;color:rgba(245,238,224,0.78);display:inline-flex;align-items:center;gap:14px;margin-bottom:28px;letter-spacing:0.03em}
+.hero-issue::before{content:'';width:28px;height:1px;background:rgba(245,238,224,0.65)}
+.hero-title{font-family:var(--serif);font-weight:300;font-size:clamp(56px,8.5vw,124px);line-height:0.98;letter-spacing:-0.03em;margin-bottom:28px}
+.hero-title em{font-style:italic;font-weight:300;display:block;color:var(--cream)}
+.hero-sub{max-width:520px;font-size:16px;color:rgba(245,238,224,0.92);line-height:1.8;margin-bottom:40px}
+.hero-cta{display:inline-flex;align-items:center;gap:12px;background:var(--cream);color:var(--ink);padding:18px 32px;border-radius:999px;font-size:14px;font-weight:500;transition:transform .25s}
+.hero-cta:hover{transform:translateX(4px)}
+
+.ribbon{background:var(--ink);color:var(--cream);padding:18px 0;overflow:hidden;white-space:nowrap;font-family:var(--serif);font-style:italic;font-size:14px;letter-spacing:0.05em}
+.ribbon-track{display:inline-flex;gap:48px;animation:slide 28s linear infinite}
+.ribbon-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--warm);vertical-align:middle;margin:0 8px}
+@keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+.section{padding:110px 0}
+.eyebrow{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink-soft);display:inline-flex;align-items:center;gap:14px;margin-bottom:20px;letter-spacing:0.04em}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--mocha)}
+.section-title{font-family:var(--serif);font-weight:400;font-size:clamp(36px,5vw,72px);letter-spacing:-0.025em;line-height:1.05;margin-bottom:20px}
+.section-title em{font-style:italic;font-weight:300;color:var(--mocha)}
+.section-lede{color:var(--ink-2);font-size:16px;line-height:1.8;max-width:620px}
+
+.suites{display:grid;gap:64px;margin-top:72px}
+.suite{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.suite:nth-child(even){grid-template-columns:1fr 1.1fr}
+.suite:nth-child(even) .suite-media{order:2}
+@media(max-width:900px){.suite,.suite:nth-child(even){grid-template-columns:1fr;gap:28px}.suite:nth-child(even) .suite-media{order:0}}
+.suite-media{aspect-ratio:5/4;overflow:hidden;border-radius:4px;background:var(--linen)}
+.suite-media img{width:100%;height:100%;object-fit:cover}
+.suite-no{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--mocha);letter-spacing:0.04em;margin-bottom:12px}
+.suite-name{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3vw,42px);letter-spacing:-0.02em;margin-bottom:14px}
+.suite-name em{font-style:italic;font-weight:300}
+.suite-desc{color:var(--ink-2);font-size:15px;line-height:1.8;max-width:480px;margin-bottom:24px}
+.suite-specs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 28px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:13px;margin-bottom:24px}
+.suite-spec dt{color:var(--ink-soft);font-family:var(--serif);font-style:italic;margin-bottom:2px}
+.suite-spec dd{color:var(--ink);font-weight:500}
+.suite-price{font-family:var(--serif);font-size:20px;color:var(--deep)}
+.suite-price em{font-style:italic;font-size:13px;color:var(--ink-soft);margin-left:8px;font-weight:300}
+
+.am-section{background:var(--linen)}
+.am-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:18px;margin-top:60px}
+@media(max-width:900px){.am-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.am-grid{grid-template-columns:1fr}}
+.am{position:relative;overflow:hidden;background:var(--sand);border-radius:4px}
+.am-tall{grid-row:span 2;aspect-ratio:3/5}
+.am-wide{aspect-ratio:5/3}
+.am img{width:100%;height:100%;object-fit:cover}
+.am-label{position:absolute;left:24px;bottom:22px;z-index:2;color:var(--cream);text-shadow:0 1px 8px rgba(0,0,0,0.45)}
+.am-label-kr{font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-0.015em;margin-bottom:4px}
+.am-label-en{font-family:var(--serif);font-style:italic;font-size:12px;letter-spacing:0.08em;opacity:0.88}
+.am-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(30,26,21,0.6) 100%);z-index:1;pointer-events:none}
+
+.kitchens-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+@media(max-width:700px){.kitchens-row{grid-template-columns:1fr}}
+.kitchen-img{aspect-ratio:4/3;overflow:hidden;border-radius:4px;position:relative}
+.kitchen-img img{width:100%;height:100%;object-fit:cover}
+
+.booking{background:var(--ink);color:var(--cream);padding:120px 0}
+.booking .section-title{color:var(--cream)}
+.booking .section-title em{color:var(--warm)}
+.booking .eyebrow{color:var(--warm)}
+.booking .eyebrow::before{background:var(--warm)}
+.booking .section-lede{color:rgba(245,238,224,0.82)}
+.booking-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:flex-start;margin-top:56px}
+@media(max-width:800px){.booking-inner{grid-template-columns:1fr}}
+.booking-rates{display:flex;flex-direction:column;gap:0}
+.rate-row{display:grid;grid-template-columns:auto 1fr auto;gap:18px;padding:22px 0;border-bottom:1px solid rgba(245,238,224,0.18);align-items:baseline}
+.rate-row:first-child{border-top:1px solid rgba(245,238,224,0.18)}
+.rate-label{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--warm);min-width:80px}
+.rate-name{font-family:var(--serif);font-size:18px}
+.rate-amt{font-family:var(--serif);font-size:20px;color:var(--cream)}
+.rate-amt em{font-style:normal;font-size:12px;color:rgba(245,238,224,0.6);margin-left:4px}
+.booking-actions{display:flex;flex-direction:column;gap:12px}
+.b-btn{padding:18px 28px;border-radius:4px;font-size:14px;font-weight:500;text-align:center;transition:transform .2s,background .2s}
+.b-btn.primary{background:var(--warm);color:var(--ink)}
+.b-btn.primary:hover{background:var(--cream)}
+.b-btn.ghost{background:transparent;color:var(--cream);border:1px solid rgba(245,238,224,0.4)}
+.booking-note{margin-top:20px;font-size:12px;color:rgba(245,238,224,0.6);line-height:1.8;font-family:var(--serif);font-style:italic}
+
+.footer{padding:56px 0 40px;background:var(--ink);color:rgba(245,238,224,0.6);font-size:12px;border-top:1px solid rgba(245,238,224,0.12)}
+.footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;align-items:flex-start}
+.footer-brand{font-family:var(--serif);color:var(--cream);font-size:18px;margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap nav-inner">
+  <a href="#" class="brand">DOLDAM<em>Stay</em></a>
+  <div class="nav-links">
+    <a href="#suites">Suites</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#booking">Booking</a>
+  </div>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="../assets/images/stay-onsen-sunset.png" alt="Doldam Stay · sunset onsen">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content"><div class="wrap">
+    <div class="hero-issue"><span>Private Boutique Stay · 독채 3동</span></div>
+    <h1 class="hero-title">
+      오직
+      <em>당신의 시간을 위한</em>
+    </h1>
+    <p class="hero-sub">
+      제주 조천 바닷가 언덕 위. 각자의 풍경을 가진 독채 3동과
+      노천탕, 인피니티풀, 피톤치드 숲을 천천히 누리세요.
+      하루에 세 팀만 머뭅니다.
+    </p>
+    <a href="#booking" class="hero-cta">
+      예약 가능일 보기 <span>→</span>
+    </a>
+  </div></div>
+</section>
+
+<div class="ribbon">
+  <div class="ribbon-track">
+    <span>Private villas · 독채 3동</span><span class="ribbon-dot"></span>
+    <span>Outdoor onsen · 프라이빗 노천탕</span><span class="ribbon-dot"></span>
+    <span>Infinity pool · 인피니티풀</span><span class="ribbon-dot"></span>
+    <span>Forest trail · 피톤치드 숲</span><span class="ribbon-dot"></span>
+    <span>Ocean sunrise · 바다 일출</span><span class="ribbon-dot"></span>
+    <span>Chef breakfast · 로컬 조식</span><span class="ribbon-dot"></span>
+    <span>Private villas · 독채 3동</span><span class="ribbon-dot"></span>
+    <span>Outdoor onsen · 프라이빗 노천탕</span><span class="ribbon-dot"></span>
+    <span>Infinity pool · 인피니티풀</span><span class="ribbon-dot"></span>
+    <span>Forest trail · 피톤치드 숲</span><span class="ribbon-dot"></span>
+    <span>Ocean sunrise · 바다 일출</span><span class="ribbon-dot"></span>
+    <span>Chef breakfast · 로컬 조식</span><span class="ribbon-dot"></span>
+  </div>
+</div>
+
+<!-- SUITES -->
+<section class="section" id="suites"><div class="wrap">
+  <div class="eyebrow">Three Suites · 독채 3동</div>
+  <h2 class="section-title">각자의 풍경으로,<br><em>각자의 속도로</em></h2>
+  <p class="section-lede">세 개의 독채가 서로 다른 방향으로 열려 있습니다. 바다, 숲, 그리고 제주의 돌담. 당신이 머무를 풍경을 먼저 골라주세요.</p>
+
+  <div class="suites">
+    <article class="suite">
+      <div class="suite-media">
+        <img src="../assets/images/stay-room-shoji.png" alt="Suite 01 · 해(海) — ocean view bedroom">
+      </div>
+      <div class="suite-info">
+        <div class="suite-no">Suite No. 01</div>
+        <h3 class="suite-name">해(海) — <em>the ocean</em></h3>
+        <p class="suite-desc">
+          쇼지 창으로 부드럽게 들어오는 햇살과 통창 너머 바다. 일출과 달빛을 가장 오래 품는 동.
+          프라이빗 노천탕이 테라스에 함께 놓여 있습니다.
+        </p>
+        <dl class="suite-specs">
+          <div class="suite-spec"><dt>Size</dt><dd>82 m² · 25평</dd></div>
+          <div class="suite-spec"><dt>Guests</dt><dd>최대 4인</dd></div>
+          <div class="suite-spec"><dt>Beds</dt><dd>킹 1 · 싱글 2</dd></div>
+          <div class="suite-spec"><dt>Outdoor</dt><dd>노천탕 + 바비큐</dd></div>
+        </dl>
+        <div class="suite-price">₩ 480,000 <em>/ 1박 (주중 기준)</em></div>
+      </div>
+    </article>
+
+    <article class="suite">
+      <div class="suite-media">
+        <img src="../assets/images/stay-room-tree.png" alt="Suite 02 · 숲(林) — garden view bedroom">
+      </div>
+      <div class="suite-info">
+        <div class="suite-no">Suite No. 02</div>
+        <h3 class="suite-name">숲(林) — <em>the forest</em></h3>
+        <p class="suite-desc">
+          창가 평상 위에 작은 나무 한 그루. 귤나무와 동백에 둘러싸인 안쪽 동.
+          바람 소리와 새소리만 들리는 침실에서 차분히 머무세요.
+        </p>
+        <dl class="suite-specs">
+          <div class="suite-spec"><dt>Size</dt><dd>58 m² · 18평</dd></div>
+          <div class="suite-spec"><dt>Guests</dt><dd>최대 2인</dd></div>
+          <div class="suite-spec"><dt>Beds</dt><dd>킹 1</dd></div>
+          <div class="suite-spec"><dt>Outdoor</dt><dd>프라이빗 가든</dd></div>
+        </dl>
+        <div class="suite-price">₩ 380,000 <em>/ 1박 (주중 기준)</em></div>
+      </div>
+    </article>
+
+    <article class="suite">
+      <div class="suite-media">
+        <img src="../assets/images/stay-onsen-indoor.png" alt="Suite 03 · 석(石) — indoor stone onsen">
+      </div>
+      <div class="suite-info">
+        <div class="suite-no">Suite No. 03</div>
+        <h3 class="suite-name">석(石) — <em>the stone</em></h3>
+        <p class="suite-desc">
+          제주 현무암 욕조가 놓인 스파 스위트. 비 오는 밤, 빗소리와 돌의 온기를 동시에 느낄 수 있는 단 한 동.
+        </p>
+        <dl class="suite-specs">
+          <div class="suite-spec"><dt>Size</dt><dd>66 m² · 20평</dd></div>
+          <div class="suite-spec"><dt>Guests</dt><dd>최대 2인</dd></div>
+          <div class="suite-spec"><dt>Beds</dt><dd>퀸 1</dd></div>
+          <div class="suite-spec"><dt>Outdoor</dt><dd>실내 노천탕 + 정원</dd></div>
+        </dl>
+        <div class="suite-price">₩ 440,000 <em>/ 1박 (주중 기준)</em></div>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<!-- AMENITIES -->
+<section class="section am-section" id="amenities"><div class="wrap">
+  <div class="eyebrow">Amenities · 편의시설</div>
+  <h2 class="section-title">머무는 동안<br><em>필요한 모든 것</em></h2>
+  <p class="section-lede">세 팀만 머무는 프라이빗 공간. 모든 편의시설은 사전 예약제로 온전히 독점 이용됩니다.</p>
+
+  <div class="am-grid">
+    <div class="am am-tall">
+      <img src="../assets/images/stay-onsen-sunset.png" alt="Sunset infinity onsen">
+      <div class="am-overlay"></div>
+      <div class="am-label">
+        <div class="am-label-kr">선셋 인피니티 풀</div>
+        <div class="am-label-en">Sunset infinity pool</div>
+      </div>
+    </div>
+
+    <div class="am am-wide">
+      <img src="../assets/images/stay-onsen-stone.png" alt="Outdoor stone onsen">
+      <div class="am-overlay"></div>
+      <div class="am-label">
+        <div class="am-label-kr">프라이빗 노천탕</div>
+        <div class="am-label-en">Private onsen · all suites</div>
+      </div>
+    </div>
+
+    <div class="am am-wide">
+      <img src="../assets/images/stay-room-tatami.png" alt="Tatami common lounge">
+      <div class="am-overlay"></div>
+      <div class="am-label">
+        <div class="am-label-kr">공용 라운지</div>
+        <div class="am-label-en">Tatami common lounge</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kitchens-row">
+    <div class="kitchen-img">
+      <img src="../assets/images/stay-kitchen-modern.png" alt="Modern kitchen">
+      <div class="am-overlay"></div>
+      <div class="am-label">
+        <div class="am-label-kr">셰프 키친 (모던)</div>
+        <div class="am-label-en">Modern chef kitchen</div>
+      </div>
+    </div>
+    <div class="kitchen-img">
+      <img src="../assets/images/stay-kitchen-wood.png" alt="Wood beam kitchen">
+      <div class="am-overlay"></div>
+      <div class="am-label">
+        <div class="am-label-kr">우드 빔 키친</div>
+        <div class="am-label-en">Wood beam kitchen</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:60px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)">
+    <div style="background:var(--cream);padding:32px 24px"><div style="font-family:var(--serif);font-style:italic;font-size:12px;color:var(--mocha);margin-bottom:10px">01</div><div style="font-family:var(--serif);font-size:17px;margin-bottom:4px">피톤치드 숲길</div><div style="font-size:12px;color:var(--ink-soft)">부지 뒤편 소나무 산책로</div></div>
+    <div style="background:var(--cream);padding:32px 24px"><div style="font-family:var(--serif);font-style:italic;font-size:12px;color:var(--mocha);margin-bottom:10px">02</div><div style="font-family:var(--serif);font-size:17px;margin-bottom:4px">셰프 조식</div><div style="font-size:12px;color:var(--ink-soft)">제주 로컬 식재료 · 사전 예약</div></div>
+    <div style="background:var(--cream);padding:32px 24px"><div style="font-family:var(--serif);font-style:italic;font-size:12px;color:var(--mocha);margin-bottom:10px">03</div><div style="font-family:var(--serif);font-size:17px;margin-bottom:4px">웰컴 티</div><div style="font-size:12px;color:var(--ink-soft)">체크인 시 한라봉 티 + 다식</div></div>
+    <div style="background:var(--cream);padding:32px 24px"><div style="font-family:var(--serif);font-style:italic;font-size:12px;color:var(--mocha);margin-bottom:10px">04</div><div style="font-family:var(--serif);font-size:17px;margin-bottom:4px">자전거</div><div style="font-size:12px;color:var(--ink-soft)">해안도로 산책용 · 무료 대여</div></div>
+  </div>
+</div></section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking"><div class="wrap">
+  <div class="eyebrow">Reservation</div>
+  <h2 class="section-title">조용한 예약,<br><em>조용한 머무름</em></h2>
+  <p class="section-lede">주말·성수기 요율은 별도이며, 2박부터 7박 장기 숙박 10% 할인이 있습니다.<br>
+  문의는 카카오톡 오픈채팅 또는 전화로 편하게 주세요.</p>
+
+  <div class="booking-inner">
+    <div class="booking-rates">
+      <div class="rate-row"><span class="rate-label">Suite 01</span><span class="rate-name">해(海) · 오션 뷰</span><span class="rate-amt">₩480,000 <em>/박</em></span></div>
+      <div class="rate-row"><span class="rate-label">Suite 02</span><span class="rate-name">숲(林) · 가든 뷰</span><span class="rate-amt">₩380,000 <em>/박</em></span></div>
+      <div class="rate-row"><span class="rate-label">Suite 03</span><span class="rate-name">석(石) · 스파 스위트</span><span class="rate-amt">₩440,000 <em>/박</em></span></div>
+      <div class="rate-row"><span class="rate-label">Add-on</span><span class="rate-name">셰프 조식 (2인 기준)</span><span class="rate-amt">₩65,000 <em>/회</em></span></div>
+      <div class="rate-row"><span class="rate-label">Add-on</span><span class="rate-name">웰컴 제주 와인</span><span class="rate-amt">₩45,000 <em>/병</em></span></div>
+      <div class="booking-note">
+        * 주중 1박 기준 요율. 금·토·공휴일 전일은 15% 가산.<br>
+        * 체크인 16:00 / 체크아웃 11:00. 얼리 체크인·레이트 체크아웃 사전 문의.
+      </div>
+    </div>
+
+    <div class="booking-actions">
+      <a href="#" class="b-btn primary">카카오톡 예약 문의 →</a>
+      <a href="#" class="b-btn ghost">전화 010-0000-0000</a>
+      <a href="#" class="b-btn ghost">네이버 예약 바로가기</a>
+    </div>
+  </div>
+</div></section>
+
+<footer class="footer"><div class="wrap footer-inner">
+  <div>
+    <div class="footer-brand">DOLDAM · 돌담 스테이</div>
+    <div>제주시 조천읍 함덕해안로 숨은 골목 · 운영 김지원<br>
+    hello@doldamstay.kr · 010-0000-0000</div>
+  </div>
+  <div style="text-align:right">
+    © 2026 Doldam Stay. All rights reserved.<br>
+    Sample site built by LocalBoost — Made in Jeju.
+  </div>
+</div></footer>
+
+</body>
+</html>
